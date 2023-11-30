@@ -1,0 +1,1 @@
+# fugio-core-plugins
