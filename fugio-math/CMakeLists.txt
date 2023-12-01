@@ -1,12 +1,10 @@
-cmake_minimum_required( VERSION 3.1 )
-
-project( fugio-math LANGUAGES CXX )
+cmake_minimum_required( VERSION 3.14 )
 
 set( PLUGIN_NAME "math" )
 set( PLUGIN_DESCRIPTION "Maths nodes" )
 set( PLUGIN_FILENAME "${PROJECT_NAME}" )
 set( PLUGIN_UUID "843c26cc-a007-42e6-a8a6-140b8d649c9e" )
-set( PLUGIN_RELEASE_VERSION "1.0" )
+set( PLUGIN_RELEASE_VERSION "1.0.0" )
 set( PLUGIN_RELEASE_DATE "2019-10-25" )
 set( PLUGIN_AUTHOR_NAME  "Alex May" )
 set( PLUGIN_AUTHOR_CONTACT "https://github.com/bigfug" )
@@ -14,6 +12,8 @@ set( PLUGIN_WIKI_LINK "https://github.com/bigfug/fugio-core-plugins/wiki/Math_Pl
 set( PLUGIN_WIKI_NODE_LINK "https://github.com/bigfug/fugio-core-plugins/wiki/Math_Node_" )
 set( PLUGIN_WIKI_PIN_LINK "https://github.com/bigfug/fugio-core-plugins/wiki/Math_Pin_" )
 set( PLUGIN_IID "com.bigfug.fugio.math.plugin" )
+
+project( fugio-math VERSION ${PLUGIN_RELEASE_VERSION} LANGUAGES CXX )
 
 include_directories( ${CMAKE_CURRENT_SOURCE_DIR}/include )
 
@@ -226,16 +226,17 @@ configure_file(
 	@ONLY
 )
 
-install( FILES ${CMAKE_CURRENT_BINARY_DIR}/manifest.json DESTINATION ${PROJECT_NAME} )
+install( FILES ${CMAKE_CURRENT_BINARY_DIR}/manifest.json DESTINATION . COMPONENT ${PROJECT_NAME} )
 
 #------------------------------------------------------------------------------
 # Install
 
 install( TARGETS ${PROJECT_NAME}
-	LIBRARY DESTINATION ${PROJECT_NAME}
+	LIBRARY DESTINATION plugin
+	COMPONENT ${PROJECT_NAME}
 )
 
-install( DIRECTORY include DESTINATION ${PROJECT_NAME} )
+install( DIRECTORY include DESTINATION . COMPONENT ${PROJECT_NAME} )
 
 #------------------------------------------------------------------------------
 # Qt5

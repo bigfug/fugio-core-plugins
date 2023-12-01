@@ -1,4 +1,4 @@
-cmake_minimum_required( VERSION 3.1 )
+cmake_minimum_required( VERSION 3.14 )
 
 project( fugio-colour LANGUAGES CXX )
 
@@ -92,16 +92,18 @@ configure_file(
 	@ONLY
 )
 
-install( FILES ${CMAKE_CURRENT_BINARY_DIR}/manifest.json DESTINATION ${PROJECT_NAME} )
+install( FILES ${CMAKE_CURRENT_BINARY_DIR}/manifest.json DESTINATION . COMPONENT ${PROJECT_NAME} )
 
 #------------------------------------------------------------------------------
 # Install
 
 install( TARGETS ${PROJECT_NAME}
-	LIBRARY DESTINATION ${PROJECT_NAME}
+	LIBRARY
+	DESTINATION plugin
+	COMPONENT ${PROJECT_NAME}
 )
 
-install( DIRECTORY include DESTINATION ${PROJECT_NAME} )
+install( DIRECTORY include DESTINATION . COMPONENT ${PROJECT_NAME} )
 
 #------------------------------------------------------------------------------
 # Qt5
@@ -137,3 +139,4 @@ set_property( SOURCE ${CMAKE_CURRENT_BINARY_DIR}/qrc_translations.cpp PROPERTY S
 if( FUGIO_LIBRARY_BUILD_DIR )
 #add_subdirectory( tests )
 endif()
+
