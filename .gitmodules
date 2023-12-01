@@ -1,0 +1,6 @@
+[submodule "libs/eigen"]
+	path = libs/eigen
+	url = https://gitlab.com/libeigen/eigen.git
+[submodule "libs/exprtk"]
+	path = libs/exprtk
+	url = https://github.com/ArashPartow/exprtk.git
