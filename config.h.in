@@ -6,15 +6,23 @@
 
 namespace config
 {
-	static const QString	pluginName( "@PLUGIN_NAME@" );
-	static const QString	pluginDescription( "@PLUGIN_DESCRIPTION@" );
-	static const QUuid		pluginUuid( "{@PLUGIN_UUID@}" );
-	static const QString	pluginIID( "@PLUGIN_IID@" );
-	static const QString	pluginReleaseVersion( "@PLUGIN_RELEASE_VERSION@" );
+    static const QString	pluginName = QStringLiteral( "@PLUGIN_NAME@" );
+    static const QString	pluginDescriptionShort = QStringLiteral( "@PLUGIN_DESCRIPTION_SHORT@" );
+    static const QString	pluginDescriptionLong = QStringLiteral( "@PLUGIN_DESCRIPTION_LONG@" );
+    static const QString	pluginFilename = QStringLiteral( "@PLUGIN_FILENAME@" );
+
+    static const QUuid		pluginUuid( "{@PLUGIN_UUID@}" );
+    static const QString	pluginIID = QStringLiteral( "@PLUGIN_IID@" );
+
+    static const QString    pluginInterfaceVersion = QStringLiteral( "@PLUGIN_RELEASE_VERSION@" );
+    static const QString	pluginCompatibilityVersion = QStringLiteral( "@PLUGIN_COMPATIBILITY_VERSION@" );
+    static const QString	pluginApiVersion = QStringLiteral( "@PLUGIN_API_COMPATIBILITY@" );
+
 	static const QDate		pluginReleaseDate = QDate::fromString( QStringLiteral( "@PLUGIN_RELEASE_DATE@" ), Qt::ISODate );
-	static const QString	authorName( "@PLUGIN_AUTHOR_NAME@" );
-	static const QString	authorContact( "@PLUGIN_AUTHOR_CONTACT@" );
-	static const QString	wikiLink( "@PLUGIN_WIKI_LINK@" );
+    static const QString	authorName = QStringLiteral( "@PLUGIN_AUTHOR_NAME@" );
+    static const QString	authorContact = QStringLiteral( "@PLUGIN_AUTHOR_CONTACT@" );
+
+    static const QString	wikiLink = QStringLiteral( "@PLUGIN_WIKI_LINK@" );
 };
 
 #define WIKI_NODE_URL( x ) "@PLUGIN_WIKI_NODE_LINK@" ## x

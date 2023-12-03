@@ -1,19 +1,35 @@
 cmake_minimum_required( VERSION 3.14 )
 
-project( fugio-colour LANGUAGES CXX )
+#-------------------------------------------------------------------------------
+# PLUGIN DEFINES
 
 set( PLUGIN_NAME "Colour" )
-set( PLUGIN_DESCRIPTION "Colour nodes" )
-set( PLUGIN_FILENAME "${PROJECT_NAME}" )
+set( PLUGIN_DESCRIPTION_SHORT "Colour nodes" )
+set( PLUGIN_DESCRIPTION_LONG "Colour nodes" )
+set( PLUGIN_FILENAME "fugio-colour" )
+
 set( PLUGIN_UUID "843c26cc-a007-42e6-a8a6-140b8d649c9e" )
-set( PLUGIN_RELEASE_VERSION "1.0" )
+set( PLUGIN_IID "com.bigfug.fugio.colour" )
+
+set( PLUGIN_RELEASE_VERSION "1.0.0" )
+set( PLUGIN_COMPATIBILITY_VERSION "1.0.0" )
+set( PLUGIN_API_COMPATIBILITY "4.0.0" )
+
 set( PLUGIN_RELEASE_DATE "2019-10-25" )
 set( PLUGIN_AUTHOR_NAME  "Alex May" )
 set( PLUGIN_AUTHOR_CONTACT "https://github.com/bigfug" )
+
 set( PLUGIN_WIKI_LINK "https://github.com/bigfug/fugio-core-plugins/wiki/Colour_Plugin" )
 set( PLUGIN_WIKI_NODE_LINK "https://github.com/bigfug/fugio-core-plugins/wiki/Colour_Node_" )
 set( PLUGIN_WIKI_PIN_LINK "https://github.com/bigfug/fugio-core-plugins/wiki/Colour_Pin_" )
-set( PLUGIN_IID "com.bigfug.fugio.colour.plugin" )
+
+set( PLUGIN_REQUIREMENTS "\
+	{ \"plugin\": \"com.bigfug.fugio.core\", \"version\": \"1.0.0\" }"
+)
+
+#-------------------------------------------------------------------------------
+
+project( ${PLUGIN_FILENAME} VERSION ${PLUGIN_RELEASE_VERSION} LANGUAGES CXX )
 
 include_directories( ${CMAKE_CURRENT_SOURCE_DIR}/include )
 
@@ -91,6 +107,10 @@ configure_file(
 	${CMAKE_CURRENT_BINARY_DIR}/manifest.json
 	@ONLY
 )
+
+target_sources( ${PROJECT_NAME} PRIVATE
+	${CMAKE_CURRENT_BINARY_DIR}/manifest.json
+	)
 
 install( FILES ${CMAKE_CURRENT_BINARY_DIR}/manifest.json DESTINATION . COMPONENT ${PROJECT_NAME} )
 
