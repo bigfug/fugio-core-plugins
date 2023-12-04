@@ -5,12 +5,14 @@
 #include <fugio/device_factory_interface.h>
 #include <fugio/math/math_interface.h>
 
+#include "config.h"
+
 using namespace fugio;
 
 class MathPlugin : public QObject, public fugio::PluginInterface, public fugio::MathInterface
 {
 	Q_OBJECT
-    Q_PLUGIN_METADATA( IID "com.bigfug.fugio.math.plugin"  FILE "manifest.json" )
+    Q_PLUGIN_METADATA( IID FUGIO_PLUGIN_IID  FILE "manifest.json" )
 	Q_INTERFACES( fugio::PluginInterface fugio::MathInterface )
 
 public:

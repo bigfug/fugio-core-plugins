@@ -1,0 +1,42 @@
+{
+  "author": "Alex May",
+  "contact": "https://github.com/bigfug",
+  "description": "Core plugins for Fugio",
+  "identifier": "com.bigfug.fugio.core",
+
+  "plugins": [
+	{
+	  "com.bigfug.fugio.core": [
+		{
+		  "1.0.0": [
+			{
+			  "win64": "fugio-core-1.0.0-win64.zip"
+			}
+		  ]
+		}
+	  ]
+	},
+	{
+	  "com.bigfug.fugio.colour": [
+		{
+		  "1.0.0": [
+			{
+			  "win64": "fugio-colour-1.0.0-win64.zip"
+			}
+		  ]
+		}
+	  ]
+	},
+	{
+	  "com.bigfug.fugio.math": [
+		{
+		  "1.0.0": [
+			{
+			  "win64": "fugio-math-1.0.0-win64.zip"
+			}
+		  ]
+		}
+	  ]
+	}
+  ]
+}

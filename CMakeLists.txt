@@ -72,6 +72,57 @@ endif()
 
 #------------------------------------------------------------------------------
 
+if( UNIX )
+	execute_process( COMMAND lsb_release -is
+		OUTPUT_VARIABLE UNIX_ID
+		OUTPUT_STRIP_TRAILING_WHITESPACE
+	)
+
+	execute_process( COMMAND lsb_release -rs
+		OUTPUT_VARIABLE UNIX_RELEASE
+		OUTPUT_STRIP_TRAILING_WHITESPACE
+	)
+
+	execute_process( COMMAND lsb_release -cs
+		OUTPUT_VARIABLE UNIX_CODENAME
+		OUTPUT_STRIP_TRAILING_WHITESPACE
+	)
+
+	if( "${UNIX_ID}" STREQUAL "" )
+		set( UNIX_ID "unknown" )
+	else()
+		message( "UNIX ID: ${UNIX_ID}" )
+	endif()
+
+	if( "${UNIX_RELEASE}" STREQUAL "" )
+		set( UNIX_RELEASE "unknown" )
+	else()
+		message( "UNIX RELEASE: ${UNIX_RELEASE}" )
+	endif()
+
+	if( "${UNIX_CODENAME}" STREQUAL "" )
+		set( UNIX_CODENAME "unknown" )
+	else()
+		message( "UNIX CODENAME: ${UNIX_CODENAME}" )
+	endif()
+endif( UNIX )
+
+# Set the output package extension
+
+if( WIN32 AND IS_64_BIT )
+	set( PLATFORM_NAME "win64" )
+elseif( WIN32 )
+	set( PLATFORM_NAME "win32" )
+elseif( APPLE )
+	set( PLATFORM_NAME "macOS" )
+elseif( UNIX AND IS_64_BIT )
+	set( PLATFORM_NAME "${UNIX_CODENAME}-x64" )
+elseif( UNIX )
+	set( PLATFORM_NAME "${UNIX_CODENAME}-i386" )
+endif()
+
+#------------------------------------------------------------------------------
+
 set( FUGIO_UNIX_DEPENDENCIES )
 
 #add_subdirectory( Audio )
@@ -93,6 +144,15 @@ add_subdirectory( fugio-math )
 #add_subdirectory( Serial )
 #add_subdirectory( Text )
 #add_subdirectory( Time )
+
+
+#------------------------------------------------------------------------------
+
+configure_file( fugio-manifest.json ${CMAKE_BINARY_DIR} COPYONLY )
+
+add_custom_target( fugio-plugin-manifest
+	SOURCES fugio-manifest.json
+)
 
 #------------------------------------------------------------------------------
 # CPack

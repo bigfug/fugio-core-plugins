@@ -7,13 +7,15 @@
 #include <fugio/global_interface.h>
 #include <fugio/plugin_interface.h>
 
+#include "config.h"
+
 using namespace fugio;
 
 class CorePlugin : public QObject, public fugio::PluginInterface
 {
 	Q_OBJECT
 	Q_INTERFACES( fugio::PluginInterface )
-    Q_PLUGIN_METADATA( IID "com.bigfug.fugio.core.plugin" FILE "manifest.json" )
+    Q_PLUGIN_METADATA( IID FUGIO_PLUGIN_IID FILE "manifest.json" )
 
 public:
 	explicit CorePlugin( void );

@@ -25,6 +25,8 @@ namespace config
     static const QString	wikiLink = QStringLiteral( "@PLUGIN_WIKI_LINK@" );
 };
 
+#define FUGIO_PLUGIN_IID "@PLUGIN_IID@"
+
 #define WIKI_NODE_URL( x ) "@PLUGIN_WIKI_NODE_LINK@" ## x
 #define WIKI_PIN_URL( x ) "@PLUGIN_WIKI_PIN_LINK@" ## x
 
