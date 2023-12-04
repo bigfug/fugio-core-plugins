@@ -28,6 +28,17 @@
 	  ]
 	},
 	{
+	  "com.bigfug.fugio.gui": [
+		{
+		  "1.0.0": [
+			{
+			  "win64": "fugio-gui-1.0.0-win64.zip"
+			}
+		  ]
+		}
+	  ]
+	},
+	{
 	  "com.bigfug.fugio.math": [
 		{
 		  "1.0.0": [
