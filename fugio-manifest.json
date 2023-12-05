@@ -28,6 +28,17 @@
 	  ]
 	},
 	{
+	  "com.bigfug.fugio.file": [
+		{
+		  "1.0.0": [
+			{
+			  "win64": "fugio-file-1.0.0-win64.zip"
+			}
+		  ]
+		}
+	  ]
+	},
+	{
 	  "com.bigfug.fugio.gui": [
 		{
 		  "1.0.0": [
@@ -39,11 +50,66 @@
 	  ]
 	},
 	{
+	  "com.bigfug.fugio.image": [
+		{
+		  "1.0.0": [
+			{
+			  "win64": "fugio-image-1.0.0-win64.zip"
+			}
+		  ]
+		}
+	  ]
+	},
+	{
 	  "com.bigfug.fugio.math": [
 		{
 		  "1.0.0": [
 			{
 			  "win64": "fugio-math-1.0.0-win64.zip"
+			}
+		  ]
+		}
+	  ]
+	},
+	{
+	  "com.bigfug.fugio.network": [
+		{
+		  "1.0.0": [
+			{
+			  "win64": "fugio-network-1.0.0-win64.zip"
+			}
+		  ]
+		}
+	  ]
+	},
+	{
+	  "com.bigfug.fugio.serial": [
+		{
+		  "1.0.0": [
+			{
+			  "win64": "fugio-serial-1.0.0-win64.zip"
+			}
+		  ]
+		}
+	  ]
+	},
+	{
+	  "com.bigfug.fugio.text": [
+		{
+		  "1.0.0": [
+			{
+			  "win64": "fugio-text-1.0.0-win64.zip"
+			}
+		  ]
+		}
+	  ]
+	},
+	{
+	  "com.bigfug.fugio.time": [
+		{
+		  "1.0.0": [
+			{
+			  "win64": "fugio-time-1.0.0-win64.zip"
 			}
 		  ]
 		}

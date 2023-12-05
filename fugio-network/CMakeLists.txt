@@ -3,13 +3,13 @@ cmake_minimum_required( VERSION 3.14 )
 #-------------------------------------------------------------------------------
 # PLUGIN DEFINES
 
-set( PLUGIN_NAME "GUI" )
-set( PLUGIN_DESCRIPTION_SHORT "GUI nodes" )
-set( PLUGIN_DESCRIPTION_LONG "GUI nodes" )
-set( PLUGIN_FILENAME "fugio-gui" )
+set( PLUGIN_NAME "Network" )
+set( PLUGIN_DESCRIPTION_SHORT "Network nodes" )
+set( PLUGIN_DESCRIPTION_LONG "Network nodes" )
+set( PLUGIN_FILENAME "fugio-network" )
 
-set( PLUGIN_UUID "680cbb42-0807-411c-a2d1-dcc1446d3638" )
-set( PLUGIN_IID "com.bigfug.fugio.gui" )
+set( PLUGIN_UUID "25e353e6-ef5d-42fd-b568-d2ff2b5d2843" )
+set( PLUGIN_IID "com.bigfug.fugio.network" )
 
 set( PLUGIN_RELEASE_VERSION "1.0.0" )
 set( PLUGIN_COMPATIBILITY_VERSION "1.0.0" )
@@ -19,13 +19,13 @@ set( PLUGIN_RELEASE_DATE "2019-10-25" )
 set( PLUGIN_AUTHOR_NAME  "Alex May" )
 set( PLUGIN_AUTHOR_CONTACT "https://github.com/bigfug" )
 
-set( PLUGIN_WIKI_LINK "https://github.com/bigfug/fugio-core-plugins/wiki/Gui_Plugin" )
-set( PLUGIN_WIKI_NODE_LINK "https://github.com/bigfug/fugio-core-plugins/wiki/Gui_Node_" )
-set( PLUGIN_WIKI_PIN_LINK "https://github.com/bigfug/fugio-core-plugins/wiki/Gui_Pin_" )
+set( PLUGIN_WIKI_LINK "https://github.com/bigfug/fugio-core-plugins/wiki/Network_Plugin" )
+set( PLUGIN_WIKI_NODE_LINK "https://github.com/bigfug/fugio-core-plugins/wiki/Network_Node_" )
+set( PLUGIN_WIKI_PIN_LINK "https://github.com/bigfug/fugio-core-plugins/wiki/Network_Pin_" )
 
 set( PLUGIN_REQUIREMENTS "\
-	{ \"plugin\": \"com.bigfug.fugio.core\", \"version\": \"1.0.0\" },
-	{ \"plugin\": \"com.bigfug.fugio.colour\", \"version\": \"1.0.0\" }"
+	{ \"plugin\": \"com.bigfug.fugio.file\", \"version\": \"1.0.0\" },
+	{ \"plugin\": \"com.bigfug.fugio.core\", \"version\": \"1.0.0\" }"
 )
 
 #-------------------------------------------------------------------------------
@@ -35,60 +35,30 @@ project( ${PLUGIN_FILENAME} VERSION ${PLUGIN_RELEASE_VERSION} LANGUAGES CXX )
 include_directories( ${CMAKE_CURRENT_SOURCE_DIR}/include )
 
 set( HEADER_FILES
-	include/fugio/gui/input_events_interface.h
-	include/fugio/gui/keyboard_interface.h
-	include/fugio/gui/uuid.h
+	include/fugio/network/uuid.h
 )
 
 set( SOURCE_FILES
-	source/guiplugin.cpp
-	source/guiplugin.h
-
-	source/floatnode.cpp
-	source/buttonnode.cpp
-	source/integernode.cpp
-	source/lcdnumbernode.cpp
-	source/keyboardnode.cpp
-	source/lednode.cpp
-	source/keyboarddialog.cpp
-	source/slidernode.cpp
-	source/keyboardpin.cpp
-	source/mainwindownode.cpp
-	source/choicenode.cpp
-	source/numbermonitorform.cpp
-	source/numbermonitornode.cpp
-	source/stringnode.cpp
-	source/leditem.cpp
-	source/dialnode.cpp
-	source/dialwidget.cpp
-	source/screennode.cpp
-	source/inputeventspin.cpp
-	source/mousenode.cpp
-	source/floatnode.h
-	source/buttonnode.h
-	source/integernode.h
-	source/lcdnumbernode.h
-	source/numbermonitorform.h
-	source/numbermonitornode.h
-	source/keyboardnode.h
-	source/lednode.h
-	source/keyboarddialog.h
-	source/choicenode.h
-	source/keyboardpin.h
-	source/slidernode.h
-	source/mainwindownode.h
-	source/stringnode.h
-	source/leditem.h
-	source/dialnode.h
-	source/dialwidget.h
-	source/screennode.h
-	source/inputeventspin.h
-	source/mousenode.h
-	source/labelnode.cpp
-	source/labelnode.h
-
-	source/numbermonitorform.ui
-	source/keyboarddialog.ui
+	source/cobsdecodenode.cpp source/cobsdecodenode.h
+	source/cobsencodenode.cpp source/cobsencodenode.h
+	source/crc32.cpp source/crc32.h
+	source/getnode.cpp source/getnode.h
+	source/networkplugin.cpp source/networkplugin.h
+	source/packetdecodenode.cpp source/packetdecodenode.h
+	source/packetencodenode.cpp source/packetencodenode.h
+	source/slipdecodenode.cpp source/slipdecodenode.h
+	source/slipencodenode.cpp source/slipencodenode.h
+	source/tcpreceivenode.cpp source/tcpreceivenode.h
+	source/tcpreceiverawnode.cpp source/tcpreceiverawnode.h
+	source/tcpsendnode.cpp source/tcpsendnode.h
+	source/tcpsendrawnode.cpp source/tcpsendrawnode.h
+	source/udpreceiverawnode.cpp source/udpreceiverawnode.h
+	source/udpsendrawnode.cpp source/udpsendrawnode.h
+	source/universereceivenode.cpp source/universereceivenode.h
+	source/universesendnode.cpp source/universesendnode.h
+	source/websocketclientnode.cpp source/websocketclientnode.h
+	source/websocketdataservernode.cpp source/websocketdataservernode.h
+	source/websocketservernode.cpp source/websocketservernode.h
 )
 
 set( QRC_FILES
@@ -102,6 +72,12 @@ set_target_properties( ${PROJECT_NAME} PROPERTIES
 )
 
 #------------------------------------------------------------------------------
+# Includes
+
+target_include_directories( ${PROJECT_NAME} PRIVATE ${CMAKE_SOURCE_DIR}/fugio-core/include )
+target_include_directories( ${PROJECT_NAME} PRIVATE ${CMAKE_SOURCE_DIR}/fugio-file/include )
+
+#------------------------------------------------------------------------------
 # Fugio API
 
 if( FUGIO_API AND EXISTS ${FUGIO_API} )
@@ -112,12 +88,6 @@ if( FUGIO_API AND EXISTS ${FUGIO_API} )
 		${FUGIO_API}/fugio/pincontrolbase.h
 		)
 endif()
-
-#------------------------------------------------------------------------------
-# Additional includes
-
-target_include_directories( ${PROJECT_NAME} PRIVATE ${CMAKE_SOURCE_DIR}/fugio-core/include )
-target_include_directories( ${PROJECT_NAME} PRIVATE ${CMAKE_SOURCE_DIR}/fugio-colour/include )
 
 #------------------------------------------------------------------------------
 # Plugin Config
@@ -159,14 +129,13 @@ install( TARGETS ${PROJECT_NAME}
 )
 
 install( DIRECTORY include DESTINATION . COMPONENT ${PROJECT_NAME} )
-install( DIRECTORY examples	DESTINATION . COMPONENT ${PROJECT_NAME} )
 
 #------------------------------------------------------------------------------
 # Qt5
 
-find_package( Qt5 COMPONENTS Core Gui Widgets LinguistTools REQUIRED )
+find_package( Qt5 COMPONENTS Core Widgets Network LinguistTools REQUIRED )
 
-target_link_libraries( ${PROJECT_NAME} Qt5::Core Qt5::Gui Qt5::Widgets )
+target_link_libraries( ${PROJECT_NAME} Qt5::Core Qt5::Widgets Qt5::Network )
 
 #------------------------------------------------------------------------------
 # Translations
@@ -193,9 +162,8 @@ set_property( SOURCE ${CMAKE_CURRENT_BINARY_DIR}/qrc_translations.cpp PROPERTY S
 # Unit Tests
 
 if( FUGIO_LIBRARY_BUILD_DIR )
-#	add_subdirectory( tests )
+#add_subdirectory( tests )
 endif()
 
-set( CPACK_ARCHIVE_FUGIO-GUI_FILE_NAME "${PLUGIN_FILENAME}-${PLUGIN_RELEASE_VERSION}-${PLATFORM_NAME}" PARENT_SCOPE )
-
+set( CPACK_ARCHIVE_FUGIO-NETWORK_FILE_NAME "${PLUGIN_FILENAME}-${PLUGIN_RELEASE_VERSION}-${PLATFORM_NAME}" PARENT_SCOPE )
 

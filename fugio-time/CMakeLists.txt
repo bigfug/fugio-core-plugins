@@ -3,13 +3,13 @@ cmake_minimum_required( VERSION 3.14 )
 #-------------------------------------------------------------------------------
 # PLUGIN DEFINES
 
-set( PLUGIN_NAME "GUI" )
-set( PLUGIN_DESCRIPTION_SHORT "GUI nodes" )
-set( PLUGIN_DESCRIPTION_LONG "GUI nodes" )
-set( PLUGIN_FILENAME "fugio-gui" )
+set( PLUGIN_NAME "Time" )
+set( PLUGIN_DESCRIPTION_SHORT "Time nodes" )
+set( PLUGIN_DESCRIPTION_LONG "Time nodes" )
+set( PLUGIN_FILENAME "fugio-time" )
 
-set( PLUGIN_UUID "680cbb42-0807-411c-a2d1-dcc1446d3638" )
-set( PLUGIN_IID "com.bigfug.fugio.gui" )
+set( PLUGIN_UUID "843c26cc-a007-42e6-a8a6-140b8d649c9e" )
+set( PLUGIN_IID "com.bigfug.fugio.time" )
 
 set( PLUGIN_RELEASE_VERSION "1.0.0" )
 set( PLUGIN_COMPATIBILITY_VERSION "1.0.0" )
@@ -19,13 +19,12 @@ set( PLUGIN_RELEASE_DATE "2019-10-25" )
 set( PLUGIN_AUTHOR_NAME  "Alex May" )
 set( PLUGIN_AUTHOR_CONTACT "https://github.com/bigfug" )
 
-set( PLUGIN_WIKI_LINK "https://github.com/bigfug/fugio-core-plugins/wiki/Gui_Plugin" )
-set( PLUGIN_WIKI_NODE_LINK "https://github.com/bigfug/fugio-core-plugins/wiki/Gui_Node_" )
-set( PLUGIN_WIKI_PIN_LINK "https://github.com/bigfug/fugio-core-plugins/wiki/Gui_Pin_" )
+set( PLUGIN_WIKI_LINK "https://github.com/bigfug/fugio-core-plugins/wiki/Time_Plugin" )
+set( PLUGIN_WIKI_NODE_LINK "https://github.com/bigfug/fugio-core-plugins/wiki/Time_Node_" )
+set( PLUGIN_WIKI_PIN_LINK "https://github.com/bigfug/fugio-core-plugins/wiki/Time_Pin_" )
 
 set( PLUGIN_REQUIREMENTS "\
-	{ \"plugin\": \"com.bigfug.fugio.core\", \"version\": \"1.0.0\" },
-	{ \"plugin\": \"com.bigfug.fugio.colour\", \"version\": \"1.0.0\" }"
+	{ \"plugin\": \"com.bigfug.fugio.core\", \"version\": \"1.0.0\" }"
 )
 
 #-------------------------------------------------------------------------------
@@ -35,60 +34,30 @@ project( ${PLUGIN_FILENAME} VERSION ${PLUGIN_RELEASE_VERSION} LANGUAGES CXX )
 include_directories( ${CMAKE_CURRENT_SOURCE_DIR}/include )
 
 set( HEADER_FILES
-	include/fugio/gui/input_events_interface.h
-	include/fugio/gui/keyboard_interface.h
-	include/fugio/gui/uuid.h
+	include/fugio/time/uuid.h
 )
 
 set( SOURCE_FILES
-	source/guiplugin.cpp
-	source/guiplugin.h
-
-	source/floatnode.cpp
-	source/buttonnode.cpp
-	source/integernode.cpp
-	source/lcdnumbernode.cpp
-	source/keyboardnode.cpp
-	source/lednode.cpp
-	source/keyboarddialog.cpp
-	source/slidernode.cpp
-	source/keyboardpin.cpp
-	source/mainwindownode.cpp
-	source/choicenode.cpp
-	source/numbermonitorform.cpp
-	source/numbermonitornode.cpp
-	source/stringnode.cpp
-	source/leditem.cpp
-	source/dialnode.cpp
-	source/dialwidget.cpp
-	source/screennode.cpp
-	source/inputeventspin.cpp
-	source/mousenode.cpp
-	source/floatnode.h
-	source/buttonnode.h
-	source/integernode.h
-	source/lcdnumbernode.h
-	source/numbermonitorform.h
-	source/numbermonitornode.h
-	source/keyboardnode.h
-	source/lednode.h
-	source/keyboarddialog.h
-	source/choicenode.h
-	source/keyboardpin.h
-	source/slidernode.h
-	source/mainwindownode.h
-	source/stringnode.h
-	source/leditem.h
-	source/dialnode.h
-	source/dialwidget.h
-	source/screennode.h
-	source/inputeventspin.h
-	source/mousenode.h
-	source/labelnode.cpp
-	source/labelnode.h
-
-	source/numbermonitorform.ui
-	source/keyboarddialog.ui
+	source/beattapnode.cpp source/beattapnode.h
+	source/clocknode.cpp source/clocknode.h
+	source/cronform.ui source/cronnode.cpp source/cronnode.h
+	source/datenode.cpp source/datenode.h
+	source/datepin.cpp source/datepin.h
+	source/datetimepin.cpp source/datetimepin.h
+	source/datetimetostringnode.cpp source/datetimetostringnode.h
+	source/delaynode.cpp source/delaynode.h
+	source/everynode.cpp source/everynode.h
+	source/inertianode.cpp source/inertianode.h
+	source/localtimenode.cpp source/localtimenode.h
+	source/playheadcontrolnode.cpp source/playheadcontrolnode.h
+	source/playheadframesnode.cpp source/playheadframesnode.h
+	source/playheadnode.cpp source/playheadnode.h
+	source/splitdatetimenode.cpp source/splitdatetimenode.h
+	source/timenode.cpp source/timenode.h
+	source/timepin.cpp source/timepin.h
+	source/timeplugin.cpp source/timeplugin.h
+	source/universetimenode.cpp source/universetimenode.h
+	source/utctimenode.cpp source/utctimenode.h
 )
 
 set( QRC_FILES
@@ -102,6 +71,11 @@ set_target_properties( ${PROJECT_NAME} PROPERTIES
 )
 
 #------------------------------------------------------------------------------
+# Includes
+
+target_include_directories( ${PROJECT_NAME} PRIVATE ${CMAKE_SOURCE_DIR}/fugio-core/include )
+
+#------------------------------------------------------------------------------
 # Fugio API
 
 if( FUGIO_API AND EXISTS ${FUGIO_API} )
@@ -112,12 +86,6 @@ if( FUGIO_API AND EXISTS ${FUGIO_API} )
 		${FUGIO_API}/fugio/pincontrolbase.h
 		)
 endif()
-
-#------------------------------------------------------------------------------
-# Additional includes
-
-target_include_directories( ${PROJECT_NAME} PRIVATE ${CMAKE_SOURCE_DIR}/fugio-core/include )
-target_include_directories( ${PROJECT_NAME} PRIVATE ${CMAKE_SOURCE_DIR}/fugio-colour/include )
 
 #------------------------------------------------------------------------------
 # Plugin Config
@@ -159,14 +127,13 @@ install( TARGETS ${PROJECT_NAME}
 )
 
 install( DIRECTORY include DESTINATION . COMPONENT ${PROJECT_NAME} )
-install( DIRECTORY examples	DESTINATION . COMPONENT ${PROJECT_NAME} )
 
 #------------------------------------------------------------------------------
 # Qt5
 
-find_package( Qt5 COMPONENTS Core Gui Widgets LinguistTools REQUIRED )
+find_package( Qt5 COMPONENTS Core Widgets LinguistTools REQUIRED )
 
-target_link_libraries( ${PROJECT_NAME} Qt5::Core Qt5::Gui Qt5::Widgets )
+target_link_libraries( ${PROJECT_NAME} Qt5::Core Qt5::Widgets )
 
 #------------------------------------------------------------------------------
 # Translations
@@ -193,9 +160,8 @@ set_property( SOURCE ${CMAKE_CURRENT_BINARY_DIR}/qrc_translations.cpp PROPERTY S
 # Unit Tests
 
 if( FUGIO_LIBRARY_BUILD_DIR )
-#	add_subdirectory( tests )
+#add_subdirectory( tests )
 endif()
 
-set( CPACK_ARCHIVE_FUGIO-GUI_FILE_NAME "${PLUGIN_FILENAME}-${PLUGIN_RELEASE_VERSION}-${PLATFORM_NAME}" PARENT_SCOPE )
-
+set( CPACK_ARCHIVE_FUGIO-TIME_FILE_NAME "${PLUGIN_FILENAME}-${PLUGIN_RELEASE_VERSION}-${PLATFORM_NAME}" PARENT_SCOPE )
 
