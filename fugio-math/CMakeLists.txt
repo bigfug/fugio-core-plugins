@@ -252,11 +252,12 @@ install( FILES ${CMAKE_CURRENT_BINARY_DIR}/manifest.json DESTINATION . COMPONENT
 # Install
 
 install( TARGETS ${PROJECT_NAME}
-	LIBRARY DESTINATION plugin
+	LIBRARY DESTINATION plugins
 	COMPONENT ${PROJECT_NAME}
 )
 
-install( DIRECTORY include DESTINATION . COMPONENT ${PROJECT_NAME} )
+install( DIRECTORY include DESTINATION . COMPONENT ${PROJECT_NAME} PATTERN ".*" EXCLUDE )
+install( DIRECTORY examples	DESTINATION . COMPONENT ${PROJECT_NAME} PATTERN ".*" EXCLUDE )
 
 #------------------------------------------------------------------------------
 # Qt5
