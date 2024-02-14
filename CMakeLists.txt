@@ -125,7 +125,7 @@ endif()
 
 set( FUGIO_UNIX_DEPENDENCIES )
 
-#add_subdirectory( Audio )
+add_subdirectory( fugio-audio )
 add_subdirectory( fugio-colour )
 add_subdirectory( fugio-core )
 add_subdirectory( fugio-file )
@@ -148,10 +148,12 @@ add_subdirectory( fugio-time )
 
 #------------------------------------------------------------------------------
 
-configure_file( fugio-manifest.json ${CMAKE_BINARY_DIR} COPYONLY )
+set( FUGIO_PLUGIN_URL ${CMAKE_BINARY_DIR} CACHE STRING "" )
+
+configure_file( fugio-manifest.json.in ${CMAKE_BINARY_DIR}/fugio-manifest.json @ONLY )
 
 add_custom_target( fugio-plugin-manifest
-	SOURCES fugio-manifest.json
+	SOURCES ${CMAKE_CURRENT_BINARY_DIR}/fugio-manifest.json
 )
 
 #------------------------------------------------------------------------------
