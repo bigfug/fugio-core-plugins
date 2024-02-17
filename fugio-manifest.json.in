@@ -1,6 +1,7 @@
 {
   "author": "Alex May",
   "contact": "https://github.com/bigfug",
+  "homepage": "https://github.com/bigfug",
   "description": "Core plugins for Fugio",
   "identifier": "com.bigfug.fugio.core",
   "plugins": {
