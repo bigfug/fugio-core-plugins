@@ -84,3 +84,14 @@ jobs:
       # See https://cmake.org/cmake/help/latest/manual/ctest.1.html for more detail
       run: ctest --build-config ${{ matrix.build_type }}
       
+    - name: Package
+      working-directory: ${{ steps.strings.outputs.build-output-dir }}
+      run: cmake --build . --config ${{ matrix.build_type }} --target package
+
+    - name: Archive outputs
+      uses: actions/upload-artifact@v3
+      with:
+        name: build
+        path: |
+          ${{ github.workspace }}/package
+          !${{ github.workspace }}/package/_CPack_Packages
