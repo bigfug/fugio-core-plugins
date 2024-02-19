@@ -101,18 +101,7 @@ jobs:
     - name: Archive outputs
       uses: actions/upload-artifact@v3
       with:
-        name: fugio-core-plugins
+        name: fugio-core-plugins-${{ matrix.qt_host }}
         path: |
           ${{ github.workspace }}/package
           !${{ github.workspace }}/package/_CPack_Packages
-
-    - name: Create Release
-      id: create_release
-      uses: "marvinpinto/action-automatic-releases@latest"
-      with:
-        repo_token: "${{ secrets.GITHUB_TOKEN }}"
-        prerelease: true
-        automatic_release_tag: latest
-        files: |
-          ${{ github.workspace }}/package/*.zip
-          ${{ github.workspace }}/build/fugio-manifest.json
