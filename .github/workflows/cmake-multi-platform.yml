@@ -91,7 +91,8 @@ jobs:
     - name: Archive outputs
       uses: actions/upload-artifact@v3
       with:
-        name: build
+        name: fugio-core-plugins
         path: |
           ${{ github.workspace }}/package
+          ${{ github.workspace }}/build/fugio-manifest.json
           !${{ github.workspace }}/package/_CPack_Packages
