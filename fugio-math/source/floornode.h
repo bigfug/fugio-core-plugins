@@ -14,7 +14,7 @@ class FloorNode : public fugio::NodeControlBase
 	Q_CLASSINFO( "Version", "1.0" )
 	Q_CLASSINFO( "Description", "" )
 	Q_CLASSINFO( "URL", WIKI_NODE_URL( "Floor" ) )
-	Q_CLASSINFO( "Contact", "http://www.bigfug.com/contact/" )
+	Q_CLASSINFO( "Contact", "https://github.com/bigfug" )
 
 public:
 	Q_INVOKABLE FloorNode( QSharedPointer<fugio::NodeInterface> pNode );

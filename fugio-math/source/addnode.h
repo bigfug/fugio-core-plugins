@@ -16,7 +16,7 @@ class AddNode : public fugio::NodeControlBase
 	Q_CLASSINFO( "Version", "1.0" )
 	Q_CLASSINFO( "Description", "Adds all the input numbers together." )
 	Q_CLASSINFO( "URL", WIKI_NODE_URL( "Add" ) )
-	Q_CLASSINFO( "Contact", "http://www.bigfug.com/contact/" )
+	Q_CLASSINFO( "Contact", "https://github.com/bigfug" )
 
 	class Operator
 	{

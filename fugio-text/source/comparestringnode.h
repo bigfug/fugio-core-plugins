@@ -16,7 +16,7 @@ class CompareStringNode : public fugio::NodeControlBase, public fugio::PairedPin
 	Q_CLASSINFO( "Version", "1.0" )
 	Q_CLASSINFO( "Description", "Compares strings" )
 	Q_CLASSINFO( "URL", WIKI_NODE_URL( "Compare_String" ) )
-	Q_CLASSINFO( "Contact", "http://www.bigfug.com/contact/" )
+	Q_CLASSINFO( "Contact", "https://github.com/bigfug" )
 
 public:
 	Q_INVOKABLE explicit CompareStringNode( QSharedPointer<fugio::NodeInterface> pNode );

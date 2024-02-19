@@ -2,6 +2,9 @@
 #define RINGMODULATORNODE_H
 
 #include <QObject>
+
+#include "config.h"
+
 #include <QLabel>
 
 #include <fugio/nodecontrolbase.h>
@@ -16,8 +19,8 @@ class RingModulatorNode : public fugio::NodeControlBase, public fugio::AudioProd
 	Q_CLASSINFO( "Author", "Alex May" )
 	Q_CLASSINFO( "Version", "1.0" )
 	Q_CLASSINFO( "Description", "Ring Modulator" )
-	Q_CLASSINFO( "URL", WIKI_NODE_URL( "Ring_Modulator_(Audio)" ) )
-	Q_CLASSINFO( "Contact", "http://www.bigfug.com/contact/" )
+	Q_CLASSINFO( "URL", WIKI_NODE_URL( "Ring-Modulator" ) )
+	Q_CLASSINFO( "Contact", "https://github.com/bigfug" )
 
 public:
 	Q_INVOKABLE RingModulatorNode( QSharedPointer<fugio::NodeInterface> pNode );

@@ -11,6 +11,8 @@
 
 #include <qmath.h>
 
+#include "audiofilterdisplay.h"
+
 AudioFilterNode::AudioFilterNode( QSharedPointer<fugio::NodeInterface> pNode )
 	: NodeControlBase( pNode ), mLastDisplayChange( 0 ), mLastDisplayUpdate( 0 )
 {

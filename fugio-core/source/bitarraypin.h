@@ -24,7 +24,7 @@ class BitArrayPin : public fugio::PinControlBase, public fugio::VariantHelper<QB
 	Q_CLASSINFO( "Version", "1.0" )
 	Q_CLASSINFO( "Description", "" )
 	Q_CLASSINFO( "URL", WIKI_PIN_URL( "BitArray" ) )
-	Q_CLASSINFO( "Contact", "http://www.bigfug.com/contact/" )
+	Q_CLASSINFO( "Contact", "https://github.com/bigfug" )
 
 public:
 	Q_INVOKABLE explicit BitArrayPin( QSharedPointer<fugio::PinInterface> pPin );

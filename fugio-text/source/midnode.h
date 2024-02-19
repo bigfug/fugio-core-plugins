@@ -16,7 +16,7 @@ class MidNode : public fugio::NodeControlBase, public fugio::PairedPinsHelperInt
 	Q_CLASSINFO( "Version", "1.0" )
 	Q_CLASSINFO( "Description", "" )
 	Q_CLASSINFO( "URL", WIKI_NODE_URL( "Mid_(String)" ) )
-	Q_CLASSINFO( "Contact", "http://www.bigfug.com/contact/" )
+	Q_CLASSINFO( "Contact", "https://github.com/bigfug" )
 
 public:
 	Q_INVOKABLE MidNode( QSharedPointer<fugio::NodeInterface> pNode );

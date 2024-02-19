@@ -19,7 +19,7 @@ class SerialInputNode : public fugio::NodeControlBase
 	Q_CLASSINFO( "Version", "1.0" )
 	Q_CLASSINFO( "Description", "Read data from a serial port" )
 	Q_CLASSINFO( "URL", WIKI_NODE_URL( "Serial_Input" ) )
-	Q_CLASSINFO( "Contact", "http://www.bigfug.com/contact/" )
+	Q_CLASSINFO( "Contact", "https://github.com/bigfug" )
 
 public:
 	Q_INVOKABLE explicit SerialInputNode( QSharedPointer<fugio::NodeInterface> pNode );

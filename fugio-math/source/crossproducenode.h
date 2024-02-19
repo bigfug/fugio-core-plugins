@@ -14,7 +14,7 @@ class CrossProductNode : public fugio::NodeControlBase
 	Q_CLASSINFO( "Version", "1.0" )
 	Q_CLASSINFO( "Description", "Calculates the cross product from two Vector3" )
 	Q_CLASSINFO( "URL", WIKI_NODE_URL( "Cross Product" ) )
-	Q_CLASSINFO( "Contact", "http://www.bigfug.com/contact/" )
+	Q_CLASSINFO( "Contact", "https://github.com/bigfug" )
 
 public:
 	Q_INVOKABLE CrossProductNode( QSharedPointer<fugio::NodeInterface> pNode );

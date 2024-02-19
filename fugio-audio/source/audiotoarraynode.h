@@ -3,6 +3,8 @@
 
 #include <QObject>
 
+#include "config.h"
+
 #include <fugio/nodecontrolbase.h>
 #include <fugio/core/variant_interface.h>
 #include <fugio/core/array_interface.h>
@@ -16,8 +18,8 @@ class AudioToArrayNode : public fugio::NodeControlBase
 	Q_CLASSINFO( "Author", "Alex May" )
 	Q_CLASSINFO( "Version", "1.0" )
 	Q_CLASSINFO( "Description", "" )
-	Q_CLASSINFO( "URL", WIKI_NODE_URL( "Audio_To_Array" ) )
-	Q_CLASSINFO( "Contact", "http://www.bigfug.com/contact/" )
+	Q_CLASSINFO( "URL", WIKI_NODE_URL( "Audio-To-Array" ) )
+	Q_CLASSINFO( "Contact", "https://github.com/bigfug" )
 
 public:
 	Q_INVOKABLE AudioToArrayNode( QSharedPointer<fugio::NodeInterface> pNode );

@@ -48,7 +48,7 @@ set( SOURCE_FILES
 )
 
 set( QRC_FILES
-	translations/translations.qrc
+	# translations/translations.qrc
 )
 
 add_library( ${PROJECT_NAME} MODULE ${SOURCE_FILES} ${HEADER_FILES} ${QRC_FILES} )

@@ -13,7 +13,7 @@ class SerialDecoderNode : public fugio::NodeControlBase
 	Q_CLASSINFO( "Version", "1.0" )
 	Q_CLASSINFO( "Description", "Serial Decoder" )
 	Q_CLASSINFO( "URL", WIKI_NODE_URL( "Serial_Decoder" ) )
-	Q_CLASSINFO( "Contact", "http://www.bigfug.com/contact/" )
+	Q_CLASSINFO( "Contact", "https://github.com/bigfug" )
 
 public:
 	Q_INVOKABLE SerialDecoderNode( QSharedPointer<fugio::NodeInterface> pNode );

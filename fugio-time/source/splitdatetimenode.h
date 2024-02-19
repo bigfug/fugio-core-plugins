@@ -3,6 +3,8 @@
 
 #include <fugio/nodecontrolbase.h>
 
+#include "config.h"
+
 #include <fugio/core/variant_interface.h>
 
 class SplitDateTimeNode : public fugio::NodeControlBase
@@ -11,8 +13,8 @@ class SplitDateTimeNode : public fugio::NodeControlBase
 	Q_CLASSINFO( "Author", "Alex May" )
 	Q_CLASSINFO( "Version", "1.0" )
 	Q_CLASSINFO( "Description", "Splits a DateTime into a Date and a Time" )
-	Q_CLASSINFO( "URL", WIKI_NODE_URL( "SplitDateTime" ) )
-	Q_CLASSINFO( "Contact", "http://www.bigfug.com/contact/" )
+	Q_CLASSINFO( "URL", WIKI_NODE_URL( "Split-DateTime" ) )
+	Q_CLASSINFO( "Contact", "https://github.com/bigfug" )
 
 public:
 	Q_INVOKABLE explicit SplitDateTimeNode( QSharedPointer<fugio::NodeInterface> pNode );

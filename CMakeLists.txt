@@ -37,7 +37,7 @@ endif()
 #------------------------------------------------------------------------------
 # Fugio API
 
-set( FUGIO_API "" CACHE PATH "" )
+set( FUGIO_API "${CMAKE_SOURCE_DIR}/include/fugio-api" CACHE PATH "" )
 
 if( NOT FUGIO_API OR NOT EXISTS ${FUGIO_API} )
 	message( "--- FUGIO_API NOT SET ---" )

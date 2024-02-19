@@ -3,6 +3,8 @@
 
 #include <QObject>
 
+#include "config.h"
+
 #include <qmath.h>
 #include <ctime>
 
@@ -19,8 +21,8 @@ class SignalNode : public fugio::NodeControlBase, public fugio::AudioProducerInt
 	Q_CLASSINFO( "Author", "Alex May" )
 	Q_CLASSINFO( "Version", "1.0" )
 	Q_CLASSINFO( "Description", "Simple signal generator" )
-	Q_CLASSINFO( "URL", WIKI_NODE_URL( "Signal_(Audio)" ) )
-	Q_CLASSINFO( "Contact", "http://www.bigfug.com/contact/" )
+	Q_CLASSINFO( "URL", WIKI_NODE_URL( "Signal" ) )
+	Q_CLASSINFO( "Contact", "https://github.com/bigfug" )
 
 public:
 	Q_INVOKABLE SignalNode( QSharedPointer<fugio::NodeInterface> pNode );

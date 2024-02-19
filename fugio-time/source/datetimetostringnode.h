@@ -3,6 +3,8 @@
 
 #include <fugio/nodecontrolbase.h>
 
+#include "config.h"
+
 #include <fugio/core/variant_interface.h>
 
 class DateTimeToStringNode : public fugio::NodeControlBase
@@ -11,8 +13,8 @@ class DateTimeToStringNode : public fugio::NodeControlBase
 	Q_CLASSINFO( "Author", "Alex May" )
 	Q_CLASSINFO( "Version", "1.0" )
 	Q_CLASSINFO( "Description", "Converts date, time, and datetime to string" )
-	Q_CLASSINFO( "URL", WIKI_NODE_URL( "DateTimeToString" ) )
-	Q_CLASSINFO( "Contact", "http://www.bigfug.com/contact/" )
+	Q_CLASSINFO( "URL", WIKI_NODE_URL( "DateTime-To-String" ) )
+	Q_CLASSINFO( "Contact", "https://github.com/bigfug" )
 
 public:
 	Q_INVOKABLE explicit DateTimeToStringNode( QSharedPointer<fugio::NodeInterface> pNode );

@@ -12,7 +12,7 @@ class PiNode : public fugio::NodeControlBase
 	Q_CLASSINFO( "Version", "1.0" )
 	Q_CLASSINFO( "Description", "The mathematical constant Pi" )
 	Q_CLASSINFO( "URL", WIKI_NODE_URL( "Pi_(Number)" ) )
-	Q_CLASSINFO( "Contact", "http://www.bigfug.com/contact/" )
+	Q_CLASSINFO( "Contact", "https://github.com/bigfug" )
 
 public:
 	Q_INVOKABLE PiNode( QSharedPointer<fugio::NodeInterface> pNode );

@@ -3,6 +3,8 @@
 
 #include <QObject>
 
+#include "config.h"
+
 #include <fugio/nodecontrolbase.h>
 #include <fugio/core/variant_interface.h>
 #include <fugio/audio/audio_instance_base.h>
@@ -14,8 +16,8 @@ class MagnitudeNode : public fugio::NodeControlBase
 	Q_CLASSINFO( "Author", "Alex May" )
 	Q_CLASSINFO( "Version", "1.0" )
 	Q_CLASSINFO( "Description", "Calculates the magnitude of an audio signal" )
-	Q_CLASSINFO( "URL", WIKI_NODE_URL( "Magnitude_(Audio)" ) )
-	Q_CLASSINFO( "Contact", "http://www.bigfug.com/contact/" )
+	Q_CLASSINFO( "URL", WIKI_NODE_URL( "Magnitude" ) )
+	Q_CLASSINFO( "Contact", "https://github.com/bigfug" )
 
 public:
 	Q_INVOKABLE MagnitudeNode( QSharedPointer<fugio::NodeInterface> pNode );

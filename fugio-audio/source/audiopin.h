@@ -5,6 +5,8 @@
 #include <fugio/pincontrolbase.h>
 #include <fugio/audio/audio_producer_interface.h>
 
+#include "config.h"
+
 class AudioPin : public fugio::PinControlBase, public fugio::AudioProducerInterface
 {
 	Q_OBJECT

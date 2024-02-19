@@ -13,7 +13,7 @@ class IntegerNode : public fugio::NodeControlBase
 	Q_CLASSINFO( "Version", "1.0" )
 	Q_CLASSINFO( "Description", "An integer (whole) number in a GUI." )
 	Q_CLASSINFO( "URL", WIKI_NODE_URL( "Integer_(GUI)" ) )
-	Q_CLASSINFO( "Contact", "http://www.bigfug.com/contact/" )
+	Q_CLASSINFO( "Contact", "https://github.com/bigfug" )
 
 public:
 	Q_INVOKABLE explicit IntegerNode( QSharedPointer<fugio::NodeInterface> pNode );

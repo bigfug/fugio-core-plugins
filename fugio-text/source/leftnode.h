@@ -16,7 +16,7 @@ class LeftNode : public fugio::NodeControlBase, public fugio::PairedPinsHelperIn
 	Q_CLASSINFO( "Version", "1.0" )
 	Q_CLASSINFO( "Description", "" )
 	Q_CLASSINFO( "URL", WIKI_NODE_URL( "Left_(String)" ) )
-	Q_CLASSINFO( "Contact", "http://www.bigfug.com/contact/" )
+	Q_CLASSINFO( "Contact", "https://github.com/bigfug" )
 
 public:
 	Q_INVOKABLE LeftNode( QSharedPointer<fugio::NodeInterface> pNode );

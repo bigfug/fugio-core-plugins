@@ -3,6 +3,8 @@
 
 #include <QObject>
 
+#include "config.h"
+
 #include <fugio/node_interface.h>
 #include <fugio/node_control_interface.h>
 #include <fugio/pin_interface.h>
@@ -21,7 +23,7 @@ class DateNode : public fugio::NodeControlBase
 	Q_CLASSINFO( "Version", "1.0" )
 	Q_CLASSINFO( "Description", "Date" )
 	Q_CLASSINFO( "URL", WIKI_NODE_URL( "Date" ) )
-	Q_CLASSINFO( "Contact", "http://www.bigfug.com/contact/" )
+	Q_CLASSINFO( "Contact", "https://github.com/bigfug" )
 
 public:
 	Q_INVOKABLE explicit DateNode( QSharedPointer<fugio::NodeInterface> pNode );

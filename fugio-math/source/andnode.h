@@ -14,7 +14,7 @@ class AndNode : public fugio::NodeControlBase
 	Q_CLASSINFO( "Version", "1.0" )
 	Q_CLASSINFO( "Description", "Ands all the input booleans together." )
 	Q_CLASSINFO( "URL", WIKI_NODE_URL( "And" ) )
-	Q_CLASSINFO( "Contact", "http://www.bigfug.com/contact/" )
+	Q_CLASSINFO( "Contact", "https://github.com/bigfug" )
 
 public:
 	Q_INVOKABLE AndNode( QSharedPointer<fugio::NodeInterface> pNode );

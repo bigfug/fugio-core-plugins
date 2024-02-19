@@ -3,6 +3,8 @@
 
 #include <QObject>
 
+#include "config.h"
+
 #include <fugio/core/variant_interface.h>
 
 #include <fugio/nodecontrolbase.h>
@@ -14,7 +16,7 @@ class DelayNode : public fugio::NodeControlBase
 	Q_CLASSINFO( "Version", "1.0" )
 	Q_CLASSINFO( "Description", "Takes an input trigger, waits for the specified amount of milliseconds, then triggers its output" )
 	Q_CLASSINFO( "URL", WIKI_NODE_URL( "Delay" ) )
-	Q_CLASSINFO( "Contact", "http://www.bigfug.com/contact/" )
+	Q_CLASSINFO( "Contact", "https://github.com/bigfug" )
 
 public:
 	Q_INVOKABLE explicit DelayNode( QSharedPointer<fugio::NodeInterface> pNode );

@@ -2,6 +2,9 @@
 #define INERTIANODE_H
 
 #include <QObject>
+
+#include "config.h"
+
 #include <QDial>
 
 #include <fugio/nodecontrolbase.h>
@@ -17,7 +20,7 @@ class InertiaNode : public fugio::NodeControlBase
 	Q_CLASSINFO( "Version", "1.0" )
 	Q_CLASSINFO( "Description", "Takes input triggers and generates a forward or backwards inertia speed" )
 	Q_CLASSINFO( "URL", WIKI_NODE_URL( "Inertia" ) )
-	Q_CLASSINFO( "Contact", "http://www.bigfug.com/contact/" )
+	Q_CLASSINFO( "Contact", "https://github.com/bigfug" )
 
 public:
 	Q_INVOKABLE InertiaNode( QSharedPointer<fugio::NodeInterface> pNode );

@@ -3,6 +3,8 @@
 
 #include <QDate>
 
+#include "config.h"
+
 #include <fugio/core/variant_helper.h>
 
 #include <fugio/serialise_interface.h>
@@ -18,7 +20,7 @@ class DatePin : public fugio::PinControlBase, public fugio::VariantHelper<QDate>
 	Q_CLASSINFO( "Version", "1.0" )
 	Q_CLASSINFO( "Description", "" )
 	Q_CLASSINFO( "URL", WIKI_PIN_URL( "Date" ) )
-	Q_CLASSINFO( "Contact", "http://www.bigfug.com/contact/" )
+	Q_CLASSINFO( "Contact", "https://github.com/bigfug" )
 
 public:
 	Q_INVOKABLE explicit DatePin( QSharedPointer<fugio::PinInterface> pPin );

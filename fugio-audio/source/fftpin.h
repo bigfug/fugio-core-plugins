@@ -1,6 +1,8 @@
 #ifndef FFTPIN_H
 #define FFTPIN_H
 
+#include "config.h"
+
 #include <fugio/audio/uuid.h>
 #include <fugio/pincontrolbase.h>
 #include <fugio/audio/fft_interface.h>

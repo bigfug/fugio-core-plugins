@@ -3,6 +3,8 @@
 
 #include <QObject>
 
+#include "config.h"
+
 #include <fugio/node_interface.h>
 #include <fugio/node_control_interface.h>
 #include <fugio/pin_interface.h>
@@ -22,8 +24,8 @@ class AudioMixerNode : public fugio::NodeControlBase, public fugio::AudioProduce
 	Q_CLASSINFO( "Author", "Alex May" )
 	Q_CLASSINFO( "Version", "1.0" )
 	Q_CLASSINFO( "Description", "Mixes multiple audio inputs into single output" )
-	Q_CLASSINFO( "URL", WIKI_NODE_URL( "Mixer_(Audio)" ) )
-	Q_CLASSINFO( "Contact", "http://www.bigfug.com/contact/" )
+	Q_CLASSINFO( "URL", WIKI_NODE_URL( "Mixer" ) )
+	Q_CLASSINFO( "Contact", "https://github.com/bigfug" )
 
 public:
 	Q_INVOKABLE explicit AudioMixerNode( QSharedPointer<fugio::NodeInterface> pNode );

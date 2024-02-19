@@ -3,6 +3,8 @@
 
 #include <fugio/nodecontrolbase.h>
 
+#include "config.h"
+
 #include <fugio/core/variant_interface.h>
 
 class LocalTimeNode : public fugio::NodeControlBase
@@ -11,8 +13,8 @@ class LocalTimeNode : public fugio::NodeControlBase
 	Q_CLASSINFO( "Author", "Alex May" )
 	Q_CLASSINFO( "Version", "1.0" )
 	Q_CLASSINFO( "Description", "Local time" )
-	Q_CLASSINFO( "URL", WIKI_NODE_URL( "Local_Time" ) )
-	Q_CLASSINFO( "Contact", "http://www.bigfug.com/contact/" )
+	Q_CLASSINFO( "URL", WIKI_NODE_URL( "Local-Time" ) )
+	Q_CLASSINFO( "Contact", "https://github.com/bigfug" )
 
 public:
 	Q_INVOKABLE explicit LocalTimeNode( QSharedPointer<fugio::NodeInterface> pNode );

@@ -13,7 +13,7 @@ class LedNode : public fugio::NodeControlBase
 	Q_CLASSINFO( "Version", "1.0" )
 	Q_CLASSINFO( "Description", "GUI light for displaying boolean/trigger values." )
 	Q_CLASSINFO( "URL", WIKI_NODE_URL( "LED_(GUI)" ) )
-	Q_CLASSINFO( "Contact", "http://www.bigfug.com/contact/" )
+	Q_CLASSINFO( "Contact", "https://github.com/bigfug" )
 
 public:
 	Q_INVOKABLE LedNode( QSharedPointer<fugio::NodeInterface> pNode );

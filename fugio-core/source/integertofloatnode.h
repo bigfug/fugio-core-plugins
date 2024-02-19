@@ -13,7 +13,7 @@ class IntegerToFloatNode : public fugio::NodeControlBase, public fugio::PairedPi
 	Q_CLASSINFO( "Version", "1.0" )
 	Q_CLASSINFO( "Description", "Converts integers to floats" )
 	Q_CLASSINFO( "URL", WIKI_NODE_URL( "Integer_To_Float" ) )
-	Q_CLASSINFO( "Contact", "http://www.bigfug.com/contact/" )
+	Q_CLASSINFO( "Contact", "https://github.com/bigfug" )
 
 public:
 	Q_INVOKABLE IntegerToFloatNode( QSharedPointer<fugio::NodeInterface> pNode );

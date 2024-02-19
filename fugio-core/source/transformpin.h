@@ -19,7 +19,7 @@ class TransformPin : public fugio::PinControlBase, public fugio::VariantHelper<Q
 	Q_CLASSINFO( "Version", "1.0" )
 	Q_CLASSINFO( "Description", "" )
 	Q_CLASSINFO( "URL", WIKI_PIN_URL( "QTransform" ) )
-	Q_CLASSINFO( "Contact", "http://www.bigfug.com/contact/" )
+	Q_CLASSINFO( "Contact", "https://github.com/bigfug" )
 
 public:
 	Q_INVOKABLE explicit TransformPin( QSharedPointer<fugio::PinInterface> pPin );

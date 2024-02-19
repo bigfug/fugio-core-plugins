@@ -22,7 +22,7 @@ class SplitColourHSLANode : public fugio::NodeControlBase
 	Q_CLASSINFO( "Version", "1.0" )
 	Q_CLASSINFO( "Description", "Split an input colour into hue, saturation, lightness, and alpha" )
 	Q_CLASSINFO( "URL", WIKI_NODE_URL( "Split_HSLA_(Colour)" ) )
-	Q_CLASSINFO( "Contact", "http://www.bigfug.com/contact/" )
+	Q_CLASSINFO( "Contact", "https://github.com/bigfug" )
 
 public:
 	Q_INVOKABLE explicit SplitColourHSLANode( QSharedPointer<fugio::NodeInterface> pNode );

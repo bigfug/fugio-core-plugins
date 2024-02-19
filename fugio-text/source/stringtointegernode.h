@@ -12,7 +12,7 @@ class StringToIntegerNode : public fugio::NodeControlBase
 	Q_CLASSINFO( "Version", "1.0" )
 	Q_CLASSINFO( "Description", "Converts a string to a integer number" )
 	Q_CLASSINFO( "URL", WIKI_NODE_URL( "StringToInteger" ) )
-	Q_CLASSINFO( "Contact", "http://www.bigfug.com/contact/" )
+	Q_CLASSINFO( "Contact", "https://github.com/bigfug" )
 
 public:
 	Q_INVOKABLE explicit StringToIntegerNode( QSharedPointer<fugio::NodeInterface> pNode );

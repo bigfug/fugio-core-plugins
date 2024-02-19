@@ -16,7 +16,7 @@ class ColourMaskNode : public fugio::NodeControlBase
 	Q_CLASSINFO( "Version", "1.0" )
 	Q_CLASSINFO( "Description", "Creates a mask for a specfic colour" )
 	Q_CLASSINFO( "URL", WIKI_NODE_URL( "Colour_Mask_(Image)" ) )
-	Q_CLASSINFO( "Contact", "http://www.bigfug.com/contact/" )
+	Q_CLASSINFO( "Contact", "https://github.com/bigfug" )
 
 public:
 	Q_INVOKABLE ColourMaskNode( QSharedPointer<fugio::NodeInterface> pNode );

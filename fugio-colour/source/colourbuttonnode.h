@@ -22,7 +22,7 @@ class ColourButtonNode : public fugio::NodeControlBase
 	Q_CLASSINFO( "Version", "1.0" )
 	Q_CLASSINFO( "Description", "A simple GUI colour selector." )
 	Q_CLASSINFO( "URL", WIKI_NODE_URL( "Colour_(GUI)" ) )
-	Q_CLASSINFO( "Contact", "http://www.bigfug.com/contact/" )
+	Q_CLASSINFO( "Contact", "https://github.com/bigfug" )
 
 public:
 	Q_INVOKABLE explicit ColourButtonNode( QSharedPointer<fugio::NodeInterface> pNode );

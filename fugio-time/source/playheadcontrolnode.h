@@ -3,6 +3,8 @@
 
 #include <QObject>
 
+#include "config.h"
+
 #include <fugio/nodecontrolbase.h>
 
 class PlayheadControlNode : public fugio::NodeControlBase
@@ -11,8 +13,8 @@ class PlayheadControlNode : public fugio::NodeControlBase
 	Q_CLASSINFO( "Author", "Alex May" )
 	Q_CLASSINFO( "Version", "1.0" )
 	Q_CLASSINFO( "Description", "Control for the patch playhead" )
-	Q_CLASSINFO( "URL", WIKI_NODE_URL( "Playhead_Control" ) )
-	Q_CLASSINFO( "Contact", "http://www.bigfug.com/contact/" )
+	Q_CLASSINFO( "URL", WIKI_NODE_URL( "Playhead-Control" ) )
+	Q_CLASSINFO( "Contact", "https://github.com/bigfug" )
 
 public:
 	Q_INVOKABLE PlayheadControlNode( QSharedPointer<fugio::NodeInterface> pNode );

@@ -16,7 +16,7 @@ class MatrixPerspectiveNode : public fugio::NodeControlBase
 	Q_CLASSINFO( "Version", "1.0" )
 	Q_CLASSINFO( "Description", "Create a perspective projection Matrix4" )
 	Q_CLASSINFO( "URL", WIKI_NODE_URL( "Perspective_(Matrix4)" ) )
-	Q_CLASSINFO( "Contact", "http://www.bigfug.com/contact/" )
+	Q_CLASSINFO( "Contact", "https://github.com/bigfug" )
 
 public:
 	Q_INVOKABLE explicit MatrixPerspectiveNode( QSharedPointer<fugio::NodeInterface> pNode );

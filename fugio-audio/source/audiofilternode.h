@@ -4,11 +4,11 @@
 #include <QObject>
 #include <QLabel>
 
+#include "config.h"
+
 #include <fugio/nodecontrolbase.h>
 #include <fugio/audio/audio_producer_interface.h>
 #include <fugio/audio/audio_instance_base.h>
-
-#include "audiofilterdisplay.h"
 
 class AudioFilterNode : public fugio::NodeControlBase, public fugio::AudioProducerInterface
 {
@@ -18,8 +18,8 @@ class AudioFilterNode : public fugio::NodeControlBase, public fugio::AudioProduc
 	Q_CLASSINFO( "Author", "Alex May" )
 	Q_CLASSINFO( "Version", "1.0" )
 	Q_CLASSINFO( "Description", "Audio filter" )
-	Q_CLASSINFO( "URL", WIKI_NODE_URL( "Filter_(Audio)" ) )
-	Q_CLASSINFO( "Contact", "http://www.bigfug.com/contact/" )
+	Q_CLASSINFO( "URL", WIKI_NODE_URL( "Filter" ) )
+	Q_CLASSINFO( "Contact", "https://github.com/bigfug" )
 
 public:
 	Q_INVOKABLE AudioFilterNode( QSharedPointer<fugio::NodeInterface> pNode );

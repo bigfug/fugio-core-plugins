@@ -16,7 +16,7 @@ class GetNode : public fugio::NodeControlBase
 	Q_CLASSINFO( "Version", "1.0" )
 	Q_CLASSINFO( "Description", "Performs a network get" )
 	Q_CLASSINFO( "URL", WIKI_NODE_URL( "Get_(HTTP)" ) )
-	Q_CLASSINFO( "Contact", "http://www.bigfug.com/contact/" )
+	Q_CLASSINFO( "Contact", "https://github.com/bigfug" )
 
 public:
 	Q_INVOKABLE GetNode( QSharedPointer<fugio::NodeInterface> pNode );

@@ -2,6 +2,9 @@
 #define VCFNODE_H
 
 #include <QObject>
+
+#include "config.h"
+
 #include <QLabel>
 
 #include <fugio/nodecontrolbase.h>
@@ -16,8 +19,8 @@ class VCFNode : public fugio::NodeControlBase, public fugio::AudioProducerInterf
 	Q_CLASSINFO( "Author", "Alex May" )
 	Q_CLASSINFO( "Version", "1.0" )
 	Q_CLASSINFO( "Description", "VCF" )
-	Q_CLASSINFO( "URL", WIKI_NODE_URL( "VCF_(Audio)" ) )
-	Q_CLASSINFO( "Contact", "http://www.bigfug.com/contact/" )
+	Q_CLASSINFO( "URL", WIKI_NODE_URL( "VCF" ) )
+	Q_CLASSINFO( "Contact", "https://github.com/bigfug" )
 
 public:
 	Q_INVOKABLE VCFNode( QSharedPointer<fugio::NodeInterface> pNode );

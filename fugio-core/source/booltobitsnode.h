@@ -14,7 +14,7 @@ class BoolToBits : public fugio::NodeControlBase
 	Q_CLASSINFO( "Version", "1.0" )
 	Q_CLASSINFO( "Description", tr( "Reads the input bool when triggered and outputs a bit array" ) )
 	Q_CLASSINFO( "URL", WIKI_NODE_URL( "Bool_To_Bits" ) )
-	Q_CLASSINFO( "Contact", "http://www.bigfug.com/contact/" )
+	Q_CLASSINFO( "Contact", "https://github.com/bigfug" )
 
 public:
 	Q_INVOKABLE BoolToBits( QSharedPointer<fugio::NodeInterface> pNode );

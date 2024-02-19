@@ -14,7 +14,7 @@ class XorBitsNode : public fugio::NodeControlBase
 	Q_CLASSINFO( "Version", "1.0" )
 	Q_CLASSINFO( "Description", "Nands all the input booleans together." )
 	Q_CLASSINFO( "URL", WIKI_NODE_URL( "Nand_(Logic)" ) )
-	Q_CLASSINFO( "Contact", "http://www.bigfug.com/contact/" )
+	Q_CLASSINFO( "Contact", "https://github.com/bigfug" )
 
 public:
 	Q_INVOKABLE XorBitsNode( QSharedPointer<fugio::NodeInterface> pNode );

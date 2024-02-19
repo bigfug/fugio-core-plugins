@@ -21,7 +21,7 @@ class ButtonNode : public fugio::NodeControlBase
 	Q_CLASSINFO( "Version", "1.0" )
 	Q_CLASSINFO( "Description", "Provides a simple GUI button that can be clicked on to generate a trigger, boolean, and toggle." )
 	Q_CLASSINFO( "URL", WIKI_NODE_URL( "Button_(GUI)" ) )
-	Q_CLASSINFO( "Contact", "http://www.bigfug.com/contact/" )
+	Q_CLASSINFO( "Contact", "https://github.com/bigfug" )
 
 public:
 	Q_INVOKABLE explicit ButtonNode( QSharedPointer<fugio::NodeInterface> pNode );
