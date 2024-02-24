@@ -81,6 +81,7 @@ jobs:
         -DCPACK_PACKAGE_DIRECTORY=${{ github.workspace }}/package
         -DFUGIO_API=${{ github.workspace }}/Fugio/include
         -DFUGIO_BUILD_DIST=TRUE
+        -DFUGIO_PLUGIN_URL="https://github.com/bigfug/fugio-core-plugins/releases/download/nightly"
         ${{ matrix.cpack_generators }}
         -S ${{ github.workspace }}
 
