@@ -37,7 +37,21 @@ endif()
 #------------------------------------------------------------------------------
 # Fugio API
 
-set( FUGIO_API "${CMAKE_SOURCE_DIR}/libs/fugio-api" )
+if( NOT EXISTS "${CMAKE_BINARY_DIR}/include/fugio" )
+	message( "Initialising fugio-api" )
+
+	file(MAKE_DIRECTORY ${CMAKE_BINARY_DIR}/include )
+
+	file(DOWNLOAD
+		https://github.com/bigfug/Fugio/releases/download/v3.1.0/fugio-api.zip
+		${CMAKE_BINARY_DIR}/fugio-api.zip
+	)
+
+	execute_process( COMMAND "${CMAKE_COMMAND}" -E tar -xzf ${CMAKE_BINARY_DIR}/fugio-api.zip
+		WORKING_DIRECTORY "${CMAKE_BINARY_DIR}/include" )
+endif()
+
+set( FUGIO_API "${CMAKE_BINARY_DIR}/include" )
 
 if( NOT FUGIO_API OR NOT EXISTS ${FUGIO_API} )
 	message( "--- FUGIO_API NOT SET ---" )
@@ -125,26 +139,26 @@ endif()
 
 set( FUGIO_UNIX_DEPENDENCIES )
 
-#add_subdirectory( fugio-audio )
-#add_subdirectory( fugio-colour )
+add_subdirectory( api )
+add_subdirectory( fugio-audio )
+add_subdirectory( fugio-colour )
 add_subdirectory( fugio-core )
-#add_subdirectory( fugio-file )
+add_subdirectory( fugio-file )
 #add_subdirectory( Firmata )
 #add_subdirectory( Gamepad )
 #add_subdirectory( Geometry )
-#add_subdirectory( fugio-gui )
-#add_subdirectory( fugio-image )
+add_subdirectory( fugio-gui )
+add_subdirectory( fugio-image )
 #add_subdirectory( JSON )
-#add_subdirectory( fugio-math )
-#add_subdirectory( fugio-network )
+add_subdirectory( fugio-math )
+add_subdirectory( fugio-network )
 #add_subdirectory( OpenGL )
 #add_subdirectory( OSC )
 #add_subdirectory( Painter )
 #add_subdirectory( QML )
-#add_subdirectory( fugio-serial )
-#add_subdirectory( fugio-text )
+add_subdirectory( fugio-serial )
+add_subdirectory( fugio-text )
 add_subdirectory( fugio-time )
-
 
 #------------------------------------------------------------------------------
 

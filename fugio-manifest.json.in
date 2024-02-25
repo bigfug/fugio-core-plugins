@@ -7,57 +7,57 @@
   "plugins": {
 	"com.bigfug.fugio.audio": {
 	  "1.0.0": {
-		"win64": "@FUGIO_PLUGIN_URL@/fugio-audio-1.0.0-win64.zip"
+		"win64": "@FUGIO_PLUGIN_URL@/fugio-audio-win64.zip"
 	  }
 	},
 	"com.bigfug.fugio.core": {
 	  "1.0.0": {
-		"win64": "@FUGIO_PLUGIN_URL@/fugio-core-1.0.0-win64.zip"
+		"win64": "@FUGIO_PLUGIN_URL@/fugio-core-win64.zip"
 	  }
 	},
 	"com.bigfug.fugio.colour": {
 	  "1.0.0": {
-		"win64": "@FUGIO_PLUGIN_URL@/fugio-colour-1.0.0-win64.zip"
+		"win64": "@FUGIO_PLUGIN_URL@/fugio-colour-win64.zip"
 	  }
 	},
 	"com.bigfug.fugio.file": {
 	  "1.0.0": {
-		"win64": "@FUGIO_PLUGIN_URL@/fugio-file-1.0.0-win64.zip"
+		"win64": "@FUGIO_PLUGIN_URL@/fugio-file-win64.zip"
 	  }
 	},
 	"com.bigfug.fugio.gui": {
 	  "1.0.0": {
-		"win64": "@FUGIO_PLUGIN_URL@/fugio-gui-1.0.0-win64.zip"
+		"win64": "@FUGIO_PLUGIN_URL@/fugio-gui-win64.zip"
 	  }
 	},
 	"com.bigfug.fugio.image": {
 	  "1.0.0": {
-		"win64": "@FUGIO_PLUGIN_URL@/fugio-image-1.0.0-win64.zip"
+		"win64": "@FUGIO_PLUGIN_URL@/fugio-image-win64.zip"
 	  }
 	},
 	"com.bigfug.fugio.math": {
 	  "1.0.0": {
-		"win64": "@FUGIO_PLUGIN_URL@/fugio-math-1.0.0-win64.zip"
+		"win64": "@FUGIO_PLUGIN_URL@/fugio-math-win64.zip"
 	  }
 	},
 	"com.bigfug.fugio.network": {
 	  "1.0.0": {
-		"win64": "@FUGIO_PLUGIN_URL@/fugio-network-1.0.0-win64.zip"
+		"win64": "@FUGIO_PLUGIN_URL@/fugio-network-win64.zip"
 	  }
 	},
 	"com.bigfug.fugio.serial": {
 	  "1.0.0": {
-		"win64": "@FUGIO_PLUGIN_URL@/fugio-serial-1.0.0-win64.zip"
+		"win64": "@FUGIO_PLUGIN_URL@/fugio-serial-win64.zip"
 	  }
 	},
 	"com.bigfug.fugio.text": {
 	  "1.0.0": {
-		"win64": "@FUGIO_PLUGIN_URL@/fugio-text-1.0.0-win64.zip"
+		"win64": "@FUGIO_PLUGIN_URL@/fugio-text-win64.zip"
 	  }
 	},
 	"com.bigfug.fugio.time": {
 	  "1.0.0": {
-		"win64": "@FUGIO_PLUGIN_URL@/fugio-time-1.0.0-win64.zip"
+		"win64": "@FUGIO_PLUGIN_URL@/fugio-time-win64.zip"
 	  }
 	}
   }
