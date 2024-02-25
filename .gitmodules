@@ -4,6 +4,3 @@
 [submodule "libs/exprtk"]
 	path = libs/exprtk
 	url = https://github.com/ArashPartow/exprtk.git
-[submodule "libs/fugio-api"]
-	path = libs/fugio-api
-	url = https://github.com/bigfug/fugio-api
