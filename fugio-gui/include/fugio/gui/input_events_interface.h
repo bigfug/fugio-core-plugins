@@ -25,6 +25,8 @@ public:
 	virtual const QList<QMouseEvent> &mouseEvents( void ) const = 0;
 
 	virtual const QList<QTouchEvent> &touchEvents( void ) const = 0;
+
+	virtual bool hasEvents( void ) const = 0;
 };
 
 FUGIO_NAMESPACE_END

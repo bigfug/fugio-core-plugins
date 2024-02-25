@@ -6,6 +6,7 @@
 #include <fugio/nodecontrolbase.h>
 
 #include <fugio/gui/keyboard_interface.h>
+#include <fugio/gui/input_events_interface.h>
 
 class MainWindowNode : public fugio::NodeControlBase
 {
@@ -36,6 +37,9 @@ protected slots:
 protected:
 	QSharedPointer<fugio::PinInterface>			 mPinKeyboard;
 	fugio::KeyboardInterface					*mKeyboard;
+
+	QSharedPointer<fugio::PinInterface>			 mPinEvents;
+	fugio::InputEventsInterface					*mEvents;
 
 	QList<fugio::KeyboardEvent>					 mEvtLst;
 };

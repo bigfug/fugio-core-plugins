@@ -26,3 +26,9 @@ void InputEventsPin::inputProcessEvent( QInputEvent *pEvent )
 		mTouchEventsNext.append( *TouchEvent );
 	}
 }
+
+
+bool InputEventsPin::hasEvents() const
+{
+	return( mMouseEventsCurr.isEmpty() == false || mTouchEventsCurr.isEmpty() == false );
+}

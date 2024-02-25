@@ -8,7 +8,12 @@
 MainWindowNode::MainWindowNode( QSharedPointer<fugio::NodeInterface> pNode )
 	: NodeControlBase( pNode )
 {
-	mKeyboard = pinOutput<fugio::KeyboardInterface *>( "Keyboard", mPinKeyboard, PID_KEYBOARD );
+	FUGID( PIN_OUTPUT_EVENTS, "9e154e12-bcd8-4ead-95b1-5a59833bcf4e" );
+	FUGID( PIN_OUTPUT_POSITION, "1b5e9ce8-acb9-478d-b84b-9288ab3c42f5" );
+
+	mKeyboard = pinOutput<fugio::KeyboardInterface *>( "Keyboard", mPinKeyboard, PID_KEYBOARD, PIN_OUTPUT_EVENTS );
+
+	mEvents = pinOutput<fugio::InputEventsInterface *>( "Events", mPinEvents, PID_INPUT_EVENTS, PIN_OUTPUT_POSITION );
 }
 
 bool MainWindowNode::initialise()
@@ -36,6 +41,13 @@ bool MainWindowNode::deinitialise()
 
 bool MainWindowNode::eventFilter( QObject *pObject, QEvent *pEvent )
 {
+	QInputEvent		*IE = dynamic_cast<QInputEvent *>( pEvent );
+
+	if( IE )
+	{
+		mEvents->inputProcessEvent( IE );
+	}
+
 	if( pEvent->type() == QEvent::KeyPress )
 	{
 		QKeyEvent *keyEvent = static_cast<QKeyEvent *>( pEvent );
@@ -86,5 +98,12 @@ void MainWindowNode::contextFrameStart()
 		pinUpdated( mPinKeyboard );
 
 		mEvtLst.clear();
+	}
+
+	mEvents->inputFrameInitialise();
+
+	if( mEvents->hasEvents() )
+	{
+		pinUpdated( mPinEvents );
 	}
 }

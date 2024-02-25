@@ -59,7 +59,7 @@
 <context>
     <name>KeyboardNode</name>
     <message>
-        <location filename="../source/keyboardnode.cpp" line="20"/>
+        <location filename="../source/keyboardnode.cpp" line="22"/>
         <source>Keyboard</source>
         <translation type="unfinished"></translation>
     </message>

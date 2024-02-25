@@ -17,7 +17,9 @@
 KeyboardNode::KeyboardNode( QSharedPointer<fugio::NodeInterface> pNode )
 	: NodeControlBase( pNode ), mListening( false )
 {
-	mPinKeyboard = pinInput( tr( "Keyboard" ) );
+	FUGID( PIN_INPUT_KEYBOARD, "9e154e12-bcd8-4ead-95b1-5a59833bcf4e" );
+
+	mPinKeyboard = pinInput( tr( "Keyboard" ), PIN_INPUT_KEYBOARD );
 }
 
 KeyboardNode::~KeyboardNode()

@@ -51,6 +51,8 @@ public:
 		return( mTouchEventsCurr );
 	}
 
+	virtual bool hasEvents() const Q_DECL_OVERRIDE;
+
 protected:
 	QList<QMouseEvent>		mMouseEventsCurr;
 	QList<QMouseEvent>		mMouseEventsNext;
