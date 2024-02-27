@@ -3,7 +3,7 @@
 #include <fugio/pin_control_interface.h>
 #include <fugio/context_interface.h>
 
-#include <QRegExp>
+#include <QRegularExpression>
 
 LineBufferNode::LineBufferNode( QSharedPointer<fugio::NodeInterface> pNode ) :
 	NodeControlBase( pNode )
@@ -33,9 +33,9 @@ void LineBufferNode::inputsUpdated( qint64 pTimeStamp )
 
 	if( mPinInputSplit->isUpdated( pTimeStamp ) || mPinInput->isUpdated( pTimeStamp ) )
 	{
-		const QRegExp	Split( variant( mPinInputSplit ).toString() );
+		const QRegularExpression	Split( variant( mPinInputSplit ).toString() );
 
-		if( Split.isEmpty() || !Split.isValid() )
+		if( Split.captureCount() < 0 || !Split.isValid() )
 		{
 			return;
 		}
@@ -68,7 +68,7 @@ void LineBufferNode::inputsUpdated( qint64 pTimeStamp )
 
 			Input.remove( StrPos, EndLen );
 
-			StrLst = Input.split( Split, QString::SkipEmptyParts );
+			StrLst = Input.split( Split, Qt::SkipEmptyParts );
 		}
 
 		if( mValOutput->variantCount() != StrLst.size() )

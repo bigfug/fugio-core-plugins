@@ -117,11 +117,11 @@ install( DIRECTORY include DESTINATION . COMPONENT ${PROJECT_NAME} PATTERN ".*" 
 #install( DIRECTORY examples	DESTINATION . COMPONENT ${PROJECT_NAME} PATTERN ".*" EXCLUDE )
 
 #------------------------------------------------------------------------------
-# Qt5
+# Qt
 
-find_package( Qt5 COMPONENTS Core Widgets LinguistTools REQUIRED )
+find_package(Qt6 COMPONENTS Core Widgets LinguistTools QUIET )
 
-target_link_libraries( ${PROJECT_NAME} Qt5::Core Qt5::Widgets )
+target_link_libraries( ${PROJECT_NAME} Qt::Core Qt::Widgets )
 
 #------------------------------------------------------------------------------
 # Translations
@@ -130,19 +130,7 @@ set( TS_FILES
 	translations/translations_de.ts
 	)
 
-qt5_create_translation( QM_FILES ${CMAKE_CURRENT_SOURCE_DIR}/source ${TS_FILES} OPTIONS "-silent" )
-
-configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/translations/translations.qrc ${CMAKE_CURRENT_BINARY_DIR} COPYONLY )
-
-qt5_add_resources( QRC_FILES ${CMAKE_CURRENT_BINARY_DIR}/translations.qrc )
-
-target_sources( ${PROJECT_NAME} PRIVATE
-	${TS_FILES}
-	${QM_FILES}
-	${QRC_FILES}
-	)
-
-set_property( SOURCE ${CMAKE_CURRENT_BINARY_DIR}/qrc_translations.cpp PROPERTY SKIP_AUTOGEN ON )
+qt_add_translations( ${PROJECT_NAME} TS_FILES ${TS_FILES} RESOURCE_PREFIX "/translations" )
 
 #------------------------------------------------------------------------------
 # Unit Tests

@@ -2,7 +2,7 @@
 #define LINEBUFFERNODE_H
 
 #include <QObject>
-#include <QRegExp>
+#include <QRegularExpression>
 
 #include <fugio/node_interface.h>
 #include <fugio/pin_interface.h>

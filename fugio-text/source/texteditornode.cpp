@@ -235,7 +235,7 @@ void TextEditorNode::setupTextEditor( QPlainTextEdit *pTextEdit )
 
 	pTextEdit->setFont(font);
 
-	pTextEdit->setTabStopWidth( pTextEdit->fontMetrics().width( QLatin1Char( ' ' ) ) * 4 );
+	pTextEdit->setTabStopDistance( pTextEdit->fontMetrics().horizontalAdvance( QLatin1Char( ' ' ) ) * 4 );
 	pTextEdit->setLineWrapMode( QPlainTextEdit::NoWrap );
 
 	pTextEdit->document()->setPlainText( mValOutputString->variant().toString() );

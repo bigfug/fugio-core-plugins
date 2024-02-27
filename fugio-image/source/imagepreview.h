@@ -18,7 +18,7 @@ class ImagePreview : public QLabel
 	Q_OBJECT
 
 public:
-	explicit ImagePreview( QWidget * parent = 0, Qt::WindowFlags f = 0 );
+	explicit ImagePreview( QWidget * parent = 0, Qt::WindowFlags f = Qt::WindowFlags() );
 
 	virtual ~ImagePreview( void );
 

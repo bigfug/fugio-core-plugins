@@ -37,9 +37,9 @@ void RotationFromVectorsNode::inputsUpdated( qint64 pTimeStamp )
 		QVector3D	MZ = QVector3D::crossProduct( V1, V2 ).normalized();
 		QVector3D	MY = QVector3D::crossProduct( MZ, V1 ).normalized();
 
-		M4.setRow( 0, MX );
-		M4.setRow( 1, MY );
-		M4.setRow( 2, MZ );
+		M4.setRow( 0, MX.toVector4D() );
+		M4.setRow( 1, MY.toVector4D() );
+		M4.setRow( 2, MZ.toVector4D() );
 	}
 
 	if( M4 != mValOutput->variant().value<QMatrix4x4>() )

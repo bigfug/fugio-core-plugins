@@ -114,7 +114,7 @@ void ImageLoaderNode::inputsUpdated( qint64 pTimeStamp )
 		NewImg.setFormat( fugio::ImageFormat::BGRA8 );
 	}
 
-	memcpy( NewImg.internalBuffer( 0 ), mImageData.constBits(), mImageData.byteCount() );
+	memcpy( NewImg.internalBuffer( 0 ), mImageData.constBits(), mImageData.sizeInBytes() );
 
 	pinUpdated( mPinImage );
 

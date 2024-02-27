@@ -114,14 +114,12 @@ void DeviceSerialConfiguration::widgetsUpdate()
 				break;
 
 			case QSerialPort::Data8:
-			case QSerialPort::UnknownDataBits:
 				ui->mDataBits->setCurrentText( "8" );
 				break;
 		}
 
 		switch( mDevice->stopBits() )
 		{
-			case QSerialPort::UnknownStopBits:
 			case QSerialPort::OneStop:
 				ui->mStopBits->setCurrentIndex( 0 );
 				break;
@@ -154,7 +152,6 @@ void DeviceSerialConfiguration::widgetsUpdate()
 		switch( mDevice->flowControl() )
 		{
 			case QSerialPort::NoFlowControl:
-			case QSerialPort::UnknownFlowControl:
 				ui->mFlowControl->setCurrentIndex( 0 );
 				break;
 

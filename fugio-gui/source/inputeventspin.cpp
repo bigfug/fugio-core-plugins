@@ -8,22 +8,24 @@ InputEventsPin::InputEventsPin( QSharedPointer<fugio::PinInterface> pPin )
 
 void InputEventsPin::inputFrameInitialise()
 {
-	mMouseEventsCurr.swap( mMouseEventsNext );
-	mTouchEventsCurr.swap( mTouchEventsNext );
+	// FIXME: Broken in Qt6
+	// mMouseEventsCurr.swap( mMouseEventsNext );
+	// mTouchEventsCurr.swap( mTouchEventsNext );
 
-	mMouseEventsNext.clear();
-	mTouchEventsNext.clear();
+	// mMouseEventsNext.clear();
+	// mTouchEventsNext.clear();
 }
 
 void InputEventsPin::inputProcessEvent( QInputEvent *pEvent )
 {
+	// FIXME: Broken in Qt6
 	if( QMouseEvent *MouseEvent = dynamic_cast<QMouseEvent *>( pEvent ) )
 	{
-		mMouseEventsNext.append( *MouseEvent );
+		// mMouseEventsNext.append( *MouseEvent );
 	}
 	else if( QTouchEvent *TouchEvent = dynamic_cast<QTouchEvent *>( pEvent ) )
 	{
-		mTouchEventsNext.append( *TouchEvent );
+		// mTouchEventsNext.append( *TouchEvent );
 	}
 }
 
