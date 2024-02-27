@@ -142,24 +142,35 @@ install( DIRECTORY include DESTINATION . COMPONENT ${PROJECT_NAME} PATTERN ".*" 
 install( DIRECTORY examples	DESTINATION . COMPONENT ${PROJECT_NAME} PATTERN ".*" EXCLUDE )
 
 #------------------------------------------------------------------------------
-# Qt5
+# Qt
 
-find_package( Qt5 COMPONENTS Core Widgets LinguistTools REQUIRED )
+find_package(Qt6 COMPONENTS Core Widgets LinguistTools QUIET)
+if (NOT Qt6_FOUND)
+    find_package(Qt5 5.15 REQUIRED COMPONENTS Core Widgets LinguistTools QUIET)
+endif()
 
-target_link_libraries( ${PROJECT_NAME} Qt5::Core Qt5::Widgets )
+target_link_libraries( ${PROJECT_NAME} Qt::Core Qt::Widgets )
 
 #------------------------------------------------------------------------------
 # Translations
 
 set( TS_FILES
 	translations/translations_de.ts
-	)
+)
 
-qt5_create_translation( QM_FILES ${CMAKE_CURRENT_SOURCE_DIR}/source ${TS_FILES} OPTIONS "-silent" )
+if(COMMAND qt_create_translation)
+    qt_create_translation( QM_FILES ${CMAKE_CURRENT_SOURCE_DIR}/source ${TS_FILES} OPTIONS "-silent" )
+else()
+    qt5_create_translation( QM_FILES ${CMAKE_CURRENT_SOURCE_DIR}/source ${TS_FILES} OPTIONS "-silent" )
+endif()
 
 configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/translations/translations.qrc ${CMAKE_CURRENT_BINARY_DIR} COPYONLY )
 
-qt5_add_resources( QRC_FILES ${CMAKE_CURRENT_BINARY_DIR}/translations.qrc )
+if(COMMAND qt_add_resources)
+    qt_add_resources( QRC_FILES ${CMAKE_CURRENT_BINARY_DIR}/translations.qrc )
+else()
+    qt5_add_resources( QRC_FILES ${CMAKE_CURRENT_BINARY_DIR}/translations.qrc )
+endif()
 
 target_sources( ${PROJECT_NAME} PRIVATE
 	${TS_FILES}
