@@ -45,13 +45,15 @@ void RegExpNode::inputsUpdated( qint64 pTimeStamp )
 			return;
 		}
 
-		QRegExp			RegExp( RegStr );
+		QRegularExpression			RegExp( RegStr );
 
 		if( !RegExp.isValid() )
 		{
 			return;
 		}
 
+		// FIXME: Qt6
+		/*
 		if( RegExp.captureCount() > 0 )
 		{
 			QStringList			TxtOut;
@@ -100,5 +102,6 @@ void RegExpNode::inputsUpdated( qint64 pTimeStamp )
 				pinUpdated( mPinOutputExactMatch );
 			}
 		}
+*/
 	}
 }

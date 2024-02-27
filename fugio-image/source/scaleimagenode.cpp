@@ -111,7 +111,7 @@ void ScaleImageNode::inputsUpdated( qint64 pTimeStamp )
 		return;
 	}
 
-	memcpy( DST.internalBuffer( 0 ), NewImg.constBits(), NewImg.byteCount() );
+	memcpy( DST.internalBuffer( 0 ), NewImg.constBits(), NewImg.sizeInBytes() );
 
 	pinUpdated( mPinOutputImage );
 }

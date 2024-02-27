@@ -2,6 +2,7 @@
 #define SIGNALNODE_H
 
 #include <QObject>
+#include <QRandomGenerator>
 
 #include "config.h"
 
@@ -82,8 +83,8 @@ protected:
 
 	  void seed(unsigned long seed=0)
 	  {
-		if (seed == 0) qsrand( time(NULL) );
-		else           qsrand( seed );
+		if (seed == 0) mRandom.seed( time(NULL) );
+		else           mRandom.seed( seed );
 	  };
 
 	  // returns psuedo random white noise number
@@ -91,7 +92,7 @@ protected:
 	  //
 	  inline float white(float scale=0.5f)
 	  {
-		  return( ( 1.0f - ( float( qrand() ) / float( RAND_MAX / 2 ) ) ) * scale );
+		  return( ( 1.0f - ( mRandom.generateDouble() * 2.0f ) ) * scale );
 	  }
 
 
@@ -171,6 +172,8 @@ protected:
 	  float          m_pink;
 	  float          m_brown;
 	  float          m_pinkStore[NumPinkBins];
+
+	  QRandomGenerator				 mRandom;
 	};
 
 	static inline float sine( const float pPhase )

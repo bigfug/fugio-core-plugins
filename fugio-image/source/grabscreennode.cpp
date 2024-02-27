@@ -63,7 +63,7 @@ void GrabScreenNode::inputsUpdated( qint64 pTimeStamp )
 		return;
 	}
 
-	memcpy( DstImg.internalBuffer( 0 ), mImage.constBits(), mImage.byteCount() );
+	memcpy( DstImg.internalBuffer( 0 ), mImage.constBits(), mImage.sizeInBytes() );
 
 	pinUpdated( mPinOutput );
 }

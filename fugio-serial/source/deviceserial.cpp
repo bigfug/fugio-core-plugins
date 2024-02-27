@@ -176,7 +176,7 @@ void DeviceSerial::portOpen( void )
 		return;
 	}
 
-	if( !QSerialPortInfo( mPortName ).isValid() )
+	if( !QSerialPortInfo( mPortName ).isNull() )
 	{
 		return;
 	}

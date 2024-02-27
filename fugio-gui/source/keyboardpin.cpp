@@ -27,7 +27,8 @@ KeyboardPin::KeyboardPin( QSharedPointer<fugio::PinInterface> pPin )
 
 void KeyboardPin::registerMetaType()
 {
-	qRegisterMetaTypeStreamOperators<fugio::KeyboardEvent>( "fugio::KeyboardEvent" );
+	// no longer needed in Qt6
+	// qRegisterMetaTypeStreamOperators<fugio::KeyboardEvent>( "fugio::KeyboardEvent" );
 }
 
 void KeyboardPin::keyboardAddEvent( const fugio::KeyboardEvent &pEvent)

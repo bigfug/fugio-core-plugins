@@ -37,7 +37,7 @@ SyntaxErrorPin::SyntaxErrorPin( QSharedPointer<fugio::PinInterface> pPin )
 
 void SyntaxErrorPin::registerMetaType()
 {
-	qRegisterMetaTypeStreamOperators<fugio::SyntaxError>( "fugio::SyntaxError" );
+	// qRegisterMetaTypeStreamOperators<fugio::SyntaxError>( "fugio::SyntaxError" );
 }
 
 QString SyntaxErrorPin::toString() const
