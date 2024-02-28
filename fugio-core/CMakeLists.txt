@@ -35,6 +35,7 @@ set( HEADER_FILES
 	include/fugio/core/uuid.h
 	include/fugio/core/array_interface.h
 	include/fugio/core/array_list_interface.h
+	include/fugio/core/float_interface.h
 	include/fugio/core/list_interface.h
 	include/fugio/core/size_interface.h
 	include/fugio/core/struct_entry_interface.h
@@ -48,6 +49,7 @@ set( SOURCE_FILES
 	source/stringpin.cpp
 	source/integerpin.cpp
 	source/floatpin.cpp
+	source/floatpin.h
 	source/triggerpin.cpp
 	source/boolpin.cpp
 	source/bytearraypin.cpp
@@ -62,6 +64,7 @@ set( SOURCE_FILES
 	source/triggerrangenumbernode.cpp
 	source/outputrangenode.cpp
 	source/sizepin.cpp
+	source/sizepin.h
 	source/splitsizenode.cpp
 	source/joinsizenode.cpp
 	source/arraypin.cpp

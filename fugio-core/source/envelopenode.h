@@ -5,6 +5,7 @@
 
 #include <fugio/nodecontrolbase.h>
 #include <fugio/core/variant_interface.h>
+#include <fugio/core/float_interface.h>
 #include <fugio/paired_pins_helper_interface.h>
 
 class EnvelopeNode : public fugio::NodeControlBase, public fugio::PairedPinsHelperInterface
@@ -43,6 +44,8 @@ protected:
 	QSharedPointer<fugio::PinInterface>			 mPinDecay;
 	QSharedPointer<fugio::PinInterface>			 mPinSustain;
 	QSharedPointer<fugio::PinInterface>			 mPinRelease;
+
+	fugio::FloatInterface						*mAttack;
 
 	typedef enum EnvelopeState
 	{

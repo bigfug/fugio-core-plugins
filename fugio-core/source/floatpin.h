@@ -7,15 +7,18 @@
 #include <fugio/pin_control_interface.h>
 
 #include <fugio/core/variant_helper.h>
+#include <fugio/core/float_interface.h>
+#include <fugio/inspector_widget_interface.h>
 
 #include <fugio/serialise_interface.h>
 
 #include <fugio/pincontrolbase.h>
 
-class FloatPin : public fugio::PinControlBase, public fugio::VariantHelper<double>, public fugio::SerialiseInterface
+class FloatPin : public fugio::PinControlBase, public fugio::VariantHelper<double>, public fugio::SerialiseInterface, public fugio::FloatInterface,
+				 public fugio::InspectorWidgetInterface
 {
 	Q_OBJECT
-	Q_INTERFACES( fugio::VariantInterface fugio::SerialiseInterface )
+	Q_INTERFACES( fugio::VariantInterface fugio::SerialiseInterface fugio::FloatInterface fugio::InspectorWidgetInterface )
 //	Q_PROPERTY( double mValue READ value WRITE setValue NOTIFY valueChanged )
 
 	Q_CLASSINFO( "Author", "Alex May" )
@@ -61,7 +64,20 @@ public:
 	virtual void saveSettings( QSettings &pSettings ) const Q_DECL_OVERRIDE;
 
 	//-------------------------------------------------------------------------
-	// fugio::VariantInterface
+	// fugio::FloatInterface
+
+	virtual void setValue( double pValue ) Q_DECL_OVERRIDE;
+
+	virtual void setMinimum( double pMinimum ) Q_DECL_OVERRIDE;
+	virtual void setMaximum( double pMaximum ) Q_DECL_OVERRIDE;
+	virtual void setRange( double pMinimum, double pMaximum ) Q_DECL_OVERRIDE;
+
+	virtual double value( void ) const Q_DECL_OVERRIDE;
+
+	//-------------------------------------------------------------------------
+	// fugio::InspectorWidgetInterface
+
+	virtual QWidget *inspectorWidget( void ) Q_DECL_OVERRIDE;
 
 	//-------------------------------------------------------------------------
 	// fugio::SerialiseInterface
@@ -109,8 +125,9 @@ public:
 signals:
 //	void valueChanged( double pValue );
 
-//private:
-//	QVector<double>		mValues;
+private:
+	double				mMinimum;
+	double				mMaximum;
 };
 
 #endif // FLOATPIN_H

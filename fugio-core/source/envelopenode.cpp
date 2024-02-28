@@ -14,12 +14,17 @@ EnvelopeNode::EnvelopeNode( QSharedPointer<fugio::NodeInterface> pNode )
 	static QUuid	PID_RELEASE = QUuid( "{EC9EDF19-DCDB-4CB2-85AE-F799EF24CA3D}" );
 	static QUuid	PID_SUSTAIN = QUuid( "{10AC9AA4-A883-468A-A64A-24804BD94991}" );
 
-	mPinAttack  = pinInput( "Attack", PID_ATTACK );
+	// mPinAttack  = pinInput( "Attack", PID_ATTACK );
+	mAttack = pinInput<fugio::FloatInterface *>( "Attack", mPinAttack, PID_FLOAT, PID_ATTACK );
+
 	mPinDecay   = pinInput( "Decay", PID_DECAY );
 	mPinSustain = pinInput( "Sustain", PID_SUSTAIN );
 	mPinRelease = pinInput( "Release", PID_RELEASE );
 
-	mPinAttack->setValue( 0.0f );
+	mAttack->setRange( 0.0, 1.0 );
+
+	mAttack->setValue( 0.0f );
+
 	mPinDecay->setValue( 0.0f );
 	mPinSustain->setValue( 1.0f );
 	mPinRelease->setValue( 0.0f );
@@ -105,7 +110,7 @@ void EnvelopeNode::contextFrame( qint64 pTimeStamp )
 
 		if( NewInputState )
 		{
-			float			AttackVal  = variant( mPinAttack  ).toFloat();
+			float			AttackVal  = mAttack->value();
 			float			DecayVal   = variant( mPinDecay   ).toFloat();
 			float			SustainVal = variant( mPinSustain ).toFloat();
 
