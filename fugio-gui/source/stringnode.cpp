@@ -71,7 +71,7 @@ void StringNode::valueChanged( const QString &pValue )
 
 	if( !variant( mPinInput ).toBool() )
 	{
-		connect( mNode->context()->qobject(), SIGNAL(frameStart()), this, SLOT(contextFrameStart()) );
+		connect( mNode->context()->qobject(), SIGNAL(frameStart(qint64)), this, SLOT(contextFrameStart(qint64)) );
 	}
 
 	emit valueUpdated( pValue );
@@ -90,11 +90,11 @@ void StringNode::editingFinished()
 
 	if( variant( mPinInput ).toBool() )
 	{
-		connect( mNode->context()->qobject(), SIGNAL(frameStart()), this, SLOT(contextFrameStart()) );
+		connect( mNode->context()->qobject(), SIGNAL(frameStart(qint64)), this, SLOT(contextFrameStart(qint64)) );
 	}
 }
 
-void StringNode::contextFrameStart()
+void StringNode::contextFrameStart(qint64)
 {
 	if( mLastUpdate < mLastText )
 	{
@@ -105,5 +105,5 @@ void StringNode::contextFrameStart()
 		mLastUpdate = mLastText;
 	}
 
-	disconnect( mNode->context()->qobject(), SIGNAL(frameStart()), this, SLOT(contextFrameStart()) );
+	disconnect( mNode->context()->qobject(), SIGNAL(frameStart(qint64)), this, SLOT(contextFrameStart(qint64)) );
 }

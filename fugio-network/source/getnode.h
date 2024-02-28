@@ -37,7 +37,7 @@ protected slots:
 
 	void networkSslErrors( QNetworkReply *pNetRep, QList<QSslError> pSslErr );
 
-	void contextFrameStart( void );
+	void contextFrameStart( qint64 );
 
 	void request( const QUrl &pUrl );
 

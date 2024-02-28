@@ -19,14 +19,14 @@ bool UniverseReceiveNode::initialise()
 		return( false );
 	}
 
-	connect( node()->context()->qobject(), SIGNAL(frameStart()), this, SLOT(contextFrame()) );
+	connect( node()->context()->qobject(), SIGNAL(frameStart(qint64)), this, SLOT(contextFrame(qint64)) );
 
 	return( true );
 }
 
 bool UniverseReceiveNode::deinitialise()
 {
-	disconnect( node()->context()->qobject(), SIGNAL(frameStart()), this, SLOT(contextFrame()) );
+	disconnect( node()->context()->qobject(), SIGNAL(frameStart(qint64)), this, SLOT(contextFrame(qint64)) );
 
 	return( NodeControlBase::deinitialise() );
 }
@@ -55,7 +55,7 @@ QList<fugio::NodeControlInterface::AvailablePinEntry> UniverseReceiveNode::avail
 	return( PinLst );
 }
 
-void UniverseReceiveNode::contextFrame()
+void UniverseReceiveNode::contextFrame(qint64)
 {
 	fugio::GlobalInterface	*Global = NetworkPlugin::instance()->app();
 

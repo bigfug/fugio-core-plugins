@@ -38,7 +38,7 @@ public:
 	virtual bool deinitialise() Q_DECL_OVERRIDE;
 
 private slots:
-	void contextFrameStart( void );
+	void contextFrameStart( qint64 );
 
 private:
 	QSharedPointer<fugio::PinInterface>		 mPinInputEvents;

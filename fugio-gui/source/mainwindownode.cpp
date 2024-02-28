@@ -25,14 +25,14 @@ bool MainWindowNode::initialise()
 
 	qApp->installEventFilter( this );
 
-	connect( mNode->context()->qobject(), SIGNAL(frameStart()), this, SLOT(contextFrameStart()) );
+	connect( mNode->context()->qobject(), SIGNAL(frameStart(qint64)), this, SLOT(contextFrameStart(qint64)) );
 
 	return( true );
 }
 
 bool MainWindowNode::deinitialise()
 {
-	disconnect( mNode->context()->qobject(), SIGNAL(frameStart()), this, SLOT(contextFrameStart()) );
+	disconnect( mNode->context()->qobject(), SIGNAL(frameStart(qint64)), this, SLOT(contextFrameStart(qint64)) );
 
 	qApp->removeEventFilter( this );
 
@@ -87,7 +87,7 @@ bool MainWindowNode::eventFilter( QObject *pObject, QEvent *pEvent )
 	return( QObject::eventFilter( pObject, pEvent ) );
 }
 
-void MainWindowNode::contextFrameStart()
+void MainWindowNode::contextFrameStart(qint64)
 {
 	mKeyboard->keyboardClearEvents();
 

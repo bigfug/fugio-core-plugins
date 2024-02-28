@@ -56,7 +56,7 @@ fugio::PluginInterface::InitResult SerialPlugin::initialise( fugio::GlobalInterf
 	mApp->registerDeviceFactory( this );
 
 	connect( mApp->qobject(), SIGNAL(frameStart(qint64)), this, SLOT(onGlobalFrameStart(qint64)) );
-	connect( mApp->qobject(), SIGNAL(frameEnd()), this, SLOT(onGlobalFrameEnd()) );
+	connect( mApp->qobject(), SIGNAL(frameEnd(qint64)), this, SLOT(onGlobalFrameEnd(qint64)) );
 
 	connect( mApp->qobject(), SIGNAL(configLoad(QSettings&)), this, SLOT(configLoad(QSettings&)) );
 	connect( mApp->qobject(), SIGNAL(configSave(QSettings&)), this, SLOT(configSave(QSettings&)) );
@@ -85,7 +85,7 @@ void SerialPlugin::onGlobalFrameStart( qint64 pTimeStamp )
 	DeviceSerial::devicePacketStart( pTimeStamp );
 }
 
-void SerialPlugin::onGlobalFrameEnd( void )
+void SerialPlugin::onGlobalFrameEnd( qint64 pTimeStamp )
 {
 	DeviceSerial::devicePacketEnd();
 }
@@ -95,7 +95,7 @@ void SerialPlugin::configLoad(QSettings &pSettings)
 	DeviceSerial::deviceCfgLoad( pSettings );
 }
 
-void SerialPlugin::configSave(QSettings &pSettings) const
+void SerialPlugin::configSave(QSettings &pSettings)
 {
 	DeviceSerial::deviceCfgSave( pSettings );
 }

@@ -17,12 +17,12 @@ SerialInputNode::SerialInputNode( QSharedPointer<fugio::NodeInterface> pNode ) :
 
 bool SerialInputNode::deinitialise()
 {
-	disconnect( mNode->context()->qobject(), SIGNAL(frameStart()), this, SLOT(onFrameStart()) );
+	disconnect( mNode->context()->qobject(), SIGNAL(frameStart(qint64)), this, SLOT(onFrameStart(qint64)) );
 
 	return( NodeControlBase::deinitialise() );
 }
 
-void SerialInputNode::onFrameStart( void )
+void SerialInputNode::onFrameStart( qint64 )
 {
 	if( !mDevice )
 	{
@@ -68,13 +68,13 @@ void SerialInputNode::setDevice( const QUuid &pDevUid )
 
 	if( mDevice )
 	{
-		connect( mNode->context()->qobject(), SIGNAL(frameStart()), this, SLOT(onFrameStart()) );
+		connect( mNode->context()->qobject(), SIGNAL(frameStart(qint64)), this, SLOT(onFrameStart(qint64)) );
 
 		mNode->setStatus( fugio::NodeInterface::Initialised );
 	}
 	else
 	{
-		disconnect( mNode->context()->qobject(), SIGNAL(frameStart()), this, SLOT(onFrameStart()) );
+		disconnect( mNode->context()->qobject(), SIGNAL(frameStart(qint64)), this, SLOT(onFrameStart(qint64)) );
 
 		mNode->setStatus( fugio::NodeInterface::Error );
 	}

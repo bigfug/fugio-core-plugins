@@ -38,7 +38,7 @@ public:
 	virtual void inputsUpdated( qint64 pTimeStamp ) Q_DECL_OVERRIDE;
 
 protected slots:
-	void contextFrameStart( void );
+	void contextFrameStart( qint64 );
 	void contextFrameProcess( qint64 pTimeStamp );
 
 private:

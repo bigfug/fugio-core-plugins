@@ -41,7 +41,7 @@ protected slots:
 	void onPressed( void );
 	void onReleased( void );
 
-	void onContextFrameStart( void );
+	void onContextFrameStart( qint64 );
 
 private:
 	QSharedPointer<fugio::PinInterface>			 mPinTrigger;

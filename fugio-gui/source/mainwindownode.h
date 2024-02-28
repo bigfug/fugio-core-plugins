@@ -32,7 +32,7 @@ private:
 	virtual bool eventFilter( QObject *, QEvent * ) Q_DECL_OVERRIDE;
 
 protected slots:
-	void contextFrameStart( void );
+	void contextFrameStart( qint64 );
 
 protected:
 	QSharedPointer<fugio::PinInterface>			 mPinKeyboard;

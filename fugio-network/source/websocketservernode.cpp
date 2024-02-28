@@ -46,7 +46,7 @@ bool WebSocketServerNode::initialise()
 		qInfo() << mServer.serverAddress();
 	}
 
-	connect( mNode->context()->qobject(), SIGNAL(frameStart()), this, SLOT(receiveUpdates()) );
+	connect( mNode->context()->qobject(), SIGNAL(frameStart(qint64)), this, SLOT(receiveUpdates(qint64)) );
 	connect( mNode->context()->qobject(), SIGNAL(frameEnd(qint64)), this, SLOT(sendUpdates(qint64)) );
 
 	return( true );
@@ -58,7 +58,7 @@ bool WebSocketServerNode::initialise()
 bool WebSocketServerNode::deinitialise()
 {
 #if defined( WEBSOCKET_SUPPORTED )
-	disconnect( mNode->context()->qobject(), SIGNAL(frameStart()), this, SLOT(receiveUpdates()) );
+	disconnect( mNode->context()->qobject(), SIGNAL(frameStart(qint64)), this, SLOT(receiveUpdates(qint64)) );
 	disconnect( mNode->context()->qobject(), SIGNAL(frameEnd(qint64)), this, SLOT(sendUpdates(qint64)) );
 
 	mServer.close();

@@ -39,7 +39,7 @@ public:
 	virtual void saveSettings( QSettings &pSettings ) const Q_DECL_OVERRIDE;
 
 private slots:
-	void onFrameStart( void );
+	void onFrameStart( qint64 );
 
 	void deviceSelection( int pDeviceIndex );
 

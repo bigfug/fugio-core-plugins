@@ -48,7 +48,7 @@ protected slots:
 
 	void editingFinished( void );
 
-	void contextFrameStart( void );
+	void contextFrameStart( qint64 );
 
 private:
 	QSharedPointer<fugio::PinInterface>			 mPinInput;

@@ -21,7 +21,7 @@ bool AutoRangeNode::initialise()
 		return( false );
 	}
 
-	connect( mNode->context()->qobject(), SIGNAL(frameStart()), this, SLOT(contextFrameStart()) );
+	connect( mNode->context()->qobject(), SIGNAL(frameStart(qint64)), this, SLOT(contextFrameStart(qint64)) );
 	connect( mNode->context()->qobject(), SIGNAL(frameProcess(qint64)), this, SLOT(contextFrameProcess(qint64)) );
 
 	return( true );
@@ -29,7 +29,7 @@ bool AutoRangeNode::initialise()
 
 bool AutoRangeNode::deinitialise()
 {
-	disconnect( mNode->context()->qobject(), SIGNAL(frameStart()), this, SLOT(contextFrameStart()) );
+	disconnect( mNode->context()->qobject(), SIGNAL(frameStart(qint64)), this, SLOT(contextFrameStart(qint64)) );
 	disconnect( mNode->context()->qobject(), SIGNAL(frameProcess(qint64)), this, SLOT(contextFrameProcess(qint64)) );
 
 	return( NodeControlBase::deinitialise() );
@@ -54,7 +54,7 @@ void AutoRangeNode::inputsUpdated( qint64 pTimeStamp )
 	}
 }
 
-void AutoRangeNode::contextFrameStart()
+void AutoRangeNode::contextFrameStart(qint64)
 {
 	mValueAdded = false;
 }

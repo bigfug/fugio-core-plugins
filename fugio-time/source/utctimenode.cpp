@@ -24,14 +24,14 @@ bool UTCTimeNode::initialise()
 		return( false );
 	}
 
-	connect( mNode->context()->qobject(), SIGNAL(frameStart()), this, SLOT(contextFrameStart()) );
+	connect( mNode->context()->qobject(), SIGNAL(frameStart(qint64)), this, SLOT(contextFrameStart(qint64)) );
 
 	return( true );
 }
 
 bool UTCTimeNode::deinitialise()
 {
-	disconnect( mNode->context()->qobject(), SIGNAL(frameStart()), this, SLOT(contextFrameStart()) );
+	disconnect( mNode->context()->qobject(), SIGNAL(frameStart(qint64)), this, SLOT(contextFrameStart(qint64)) );
 
 	return( NodeControlBase::deinitialise() );
 }
@@ -43,7 +43,7 @@ void UTCTimeNode::inputsUpdated( qint64 pTimeStamp )
 	updateTime();
 }
 
-void UTCTimeNode::contextFrameStart()
+void UTCTimeNode::contextFrameStart( qint64 pTimeStamp )
 {
 	if( !mPinInputTrigger->isConnected() )
 	{

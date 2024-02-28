@@ -32,7 +32,7 @@ public:
 	}
 
 private slots:
-	void contextFrame( void );
+	void contextFrame( qint64 );
 
 private:
 	QMap<QUuid,qint64>		mDataTime;

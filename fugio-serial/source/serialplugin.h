@@ -40,10 +40,10 @@ public:
 
 protected slots:
 	void onGlobalFrameStart( qint64 pTimeStamp );
-	void onGlobalFrameEnd( void );
+	void onGlobalFrameEnd(qint64 pTimeStamp );
 
 	void configLoad( QSettings &pSettings );
-	void configSave( QSettings &pSettings ) const;
+	void configSave( QSettings &pSettings );
 
 private:
 	static fugio::ClassEntry		 mNodeClasses[];

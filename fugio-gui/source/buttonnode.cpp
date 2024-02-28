@@ -54,7 +54,7 @@ void ButtonNode::onClick()
 {
 	mClicked = true;
 
-	connect( mNode->context()->qobject(), SIGNAL(frameStart()), this, SLOT(onContextFrameStart()) );
+	connect( mNode->context()->qobject(), SIGNAL(frameStart(qint64)), this, SLOT(onContextFrameStart(qint64)) );
 }
 
 void ButtonNode::onPressed()
@@ -62,7 +62,7 @@ void ButtonNode::onPressed()
 	mPressed = true;
 	mReleased = false;
 
-	connect( mNode->context()->qobject(), SIGNAL(frameStart()), this, SLOT(onContextFrameStart()) );
+	connect( mNode->context()->qobject(), SIGNAL(frameStart(qint64)), this, SLOT(onContextFrameStart(qint64)) );
 }
 
 void ButtonNode::onReleased()
@@ -70,10 +70,10 @@ void ButtonNode::onReleased()
 	mReleased = true;
 	mPressed = false;
 
-	connect( mNode->context()->qobject(), SIGNAL(frameStart()), this, SLOT(onContextFrameStart()) );
+	connect( mNode->context()->qobject(), SIGNAL(frameStart(qint64)), this, SLOT(onContextFrameStart(qint64)) );
 }
 
-void ButtonNode::onContextFrameStart()
+void ButtonNode::onContextFrameStart(qint64)
 {
 	if( mClicked )
 	{
@@ -106,7 +106,7 @@ void ButtonNode::onContextFrameStart()
 		mReleased = false;
 	}
 
-	disconnect( mNode->context()->qobject(), SIGNAL(frameStart()), this, SLOT(onContextFrameStart()) );
+	disconnect( mNode->context()->qobject(), SIGNAL(frameStart(qint64)), this, SLOT(onContextFrameStart(qint64)) );
 }
 
 

@@ -23,14 +23,14 @@ bool LocalTimeNode::initialise()
 		return( false );
 	}
 
-	connect( mNode->context()->qobject(), SIGNAL(frameStart()), this, SLOT(contextFrameStart()) );
+	connect( mNode->context()->qobject(), SIGNAL(frameStart(qint64)), this, SLOT(contextFrameStart(qint64)) );
 
 	return( true );
 }
 
 bool LocalTimeNode::deinitialise()
 {
-	disconnect( mNode->context()->qobject(), SIGNAL(frameStart()), this, SLOT(contextFrameStart()) );
+	disconnect( mNode->context()->qobject(), SIGNAL(frameStart(qint64)), this, SLOT(contextFrameStart(qint64)) );
 
 	return( NodeControlBase::deinitialise() );
 }
@@ -42,7 +42,7 @@ void LocalTimeNode::inputsUpdated( qint64 pTimeStamp )
 	updateTime();
 }
 
-void LocalTimeNode::contextFrameStart()
+void LocalTimeNode::contextFrameStart(qint64)
 {
 	if( !mPinInputTrigger->isConnected() )
 	{

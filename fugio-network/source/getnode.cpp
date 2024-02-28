@@ -154,7 +154,7 @@ void GetNode::replyFinished()
 
 	if( NetErr == QNetworkReply::NoError )
 	{
-		connect( mNode->context()->qobject(), SIGNAL(frameStart()), this, SLOT(contextFrameStart()) );
+		connect( mNode->context()->qobject(), SIGNAL(frameStart(qint64)), this, SLOT(contextFrameStart(qint64)) );
 	}
 }
 
@@ -180,13 +180,13 @@ void GetNode::networkSslErrors( QNetworkReply *pNetRep, QList<QSslError> pSslErr
 	}
 }
 
-void GetNode::contextFrameStart()
+void GetNode::contextFrameStart(qint64)
 {
 	mValOutput->setFilename( mFilename );
 
 	pinUpdated( mPinOutput );
 
-	disconnect( mNode->context()->qobject(), SIGNAL(frameStart()), this, SLOT(contextFrameStart()) );
+	disconnect( mNode->context()->qobject(), SIGNAL(frameStart(qint64)), this, SLOT(contextFrameStart(qint64)) );
 }
 
 void GetNode::request( const QUrl &pUrl )
