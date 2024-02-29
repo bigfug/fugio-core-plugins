@@ -1,5 +1,8 @@
 #include "floatpin.h"
 #include <fugio/core/uuid.h>
+#include <fugio/node_interface.h>
+#include <fugio/context_interface.h>
+
 #include <QSettings>
 #include <QDoubleSpinBox>
 
@@ -128,6 +131,8 @@ QWidget *FloatPin::inspectorWidget()
 	connect( W, &QDoubleSpinBox::valueChanged, W, [=]( double pValue )
 	{
 		setValue( pValue );
+
+		mPin->node()->context()->pinUpdated( mPin, mPin->node()->context()->global()->timestamp() );
 	} );
 
 	return( W );
