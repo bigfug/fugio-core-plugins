@@ -6,13 +6,14 @@
 #include <fugio/pin_interface.h>
 #include <fugio/pin_control_interface.h>
 #include <fugio/pincontrolbase.h>
+#include <fugio/inspector_widget_interface.h>
 
 #include <fugio/choice_interface.h>
 
-class ChoicePin : public fugio::PinControlBase, public fugio::ChoiceInterface
+class ChoicePin : public fugio::PinControlBase, public fugio::ChoiceInterface, fugio::InspectorWidgetInterface
 {
 	Q_OBJECT
-	Q_INTERFACES( fugio::ChoiceInterface )
+	Q_INTERFACES( fugio::ChoiceInterface fugio::InspectorWidgetInterface )
 //	Q_PROPERTY( bool value READ value WRITE setValue NOTIFY valueChanged )
 
 	Q_CLASSINFO( "Author", "Alex May" )
@@ -58,6 +59,12 @@ public:
 	// ChoiceInterface interface
 
 	Q_INVOKABLE virtual QStringList choices() const Q_DECL_OVERRIDE;
+
+
+	//-------------------------------------------------------------------------
+	// fugio::InspectorWidgetInterface interface
+public:
+	QWidget *inspectorWidget( void ) Q_DECL_OVERRIDE;
 
 public slots:
 	virtual void setChoices(QStringList pChoices) Q_DECL_OVERRIDE;
