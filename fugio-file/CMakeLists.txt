@@ -121,7 +121,11 @@ install( DIRECTORY include DESTINATION . COMPONENT ${PROJECT_NAME} PATTERN ".*" 
 
 find_package(Qt6 COMPONENTS Core Widgets LinguistTools QUIET )
 
-target_link_libraries( ${PROJECT_NAME} Qt::Core Qt::Widgets )
+if (NOT Qt6_FOUND)
+	find_package(Qt5 5.15 COMPONENTS Core Widgets LinguistTools QUIET)
+endif()
+
+target_link_libraries( ${PROJECT_NAME} PRIVATE Qt::Core Qt::Widgets )
 
 #------------------------------------------------------------------------------
 # Translations
@@ -130,7 +134,15 @@ set( TS_FILES
 	translations/translations_de.ts
 	)
 
-qt_add_translations( ${PROJECT_NAME} TS_FILES ${TS_FILES} RESOURCE_PREFIX "/translations" )
+if( COMMAND qt_add_translations )
+	qt_add_translations( ${PROJECT_NAME} TS_FILES ${TS_FILES} RESOURCE_PREFIX "/translations" )
+else()
+	qt5_create_translation( QM_FILES ${CMAKE_SOURCE_DIR} ${TS_FILES} )
+
+	configure_file( ${CMAKE_SOURCE_DIR}/translations.qrc ${CMAKE_CURRENT_BINARY_DIR} COPYONLY )
+
+	target_sources( ${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_BINARY_DIR}/translations.qrc ${QM_FILES} )
+endif()
 
 #------------------------------------------------------------------------------
 # Unit Tests

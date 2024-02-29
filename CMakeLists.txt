@@ -45,7 +45,7 @@ if( NOT EXISTS "${CMAKE_BINARY_DIR}/include/fugio" )
 	file(MAKE_DIRECTORY ${CMAKE_BINARY_DIR}/include )
 
 	file(DOWNLOAD
-                ${FUGIO_API_ZIP_URL}
+		${FUGIO_API_ZIP_URL}
 		${CMAKE_BINARY_DIR}/fugio-api.zip
 	)
 

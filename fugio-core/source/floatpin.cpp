@@ -128,12 +128,12 @@ QWidget *FloatPin::inspectorWidget()
 		W->setSingleStep( ( mMaximum - mMinimum ) / 10.0 );
 	}
 
-	connect( W, &QDoubleSpinBox::valueChanged, W, [=]( double pValue )
+	connect( W, qOverload<double>( &QDoubleSpinBox::valueChanged ), this, [=]( double pValue )
 	{
 		setValue( pValue );
 
 		mPin->node()->context()->pinUpdated( mPin, mPin->node()->context()->global()->timestamp() );
-	} );
+	}, Qt::AutoConnection );
 
 	return( W );
 }
