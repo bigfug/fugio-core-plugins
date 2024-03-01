@@ -42,7 +42,7 @@
   <customwidget>
    <class>CodeEditor</class>
    <extends>QPlainTextEdit</extends>
-   <header>codeeditor.h</header>
+   <header>source/codeeditor.h</header>
   </customwidget>
  </customwidgets>
  <resources/>
