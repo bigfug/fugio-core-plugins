@@ -25,6 +25,11 @@
 		"win64": "@FUGIO_PLUGIN_URL@/fugio-file-win64.zip"
 	  }
 	},
+	"com.bigfug.fugio.geometry": {
+	  "1.0.0": {
+		"win64": "@FUGIO_PLUGIN_URL@/fugio-geometry-win64.zip"
+	  }
+	},
 	"com.bigfug.fugio.gui": {
 	  "1.0.0": {
 		"win64": "@FUGIO_PLUGIN_URL@/fugio-gui-win64.zip"
@@ -35,6 +40,11 @@
 		"win64": "@FUGIO_PLUGIN_URL@/fugio-image-win64.zip"
 	  }
 	},
+	"com.bigfug.fugio.json": {
+	  "1.0.0": {
+		"win64": "@FUGIO_PLUGIN_URL@/fugio-json-win64.zip"
+	  }
+	},
 	"com.bigfug.fugio.math": {
 	  "1.0.0": {
 		"win64": "@FUGIO_PLUGIN_URL@/fugio-math-win64.zip"
@@ -43,6 +53,11 @@
 	"com.bigfug.fugio.network": {
 	  "1.0.0": {
 		"win64": "@FUGIO_PLUGIN_URL@/fugio-network-win64.zip"
+	  }
+	},
+	"com.bigfug.fugio.painter": {
+	  "1.0.0": {
+		"win64": "@FUGIO_PLUGIN_URL@/fugio-painter-win64.zip"
 	  }
 	},
 	"com.bigfug.fugio.serial": {
