@@ -11,6 +11,7 @@ install( DIRECTORY ${CMAKE_SOURCE_DIR}/fugio-gui/include/fugio DESTINATION . COM
 install( DIRECTORY ${CMAKE_SOURCE_DIR}/fugio-image/include/fugio DESTINATION . COMPONENT ${PROJECT_NAME} )
 install( DIRECTORY ${CMAKE_SOURCE_DIR}/fugio-json/include/fugio DESTINATION . COMPONENT ${PROJECT_NAME} )
 install( DIRECTORY ${CMAKE_SOURCE_DIR}/fugio-math/include/fugio DESTINATION . COMPONENT ${PROJECT_NAME} )
+install( DIRECTORY ${CMAKE_SOURCE_DIR}/fugio-midi/include/fugio DESTINATION . COMPONENT ${PROJECT_NAME} )
 install( DIRECTORY ${CMAKE_SOURCE_DIR}/fugio-network/include/fugio DESTINATION . COMPONENT ${PROJECT_NAME} )
 install( DIRECTORY ${CMAKE_SOURCE_DIR}/fugio-painter/include/fugio DESTINATION . COMPONENT ${PROJECT_NAME} )
 install( DIRECTORY ${CMAKE_SOURCE_DIR}/fugio-serial/include/fugio DESTINATION . COMPONENT ${PROJECT_NAME} )

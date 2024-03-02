@@ -50,6 +50,11 @@
 		"win64": "@FUGIO_PLUGIN_URL@/fugio-math-win64.zip"
 	  }
 	},
+	"com.bigfug.fugio.midi": {
+	  "1.0.0": {
+		"win64": "@FUGIO_PLUGIN_URL@/fugio-midi-win64.zip"
+	  }
+	},
 	"com.bigfug.fugio.network": {
 	  "1.0.0": {
 		"win64": "@FUGIO_PLUGIN_URL@/fugio-network-win64.zip"
