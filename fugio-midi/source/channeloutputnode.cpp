@@ -220,7 +220,7 @@ QStringList ChannelOutputNode::availableInputPins() const
 		InputPins.append( "channel-pressure" );
 	}
 
-	for( QString S : InputPins )
+	for( QString &S : InputPins )
 	{
 		if( mNode->findInputPinByName( S ) )
 		{
@@ -393,7 +393,7 @@ void ChannelOutputNode::frameFinalised( qint64 pTimeStamp )
 
 					fugio::MidiEvent		EV;
 
-					EV.message   = Pm_Message( ( NV > 0 ? MIDI_NOTE_ON : MIDI_NOTE_ON ) + Channel, NN, NV );
+					EV.message   = Pm_Message( ( NV > 0 ? MIDI_NOTE_ON : MIDI_NOTE_OFF ) + Channel, NN, NV );
 					EV.timestamp = 0;
 
 					mValOutputMidi->addMessage( EV.message );

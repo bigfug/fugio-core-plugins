@@ -26,7 +26,7 @@ public:
 	virtual void inputsUpdated( qint64 pTimeStamp ) Q_DECL_OVERRIDE;
 
 protected slots:
-	void contextFrameInitialise( void );
+	void contextFrameInitialise( qint64 );
 
 protected:
 	QSharedPointer<fugio::PinInterface>			 mPinInputTrigger;

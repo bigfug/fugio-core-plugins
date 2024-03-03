@@ -94,7 +94,7 @@ void WebSocketClientNode::inputsUpdated( qint64 pTimeStamp )
 #endif
 }
 
-void WebSocketClientNode::contextFrame()
+void WebSocketClientNode::contextFrame(qint64)
 {
 	if( !mReceivedBinary.isEmpty() )
 	{
@@ -114,21 +114,21 @@ void WebSocketClientNode::contextFrame()
 		mReceivedText.clear();
 	}
 
-	disconnect( mNode->context()->qobject(), SIGNAL(frameInitialise()), this, SLOT(contextFrame()) );
+	disconnect( mNode->context()->qobject(), SIGNAL(frameInitialise(qint64)), this, SLOT(contextFrame(qint64)) );
 }
 
 void WebSocketClientNode::receivedText(const QString &pData)
 {
 	mReceivedText = pData;
 
-	connect( mNode->context()->qobject(), SIGNAL(frameInitialise()), this, SLOT(contextFrame()) );
+	connect( mNode->context()->qobject(), SIGNAL(frameInitialise(qint64)), this, SLOT(contextFrame(qint64)) );
 }
 
 void WebSocketClientNode::receivedBinary( const QByteArray &pData )
 {
 	mReceivedBinary = pData;
 
-	connect( mNode->context()->qobject(), SIGNAL(frameInitialise()), this, SLOT(contextFrame()) );
+	connect( mNode->context()->qobject(), SIGNAL(frameInitialise(qint64)), this, SLOT(contextFrame(qint64)) );
 }
 
 void WebSocketClientNode::connected()

@@ -32,7 +32,7 @@ public:
 	virtual bool deinitialise() Q_DECL_OVERRIDE;
 
 protected slots:
-	void frameFinalise( void );
+	void frameFinalise( qint64 );
 
 #if defined( WEBSOCKET_SUPPORTED )
 //	void socketConnected( void );

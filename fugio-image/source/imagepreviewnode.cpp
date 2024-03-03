@@ -105,7 +105,7 @@ bool ImagePreviewNode::initialise( void )
 
 		EI->mainWindow()->addDockWidget( mDockArea, mDockWidget );
 
-		connect( mNode->context()->qobject(), SIGNAL(frameInitialise()), this, SLOT(contextFrameInitialise()) );
+		connect( mNode->context()->qobject(), SIGNAL(frameInitialise(qint64)), this, SLOT(contextFrameInitialise()) );
 	}
 
 	return( true );
@@ -153,7 +153,7 @@ void ImagePreviewNode::onShowClicked( void )
 	}
 }
 
-void ImagePreviewNode::contextFrameInitialise()
+void ImagePreviewNode::contextFrameInitialise(qint64)
 {
 	if( mValOutputEvents )
 	{

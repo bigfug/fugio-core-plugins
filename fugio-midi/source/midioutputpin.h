@@ -30,7 +30,7 @@ public:
 
 	virtual QString toString( void ) const Q_DECL_OVERRIDE
 	{
-		return( "" );
+		return( QString( "%1 events\n%2 sysex" ).arg( mMessages.size() ).arg( mSysEx.size() ) );
 	}
 
 	virtual QString description( void ) const Q_DECL_OVERRIDE

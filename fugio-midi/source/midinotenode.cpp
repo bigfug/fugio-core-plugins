@@ -41,9 +41,11 @@ void MidiNoteNode::inputsUpdated( qint64 pTimeStamp )
 //			return;
 //		}
 
+		mValOutputMidi->clearData();
+
 		if( Last != -1 )
 		{
-			mValOutputMidi->addMessage( Pm_Message( MIDI_NOTE_ON + Channel, Last, 0x00 ) );
+			mValOutputMidi->addMessage( Pm_Message( MIDI_NOTE_OFF + Channel, Last, 0x00 ) );
 		}
 
 		mValOutputMidi->addMessage( Pm_Message( MIDI_NOTE_ON + Channel, Note, 0x7f ) );

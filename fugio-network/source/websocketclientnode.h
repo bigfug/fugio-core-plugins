@@ -33,7 +33,7 @@ public:
 	virtual void inputsUpdated( qint64 pTimeStamp ) Q_DECL_OVERRIDE;
 
 protected slots:
-	void contextFrame( void );
+	void contextFrame( qint64 );
 
 	void receivedText( const QString &pData );
 

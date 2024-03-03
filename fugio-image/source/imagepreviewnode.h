@@ -47,7 +47,7 @@ public:
 protected slots:
 	void onShowClicked();
 
-	void contextFrameInitialise( void );
+	void contextFrameInitialise( qint64 );
 
 private:
 	QSharedPointer<fugio::PinInterface>			 mPinImage;

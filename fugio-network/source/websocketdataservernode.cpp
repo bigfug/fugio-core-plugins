@@ -95,7 +95,7 @@ bool WebSocketDataServerNode::initialise()
 		return( false );
 	}
 
-	connect( mNode->context()->qobject(), SIGNAL(frameFinalise()), this, SLOT(frameFinalise()) );
+	connect( mNode->context()->qobject(), SIGNAL(frameFinalise(qint64)), this, SLOT(frameFinalise(qint64)) );
 
 #if defined( WEBSOCKET_SUPPORTED )
 	if( mServer.listen( QHostAddress::Any, mPinInputPort->value().toInt() ) )
@@ -117,12 +117,12 @@ bool WebSocketDataServerNode::deinitialise()
 	mServer.close();
 #endif
 
-	disconnect( mNode->context()->qobject(), SIGNAL(frameFinalise()), this, SLOT(frameFinalise()) );
+	disconnect( mNode->context()->qobject(), SIGNAL(frameFinalise(qint64)), this, SLOT(frameFinalise(qint64)) );
 
 	return( NodeControlBase::deinitialise() );
 }
 
-void WebSocketDataServerNode::frameFinalise()
+void WebSocketDataServerNode::frameFinalise(qint64)
 {
 	QMutexLocker		L( &mInputDataMutex );
 

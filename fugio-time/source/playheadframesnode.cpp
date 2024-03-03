@@ -26,7 +26,7 @@ PlayheadFramesNode::PlayheadFramesNode( QSharedPointer<fugio::NodeInterface> pNo
 // We're using Context::frameInitialise here instead of inputsUpdated() as
 // it's the only place where we should change the playhead position
 
-void PlayheadFramesNode::contextFrameInitialise( void )
+void PlayheadFramesNode::contextFrameInitialise( qint64 )
 {
 	qreal		CurFPS  = variant( mPinInputFPS ).toReal();
 
@@ -44,7 +44,7 @@ void PlayheadFramesNode::contextFrameInitialise( void )
 
 	pinUpdated( mPinOutputFrameNumber );
 
-	disconnect( mNode->context()->qobject(), SIGNAL(frameInitialise()), this, SLOT(contextFrameInitialise()) );
+	disconnect( mNode->context()->qobject(), SIGNAL(frameInitialise(qint64)), this, SLOT(contextFrameInitialise(qint64)) );
 }
 
 void PlayheadFramesNode::inputsUpdated( qint64 pTimeStamp )
@@ -70,6 +70,6 @@ void PlayheadFramesNode::inputsUpdated( qint64 pTimeStamp )
 	{
 		mFrameNumber = NewFrm;
 
-		connect( mNode->context()->qobject(), SIGNAL(frameInitialise()), this, SLOT(contextFrameInitialise()) );
+		connect( mNode->context()->qobject(), SIGNAL(frameInitialise(qint64)), this, SLOT(contextFrameInitialise(qint64)) );
 	}
 }
