@@ -133,13 +133,15 @@ install( DIRECTORY examples	DESTINATION . COMPONENT ${PROJECT_NAME} PATTERN ".*"
 #------------------------------------------------------------------------------
 # Qt
 
-find_package(Qt6 COMPONENTS Core Network Widgets LinguistTools QUIET )
+find_package(Qt6 COMPONENTS Core Network WebSockets Widgets LinguistTools QUIET )
 
 if (NOT Qt6_FOUND)
-	find_package(Qt5 5.15 COMPONENTS Core Network Widgets LinguistTools QUIET)
+	find_package(Qt5 5.15 COMPONENTS Core Network WebSockets Widgets LinguistTools QUIET)
 endif()
 
-target_link_libraries( ${PROJECT_NAME} PRIVATE Qt::Core Qt::Network Qt::Widgets )
+target_link_libraries( ${PROJECT_NAME} PRIVATE Qt::Core Qt::Network Qt::WebSockets Qt::Widgets )
+
+target_compile_definitions( ${PROJECT_NAME} PRIVATE WEBSOCKET_SUPPORTED )
 
 #------------------------------------------------------------------------------
 # Translations
