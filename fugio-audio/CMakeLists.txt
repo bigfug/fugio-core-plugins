@@ -19,7 +19,7 @@ set( PLUGIN_RELEASE_DATE "2019-10-25" )
 set( PLUGIN_AUTHOR_NAME  "Alex May" )
 set( PLUGIN_AUTHOR_CONTACT "https://github.com/bigfug" )
 
-set( PLUGIN_WIKI_LINK "https://github.com/bigfug/fugio-core-plugins/wiki/Audio_Plugin" )
+set( PLUGIN_WIKI_LINK "https://github.com/bigfug/fugio-core-plugins/wiki/Audio-Plugin" )
 set( PLUGIN_WIKI_NODE_LINK "https://github.com/bigfug/fugio-core-plugins/wiki/Audio_Node_" )
 set( PLUGIN_WIKI_PIN_LINK "https://github.com/bigfug/fugio-core-plugins/wiki/Audio_Pin_" )
 

@@ -13,7 +13,7 @@ class IntToBitsNode : public fugio::NodeControlBase
 	Q_CLASSINFO( "Author", "Alex May" )
 	Q_CLASSINFO( "Version", "1.0" )
 	Q_CLASSINFO( "Description", "Converts a integer to a bit array" )
-	Q_CLASSINFO( "URL", WIKI_NODE_URL( "IntToBits" ) )
+	Q_CLASSINFO( "URL", WIKI_URL( "Int-To-Bits" ) )
 	Q_CLASSINFO( "Contact", "https://github.com/bigfug" )
 
 public:

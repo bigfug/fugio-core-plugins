@@ -12,7 +12,7 @@ class ScaleImageNode : public fugio::NodeControlBase
 	Q_CLASSINFO( "Author", "Alex May" )
 	Q_CLASSINFO( "Version", "1.0" )
 	Q_CLASSINFO( "Description", "Scales an image" )
-	Q_CLASSINFO( "URL", WIKI_NODE_URL( "Scale_(Image)" ) )
+	Q_CLASSINFO( "URL", WIKI_URL( "Scale-Image" ) )
 	Q_CLASSINFO( "Contact", "https://github.com/bigfug" )
 
 public:

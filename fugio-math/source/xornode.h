@@ -13,7 +13,7 @@ class XorNode : public fugio::NodeControlBase
 	Q_CLASSINFO( "Author", "Alex May" )
 	Q_CLASSINFO( "Version", "1.0" )
 	Q_CLASSINFO( "Description", "Exclusive Or's (XOR) all the input booleans together." )
-	Q_CLASSINFO( "URL", WIKI_NODE_URL( "Xor_(Logic)" ) )
+	Q_CLASSINFO( "URL", WIKI_URL( "Xor" ) )
 	Q_CLASSINFO( "Contact", "https://github.com/bigfug" )
 
 public:

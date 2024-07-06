@@ -13,7 +13,7 @@ class BoolToBits : public fugio::NodeControlBase
 	Q_CLASSINFO( "Author", "Alex May" )
 	Q_CLASSINFO( "Version", "1.0" )
 	Q_CLASSINFO( "Description", tr( "Reads the input bool when triggered and outputs a bit array" ) )
-	Q_CLASSINFO( "URL", WIKI_NODE_URL( "Bool_To_Bits" ) )
+	Q_CLASSINFO( "URL", WIKI_URL( "Bool-To-Bits" ) )
 	Q_CLASSINFO( "Contact", "https://github.com/bigfug" )
 
 public:

@@ -21,7 +21,7 @@ class ChoiceNode : public fugio::NodeControlBase
 	Q_CLASSINFO( "Author", "Alex May" )
 	Q_CLASSINFO( "Version", "1.0" )
 	Q_CLASSINFO( "Description", "Provides a simple GUI button that can be clicked on to generate a trigger, boolean, and toggle." )
-	Q_CLASSINFO( "URL", WIKI_NODE_URL( "Choice_(GUI)" ) )
+	Q_CLASSINFO( "URL", WIKI_URL( "Choice" ) )
 	Q_CLASSINFO( "Contact", "https://github.com/bigfug" )
 
 public:

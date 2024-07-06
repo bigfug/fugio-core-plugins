@@ -15,7 +15,7 @@ class Matrix4Node : public fugio::NodeControlBase
 	Q_CLASSINFO( "Author", "Alex May" )
 	Q_CLASSINFO( "Version", "1.0" )
 	Q_CLASSINFO( "Description", "Makes a Matrix4 from raw values." )
-	Q_CLASSINFO( "URL", WIKI_NODE_URL( "Matrix4" ) )
+	Q_CLASSINFO( "URL", WIKI_URL( "Matrix4" ) )
 	Q_CLASSINFO( "Contact", "https://github.com/bigfug" )
 
 public:

@@ -13,7 +13,7 @@ class SubtractNode : public fugio::NodeControlBase
 	Q_CLASSINFO( "Author", "Alex May" )
 	Q_CLASSINFO( "Version", "1.0" )
 	Q_CLASSINFO( "Description", "Subtract" )
-	Q_CLASSINFO( "URL", WIKI_NODE_URL( "Subtract" ) )
+	Q_CLASSINFO( "URL", WIKI_URL( "Subtract" ) )
 	Q_CLASSINFO( "Contact", "https://github.com/bigfug" )
 
 	class Operator

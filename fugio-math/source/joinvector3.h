@@ -12,7 +12,7 @@ class JoinVector3Node : public fugio::NodeControlBase
 	Q_CLASSINFO( "Author", "Alex May" )
 	Q_CLASSINFO( "Version", "1.0" )
 	Q_CLASSINFO( "Description", "Makes a Vector3 from raw values." )
-	Q_CLASSINFO( "URL", WIKI_NODE_URL( "Join_(Vector3)" ) )
+	Q_CLASSINFO( "URL", WIKI_URL( "Join-Vector3" ) )
 	Q_CLASSINFO( "Contact", "https://github.com/bigfug" )
 
 public:

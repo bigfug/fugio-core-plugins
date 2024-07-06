@@ -20,7 +20,7 @@ class SplitVector4Node : public fugio::NodeControlBase
 	Q_CLASSINFO( "Author", "Alex May" )
 	Q_CLASSINFO( "Version", "1.0" )
 	Q_CLASSINFO( "Description", "Split a Vector4" )
-	Q_CLASSINFO( "URL", WIKI_NODE_URL( "Split_(Vector4)" ) )
+	Q_CLASSINFO( "URL", WIKI_URL( "Split-Vector4" ) )
 	Q_CLASSINFO( "Contact", "https://github.com/bigfug" )
 
 public:

@@ -18,7 +18,7 @@ class AudioFilterNode : public fugio::NodeControlBase, public fugio::AudioProduc
 	Q_CLASSINFO( "Author", "Alex May" )
 	Q_CLASSINFO( "Version", "1.0" )
 	Q_CLASSINFO( "Description", "Audio filter" )
-	Q_CLASSINFO( "URL", WIKI_NODE_URL( "Filter" ) )
+	Q_CLASSINFO( "URL", WIKI_URL( "Filter-Audio" ) )
 	Q_CLASSINFO( "Contact", "https://github.com/bigfug" )
 
 public:

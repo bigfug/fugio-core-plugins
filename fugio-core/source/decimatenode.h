@@ -15,7 +15,7 @@ class DecimateNode : public fugio::NodeControlBase, public fugio::PairedPinsHelp
 	Q_CLASSINFO( "Author", "Alex May" )
 	Q_CLASSINFO( "Version", "1.0" )
 	Q_CLASSINFO( "Description", "" )
-	Q_CLASSINFO( "URL", WIKI_NODE_URL( "Decimate" ) )
+	Q_CLASSINFO( "URL", WIKI_URL( "Decimate" ) )
 	Q_CLASSINFO( "Contact", "https://github.com/bigfug" )
 
 public:

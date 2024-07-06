@@ -14,7 +14,7 @@ class StringToJsonNode : public fugio::NodeControlBase
 	Q_CLASSINFO( "Author", "Alex May" )
 	Q_CLASSINFO( "Version", "1.0" )
 	Q_CLASSINFO( "Description", "String to JSON" )
-	Q_CLASSINFO( "URL", WIKI_NODE_URL( "String_To_Json" ) )
+	Q_CLASSINFO( "URL", WIKI_URL( "String-To-Json" ) )
 	Q_CLASSINFO( "Contact", "http://www.bigfug.com/contact/" )
 
 public:

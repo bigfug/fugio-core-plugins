@@ -15,7 +15,7 @@ class ImageNode : public fugio::NodeControlBase
 	Q_CLASSINFO( "Author", "Alex May" )
 	Q_CLASSINFO( "Version", "1.0" )
 	Q_CLASSINFO( "Description", "Image" )
-	Q_CLASSINFO( "URL", WIKI_NODE_URL( "Image" ) )
+	Q_CLASSINFO( "URL", WIKI_URL( "Image" ) )
 	Q_CLASSINFO( "Contact", "https://github.com/bigfug" )
 
 public:

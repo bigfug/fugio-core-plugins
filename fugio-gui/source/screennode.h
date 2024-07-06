@@ -22,7 +22,7 @@ class ScreenNode : public fugio::NodeControlBase
 	Q_CLASSINFO( "Author", "Alex May" )
 	Q_CLASSINFO( "Version", "1.0" )
 	Q_CLASSINFO( "Description", "Screen" )
-	Q_CLASSINFO( "URL", WIKI_NODE_URL( "Screen_(GUI)" ) )
+	Q_CLASSINFO( "URL", WIKI_URL( "Screen" ) )
 	Q_CLASSINFO( "Contact", "https://github.com/bigfug" )
 
 public:

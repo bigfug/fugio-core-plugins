@@ -24,7 +24,7 @@ class NumberMonitorNode : public fugio::NodeControlBase
 	Q_CLASSINFO( "Author", "Alex May" )
 	Q_CLASSINFO( "Version", "1.0" )
 	Q_CLASSINFO( "Description", "Graphs the value of a number over time." )
-	Q_CLASSINFO( "URL", WIKI_NODE_URL( "Number_Monitor_(GUI)" ) )
+	Q_CLASSINFO( "URL", WIKI_URL( "Number-Monitor" ) )
 	Q_CLASSINFO( "Contact", "https://github.com/bigfug" )
 
 public:

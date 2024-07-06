@@ -20,7 +20,7 @@ class KeyboardNode : public fugio::NodeControlBase
 	Q_CLASSINFO( "Author", "Alex May" )
 	Q_CLASSINFO( "Version", "1.0" )
 	Q_CLASSINFO( "Description", "Generate triggers from a keyboard." )
-	Q_CLASSINFO( "URL", WIKI_NODE_URL( "Keyboard_(GUI)" ) )
+	Q_CLASSINFO( "URL", WIKI_URL( "Keyboard" ) )
 	Q_CLASSINFO( "Contact", "https://github.com/bigfug" )
 
 public:

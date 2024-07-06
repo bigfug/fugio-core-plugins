@@ -13,7 +13,7 @@ class NandBitsNode : public fugio::NodeControlBase
 	Q_CLASSINFO( "Author", "Alex May" )
 	Q_CLASSINFO( "Version", "1.0" )
 	Q_CLASSINFO( "Description", "Nands all the input booleans together." )
-	Q_CLASSINFO( "URL", WIKI_NODE_URL( "Nand_(Logic)" ) )
+	Q_CLASSINFO( "URL", WIKI_URL( "Nand-Bits" ) )
 	Q_CLASSINFO( "Contact", "https://github.com/bigfug" )
 
 public:

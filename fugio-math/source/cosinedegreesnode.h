@@ -12,7 +12,7 @@ class CosineDegreeNode : public fugio::NodeControlBase
 	Q_CLASSINFO( "Author", "Alex May" )
 	Q_CLASSINFO( "Version", "1.0" )
 	Q_CLASSINFO( "Description", "Calculates cos() from angle in degrees" )
-	Q_CLASSINFO( "URL", WIKI_NODE_URL( "Cosine_(Degree)" ) )
+	Q_CLASSINFO( "URL", WIKI_URL( "Cosine-Degree" ) )
 	Q_CLASSINFO( "Contact", "https://github.com/bigfug" )
 
 public:

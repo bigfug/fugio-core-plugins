@@ -19,7 +19,7 @@ class LcdNumberNode : public fugio::NodeControlBase
 	Q_CLASSINFO( "Author", "Alex May" )
 	Q_CLASSINFO( "Version", "1.0" )
 	Q_CLASSINFO( "Description", "Simple LCD number display" )
-	Q_CLASSINFO( "URL", WIKI_NODE_URL( "LCD_Number_(GUI)" ) )
+	Q_CLASSINFO( "URL", WIKI_URL( "LCD-Number" ) )
 	Q_CLASSINFO( "Contact", "https://github.com/bigfug" )
 
 public:

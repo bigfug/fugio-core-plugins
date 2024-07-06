@@ -16,7 +16,7 @@ class SetAlphaNode : public fugio::NodeControlBase
 	Q_CLASSINFO( "Author", "Alex May" )
 	Q_CLASSINFO( "Version", "1.0" )
 	Q_CLASSINFO( "Description", "Sets the alpha channel of an RGBA image" )
-	Q_CLASSINFO( "URL", WIKI_NODE_URL( "Set_Alpha_(Image)" ) )
+	Q_CLASSINFO( "URL", WIKI_URL( "Set-Alpha" ) )
 	Q_CLASSINFO( "Contact", "https://github.com/bigfug" )
 
 public:

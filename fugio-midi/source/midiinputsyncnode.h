@@ -1,6 +1,8 @@
 #ifndef MIDIINPUTSYNCNODE_H
 #define MIDIINPUTSYNCNODE_H
 
+#include "config.h"
+
 #include <fugio/nodecontrolbase.h>
 #include <fugio/midi/midi_input_interface.h>
 #include <fugio/midi/midi_interface.h>
@@ -14,7 +16,7 @@ class MidiInputSyncNode : public fugio::NodeControlBase, public fugio::MidiInput
 	Q_CLASSINFO( "Author", "Alex May" )
 	Q_CLASSINFO( "Version", "1.0" )
 	Q_CLASSINFO( "Description", "" )
-	Q_CLASSINFO( "URL", WIKI_NODE_URL( "Midi_Input_Sync" ) )
+	Q_CLASSINFO( "URL", WIKI_URL( "Midi-Input-Sync" ) )
 	Q_CLASSINFO( "Contact", "http://www.bigfug.com/contact/" )
 
 public:

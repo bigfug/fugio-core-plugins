@@ -24,7 +24,7 @@ class MidiFileLoadNode : public fugio::NodeControlBase
 	Q_CLASSINFO( "Author", "Alex May" )
 	Q_CLASSINFO( "Version", "1.0" )
 	Q_CLASSINFO( "Description", "Loads a MIDI file" )
-	Q_CLASSINFO( "URL", WIKI_NODE_URL( "Midi_File_Load" ) )
+	Q_CLASSINFO( "URL", WIKI_URL( "Midi-File-Load" ) )
 	Q_CLASSINFO( "Contact", "http://www.bigfug.com/contact/" )
 
 public:

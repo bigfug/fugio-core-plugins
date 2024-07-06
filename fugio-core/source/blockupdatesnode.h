@@ -15,7 +15,7 @@ class BlockUpdatesNode : public fugio::NodeControlBase, public fugio::PairedPins
 	Q_CLASSINFO( "Author", "Alex May" )
 	Q_CLASSINFO( "Version", "1.0" )
 	Q_CLASSINFO( "Description", "" )
-	Q_CLASSINFO( "URL", WIKI_NODE_URL( "Block_Updates" ) )
+	Q_CLASSINFO( "URL", WIKI_URL( "Block-Updates" ) )
 	Q_CLASSINFO( "Contact", "https://github.com/bigfug" )
 
 public:

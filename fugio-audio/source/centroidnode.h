@@ -15,7 +15,7 @@ class CentroidNode : public fugio::NodeControlBase
 	Q_CLASSINFO( "Author", "Alex May" )
 	Q_CLASSINFO( "Version", "1.0" )
 	Q_CLASSINFO( "Description", "Calculates the audio spectrum centroid value from a FFT" )
-	Q_CLASSINFO( "URL", WIKI_NODE_URL( "Centroid" ) )
+	Q_CLASSINFO( "URL", WIKI_URL( "Centroid" ) )
 	Q_CLASSINFO( "Contact", "https://github.com/bigfug" )
 
 public:

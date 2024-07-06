@@ -13,7 +13,7 @@ class OrBitsNode : public fugio::NodeControlBase
 	Q_CLASSINFO( "Author", "Alex May" )
 	Q_CLASSINFO( "Version", "1.0" )
 	Q_CLASSINFO( "Description", "Nands all the input booleans together." )
-	Q_CLASSINFO( "URL", WIKI_NODE_URL( "Or_Bits_(Logic)" ) )
+	Q_CLASSINFO( "URL", WIKI_URL( "Or-Bits" ) )
 	Q_CLASSINFO( "Contact", "https://github.com/bigfug" )
 
 public:

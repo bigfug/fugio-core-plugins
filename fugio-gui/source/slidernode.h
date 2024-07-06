@@ -19,7 +19,7 @@ class SliderNode : public fugio::NodeControlBase
 	Q_CLASSINFO( "Author", "Alex May" )
 	Q_CLASSINFO( "Version", "1.0" )
 	Q_CLASSINFO( "Description", "Slider" )
-	Q_CLASSINFO( "URL", WIKI_NODE_URL( "Slider_(GUI)" ) )
+	Q_CLASSINFO( "URL", WIKI_URL( "Slider" ) )
 	Q_CLASSINFO( "Contact", "https://github.com/bigfug" )
 
 public:

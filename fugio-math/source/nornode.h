@@ -13,7 +13,7 @@ class NorNode : public fugio::NodeControlBase
 	Q_CLASSINFO( "Author", "Alex May" )
 	Q_CLASSINFO( "Version", "1.0" )
 	Q_CLASSINFO( "Description", "Nor's' all the input booleans together." )
-	Q_CLASSINFO( "URL", WIKI_NODE_URL( "Nor_(Logic)" ) )
+	Q_CLASSINFO( "URL", WIKI_URL( "Nor" ) )
 	Q_CLASSINFO( "Contact", "https://github.com/bigfug" )
 
 public:

@@ -11,7 +11,7 @@ class TransformNode : public fugio::NodeControlBase
 	Q_CLASSINFO( "Author", "Alex May" )
 	Q_CLASSINFO( "Version", "1.0" )
 	Q_CLASSINFO( "Description", "Creates a transform" )
-	Q_CLASSINFO( "URL", WIKI_NODE_URL( "Transform_(Math)" ) )
+	Q_CLASSINFO( "URL", WIKI_URL( "Transform" ) )
 	Q_CLASSINFO( "Contact", "https://github.com/bigfug" )
 
 public:

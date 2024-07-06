@@ -12,7 +12,7 @@ class IntegerToFloatNode : public fugio::NodeControlBase, public fugio::PairedPi
 	Q_CLASSINFO( "Author", "Alex May" )
 	Q_CLASSINFO( "Version", "1.0" )
 	Q_CLASSINFO( "Description", "Converts integers to floats" )
-	Q_CLASSINFO( "URL", WIKI_NODE_URL( "Integer_To_Float" ) )
+	Q_CLASSINFO( "URL", WIKI_URL( "Integer-To-Float" ) )
 	Q_CLASSINFO( "Contact", "https://github.com/bigfug" )
 
 public:

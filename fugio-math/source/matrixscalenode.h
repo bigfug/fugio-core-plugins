@@ -19,7 +19,7 @@ class MatrixScaleNode : public fugio::NodeControlBase
 	Q_CLASSINFO( "Author", "Alex May" )
 	Q_CLASSINFO( "Version", "1.0" )
 	Q_CLASSINFO( "Description", "Create a scale Matrix4" )
-	Q_CLASSINFO( "URL", WIKI_NODE_URL( "Scale_(Matrix4)" ) )
+	Q_CLASSINFO( "URL", WIKI_URL( "Scale-Matrix" ) )
 	Q_CLASSINFO( "Contact", "https://github.com/bigfug" )
 
 public:

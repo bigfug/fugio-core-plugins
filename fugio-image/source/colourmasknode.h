@@ -15,7 +15,7 @@ class ColourMaskNode : public fugio::NodeControlBase
 	Q_CLASSINFO( "Author", "Alex May" )
 	Q_CLASSINFO( "Version", "1.0" )
 	Q_CLASSINFO( "Description", "Creates a mask for a specfic colour" )
-	Q_CLASSINFO( "URL", WIKI_NODE_URL( "Colour_Mask_(Image)" ) )
+	Q_CLASSINFO( "URL", WIKI_URL( "Colour-Mask" ) )
 	Q_CLASSINFO( "Contact", "https://github.com/bigfug" )
 
 public:

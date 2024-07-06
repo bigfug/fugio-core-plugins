@@ -13,7 +13,7 @@ class MidiDecoderNode : public fugio::NodeControlBase, public fugio::MidiInputIn
 	Q_CLASSINFO( "Author", "Alex May" )
 	Q_CLASSINFO( "Version", "1.0" )
 	Q_CLASSINFO( "Description", "Processes incoming MIDI messages" )
-	Q_CLASSINFO( "URL", WIKI_NODE_URL( "Midi_Decoder" ) )
+	Q_CLASSINFO( "URL", WIKI_URL( "Midi-Decoder" ) )
 	Q_CLASSINFO( "Contact", "http://www.bigfug.com/contact/" )
 
 public:

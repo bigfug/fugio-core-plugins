@@ -11,7 +11,7 @@ class DivideNode : public fugio::NodeControlBase
 	Q_CLASSINFO( "Author", "Alex May" )
 	Q_CLASSINFO( "Version", "1.0" )
 	Q_CLASSINFO( "Description", "Divides one number by another." )
-	Q_CLASSINFO( "URL", WIKI_NODE_URL( "Divide" ) )
+	Q_CLASSINFO( "URL", WIKI_URL( "Divide" ) )
 	Q_CLASSINFO( "Contact", "https://github.com/bigfug" )
 
 	class Operator

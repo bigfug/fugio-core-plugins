@@ -13,7 +13,7 @@ class BitsToPinsNode : public fugio::NodeControlBase
 	Q_CLASSINFO( "Author", "Alex May" )
 	Q_CLASSINFO( "Version", "1.0" )
 	Q_CLASSINFO( "Description", "" )
-	Q_CLASSINFO( "URL", WIKI_NODE_URL( "BitsToPins" ) )
+	Q_CLASSINFO( "URL", WIKI_URL( "Bits-To-Pins" ) )
 	Q_CLASSINFO( "Contact", "https://github.com/bigfug" )
 
 public:

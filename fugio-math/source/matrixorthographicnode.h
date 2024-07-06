@@ -15,7 +15,7 @@ class MatrixOrthographicNode : public fugio::NodeControlBase
 	Q_CLASSINFO( "Author", "Alex May" )
 	Q_CLASSINFO( "Version", "1.0" )
 	Q_CLASSINFO( "Description", "Create an orthographic projection Matrix4" )
-	Q_CLASSINFO( "URL", WIKI_NODE_URL( "Orthographic_(Matrix4)" ) )
+	Q_CLASSINFO( "URL", WIKI_URL( "Orthographic-Matrix" ) )
 	Q_CLASSINFO( "Contact", "https://github.com/bigfug" )
 
 public:

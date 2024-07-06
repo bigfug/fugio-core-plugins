@@ -12,7 +12,7 @@ class IntegerNode : public fugio::NodeControlBase
 	Q_CLASSINFO( "Author", "Alex May" )
 	Q_CLASSINFO( "Version", "1.0" )
 	Q_CLASSINFO( "Description", "An integer (whole) number in a GUI." )
-	Q_CLASSINFO( "URL", WIKI_NODE_URL( "Integer_(GUI)" ) )
+	Q_CLASSINFO( "URL", WIKI_URL( "Integer" ) )
 	Q_CLASSINFO( "Contact", "https://github.com/bigfug" )
 
 public:

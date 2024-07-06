@@ -9,7 +9,7 @@ class MatrixInverseNode : public fugio::NodeControlBase
 	Q_CLASSINFO( "Author", "Alex May" )
 	Q_CLASSINFO( "Version", "1.0" )
 	Q_CLASSINFO( "Description", "Creates the inverse of a Matrix4" )
-	Q_CLASSINFO( "URL", WIKI_NODE_URL( "Inverse_(Matrix4)" ) )
+	Q_CLASSINFO( "URL", WIKI_URL( "Inverse-Matrix4" ) )
 	Q_CLASSINFO( "Contact", "https://github.com/bigfug" )
 
 public:

@@ -15,7 +15,7 @@ class BooleanLatchNode : public fugio::NodeControlBase, public fugio::PairedPins
 	Q_CLASSINFO( "Author", "Alex May" )
 	Q_CLASSINFO( "Version", "1.0" )
 	Q_CLASSINFO( "Description", "" )
-	Q_CLASSINFO( "URL", WIKI_NODE_URL( "Boolean_Latch" ) )
+	Q_CLASSINFO( "URL", WIKI_URL( "Boolean-Latch" ) )
 	Q_CLASSINFO( "Contact", "https://github.com/bigfug" )
 
 public:
