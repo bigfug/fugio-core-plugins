@@ -5,13 +5,18 @@
 AutoRangeNode::AutoRangeNode(QSharedPointer<fugio::NodeInterface> pNode)
 	: NodeControlBase( pNode ), mValueAdded( false ), mCurVal( 0 ), mCurMax( 1 ), mCurMin( 0 ), mLastTime( -1 )
 {
-	mPinInput = pinInput( "Input" );
+	FUGID( PIN_INPUT_INPUT, "9e154e12-bcd8-4ead-95b1-5a59833bcf4e" );
+	FUGID( PIN_OUTPUT_OUTPUT, "1b5e9ce8-acb9-478d-b84b-9288ab3c42f5" );
+	FUGID( PIN_OUTPUT_MIN, "261cc653-d7fa-4c34-a08b-3603e8ae71d5" );
+	FUGID( PIN_OUTPUT_MAX, "249f2932-f483-422f-b811-ab679f006381" );
 
-	mValOutput = pinOutput<fugio::VariantInterface *>( "Output", mPinOutput, PID_FLOAT );
+	mPinInput = pinInput( "Input", PIN_INPUT_INPUT );
 
-	mValMin = pinOutput<fugio::VariantInterface *>( "Min", mPinMin, PID_FLOAT );
+	mValOutput = pinOutput<fugio::VariantInterface *>( "Output", mPinOutput, PID_FLOAT, PIN_OUTPUT_OUTPUT );
 
-	mValMax = pinOutput<fugio::VariantInterface *>( "Max", mPinMax, PID_FLOAT );
+	mValMin = pinOutput<fugio::VariantInterface *>( "Min", mPinMin, PID_FLOAT, PIN_OUTPUT_MIN );
+
+	mValMax = pinOutput<fugio::VariantInterface *>( "Max", mPinMax, PID_FLOAT, PIN_OUTPUT_MAX );
 }
 
 bool AutoRangeNode::initialise()

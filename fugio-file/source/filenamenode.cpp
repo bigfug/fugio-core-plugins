@@ -12,7 +12,9 @@
 FilenameNode::FilenameNode( QSharedPointer<fugio::NodeInterface> pNode )
 	: NodeControlBase( pNode )
 {
-	mValFilename = pinOutput<fugio::FilenameInterface *>( "Filename", mPinFilename, PID_FILENAME );
+	FUGID( PIN_OUTPUT_FILENAME, "9e154e12-bcd8-4ead-95b1-5a59833bcf4e" );
+
+	mValFilename = pinOutput<fugio::FilenameInterface *>( "Filename", mPinFilename, PID_FILENAME, PIN_OUTPUT_FILENAME );
 }
 
 QWidget *FilenameNode::gui()

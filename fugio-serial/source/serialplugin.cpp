@@ -13,8 +13,6 @@
 
 #include <fugio/global_signals.h>
 
-QList<QUuid>				fugio::NodeControlBase::PID_UUID;
-
 fugio::ClassEntry		SerialPlugin::mNodeClasses[] =
 {
 	fugio::ClassEntry( "Serial Input", "Serial", NID_SERIAL_INPUT, &SerialInputNode::staticMetaObject ),

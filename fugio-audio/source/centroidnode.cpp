@@ -12,9 +12,12 @@
 CentroidNode::CentroidNode( QSharedPointer<fugio::NodeInterface> pNode )
 	: NodeControlBase( pNode ), mCentroid( 0 )
 {
-	mPinInputFFT = pinInput( "FFT" );
+	FUGID( PIN_INPUT_FFT, "9e154e12-bcd8-4ead-95b1-5a59833bcf4e" );
+	FUGID( PIN_OUTPUT_CENTROID, "1b5e9ce8-acb9-478d-b84b-9288ab3c42f5" );
 
-	mValOutput = pinOutput<fugio::VariantInterface *>( "Centroid", mPinOutput, PID_FLOAT );
+	mPinInputFFT = pinInput( "FFT", PIN_INPUT_FFT );
+
+	mValOutput = pinOutput<fugio::VariantInterface *>( "Centroid", mPinOutput, PID_FLOAT, PIN_OUTPUT_CENTROID );
 
 	mPinInputFFT->setDescription( tr( "The frequency information calculated using a Fast Fourier Transform (FFT) node" ) );
 

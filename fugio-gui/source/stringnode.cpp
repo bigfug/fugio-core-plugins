@@ -16,6 +16,7 @@ StringNode::StringNode( QSharedPointer<fugio::NodeInterface> pNode )
 	: NodeControlBase( pNode ), mLastUpdate( 0 ), mLastText( 0 )
 {
 	FUGID( PIN_INPUT_BUFFER,	"1AE07069-DB1A-4E50-9294-4C725F9CDFA2" );
+	FUGID( PIN_OUTPUT_STRING, "9e154e12-bcd8-4ead-95b1-5a59833bcf4e" );
 
 	pinInput( "Trigger", PID_FUGIO_NODE_TRIGGER );
 
@@ -23,7 +24,7 @@ StringNode::StringNode( QSharedPointer<fugio::NodeInterface> pNode )
 
 	mPinInput->registerPinInputType( PID_BOOL );
 
-	mValOutputString = pinOutput<fugio::VariantInterface *>( "String", mPinValue, PID_STRING );
+	mValOutputString = pinOutput<fugio::VariantInterface *>( "String", mPinValue, PID_STRING, PIN_OUTPUT_STRING );
 }
 
 QWidget *StringNode::gui()

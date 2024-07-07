@@ -14,13 +14,18 @@
 BeatTapNode::BeatTapNode( QSharedPointer<fugio::NodeInterface> pNode )
 	: NodeControlBase( pNode ), mBeatDuration( 1000.0 ), mBeatStart( -1 ), mBeatSync( 0 )
 {
-	mPinTrigger = pinInput( "Trigger" );
+	FUGID( PIN_INPUT_TRIGGER, "9e154e12-bcd8-4ead-95b1-5a59833bcf4e" );
+	FUGID( PIN_OUTPUT_BPM, "1b5e9ce8-acb9-478d-b84b-9288ab3c42f5" );
+	FUGID( PIN_OUTPUT_SYNC, "261cc653-d7fa-4c34-a08b-3603e8ae71d5" );
+	FUGID( PIN_OUTPUT_BEAT, "249f2932-f483-422f-b811-ab679f006381" );
 
-	mValBPM = pinOutput<fugio::VariantInterface *>( "BPM", mPinBPM, PID_FLOAT );
+	mPinTrigger = pinInput( "Trigger", PIN_INPUT_TRIGGER );
 
-	mValSync = pinOutput<fugio::VariantInterface *>( "Sync", mPinSync, PID_FLOAT );
+	mValBPM = pinOutput<fugio::VariantInterface *>( "BPM", mPinBPM, PID_FLOAT, PIN_OUTPUT_BPM );
 
-	pinOutput<fugio::PinControlInterface *>( "Beat", mPinBeat, PID_TRIGGER );
+	mValSync = pinOutput<fugio::VariantInterface *>( "Sync", mPinSync, PID_FLOAT, PIN_OUTPUT_SYNC );
+
+	pinOutput<fugio::PinControlInterface *>( "Beat", mPinBeat, PID_TRIGGER, PIN_OUTPUT_BEAT );
 }
 
 bool BeatTapNode::initialise( void )

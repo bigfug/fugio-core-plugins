@@ -25,8 +25,6 @@
 
 #include <fugio/text/syntax_highlighter_factory_interface.h>
 
-QList<QUuid>				NodeControlBase::PID_UUID;
-
 fugio::GlobalInterface	*TextPlugin::mApp = 0;
 TextPlugin				*TextPlugin::mInstance = 0;
 

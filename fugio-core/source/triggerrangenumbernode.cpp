@@ -10,7 +10,9 @@
 TriggerRangeNumberNode::TriggerRangeNumberNode( QSharedPointer<fugio::NodeInterface> pNode )
 	: NodeControlBase( pNode ), mPinIdx( -1 )
 {
-	mValOutput = pinOutput<fugio::VariantInterface *>( "Number", mPinOutput, PID_FLOAT );
+	FUGID( PIN_OUTPUT_NUMBER, "9e154e12-bcd8-4ead-95b1-5a59833bcf4e" );
+
+	mValOutput = pinOutput<fugio::VariantInterface *>( "Number", mPinOutput, PID_FLOAT, PIN_OUTPUT_NUMBER );
 }
 
 void TriggerRangeNumberNode::inputsUpdated( qint64 pTimeStamp )

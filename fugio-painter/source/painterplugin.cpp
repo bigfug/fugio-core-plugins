@@ -24,8 +24,6 @@
 
 #include "fontpin.h"
 
-QList<QUuid>				fugio::NodeControlBase::PID_UUID;
-
 ClassEntry		mNodeClasses[] =
 {
 	ClassEntry( "Brush", "Painter", NID_PAINTER_BRUSH, &BrushNode::staticMetaObject ),

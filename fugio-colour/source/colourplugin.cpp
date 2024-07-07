@@ -17,8 +17,6 @@
 #include "joincolourrgbanode.h"
 #include "colourpin.h"
 
-QList<QUuid>				NodeControlBase::PID_UUID;
-
 ClassEntry		ColourPlugin::mNodeClasses[] =
 {
 	ClassEntry( "Colour", "GUI", NID_COLOUR_BUTTON, &ColourButtonNode::staticMetaObject ),

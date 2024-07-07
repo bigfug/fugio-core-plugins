@@ -24,8 +24,6 @@
 #include "imagepin.h"
 #include "painterpin.h"
 
-QList<QUuid>				NodeControlBase::PID_UUID;
-
 using namespace fugio;
 
 ClassEntry		mNodeClasses[] =

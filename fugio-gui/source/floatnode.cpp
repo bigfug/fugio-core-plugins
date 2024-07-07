@@ -13,9 +13,11 @@
 FloatNode::FloatNode( QSharedPointer<fugio::NodeInterface> pNode )
 	: NodeControlBase( pNode ), mFloat( 0 )
 {
+	FUGID( PIN_OUTPUT_NUMBER, "9e154e12-bcd8-4ead-95b1-5a59833bcf4e" );
+
 	pinInput( "Trigger", PID_FUGIO_NODE_TRIGGER );
 
-	mFloat = pinOutput<fugio::VariantInterface *>( "Number", mPinValue, PID_FLOAT );
+	mFloat = pinOutput<fugio::VariantInterface *>( "Number", mPinValue, PID_FLOAT, PIN_OUTPUT_NUMBER );
 
 	mPinValue->setDescription( tr( "The output Number" ) );
 }

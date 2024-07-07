@@ -16,16 +16,22 @@
 AudioFilterNode::AudioFilterNode( QSharedPointer<fugio::NodeInterface> pNode )
 	: NodeControlBase( pNode ), mLastDisplayChange( 0 ), mLastDisplayUpdate( 0 )
 {
-	mPinAudioInput = pinInput( "Audio" );
-	mPinFreqLower  = pinInput( "Lower" );
-	mPinFreqUpper  = pinInput( "Upper" );
-	mPinTaps       = pinInput( "Taps" );
+	FUGID( PIN_INPUT_AUDIO, "9e154e12-bcd8-4ead-95b1-5a59833bcf4e" );
+	FUGID( PIN_INPUT_LOWER, "1b5e9ce8-acb9-478d-b84b-9288ab3c42f5" );
+	FUGID( PIN_INPUT_UPPER, "261cc653-d7fa-4c34-a08b-3603e8ae71d5" );
+	FUGID( PIN_INPUT_TAPS, "249f2932-f483-422f-b811-ab679f006381" );
+	FUGID( PIN_OUTPUT_AUDIO, "ce8d578e-c5a4-422f-b3c4-a1bdf40facdb" );
+
+	mPinAudioInput = pinInput( "Audio", PIN_INPUT_AUDIO );
+	mPinFreqLower  = pinInput( "Lower", PIN_INPUT_LOWER );
+	mPinFreqUpper  = pinInput( "Upper", PIN_INPUT_UPPER );
+	mPinTaps       = pinInput( "Taps", PIN_INPUT_TAPS );
 
 	mPinFreqLower->setValue( 0.0f );
 	mPinFreqUpper->setValue( 48000.0f / 2.0f );
 	mPinTaps->setValue( 15 );
 
-	mAudioOutput = pinOutput<fugio::AudioProducerInterface *>( "Audio", mPinAudioOutput, PID_AUDIO );
+	mAudioOutput = pinOutput<fugio::AudioProducerInterface *>( "Audio", mPinAudioOutput, PID_AUDIO, PIN_OUTPUT_AUDIO );
 }
 
 bool AudioFilterNode::initialise()

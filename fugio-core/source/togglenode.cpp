@@ -8,9 +8,11 @@
 ToggleNode::ToggleNode( QSharedPointer<fugio::NodeInterface> pNode )
 	: NodeControlBase( pNode )
 {
-	mPinInput  = pinInput( "Trigger" );
+	FUGID( PIN_OUTPUT_BOOLEAN, "9e154e12-bcd8-4ead-95b1-5a59833bcf4e" );
 
-	mValOutput = pinOutput<fugio::VariantInterface *>( "Boolean", mPinOutput, PID_BOOL );
+	mPinInput  = pinInput( "Trigger", PID_FUGIO_NODE_TRIGGER );
+
+	mValOutput = pinOutput<fugio::VariantInterface *>( "Boolean", mPinOutput, PID_BOOL, PIN_OUTPUT_BOOLEAN );
 
 	mValOutput->setVariant( false );
 }

@@ -1,16 +1,17 @@
 #include "audiomixernode.h"
 #include <fugio/node_signals.h>
 
-#include "audiopin.h"
-
 AudioMixerNode::AudioMixerNode( QSharedPointer<fugio::NodeInterface> pNode )
 	: NodeControlBase( pNode )
 {
-	QSharedPointer<fugio::PinInterface>	P1 = pinInput( "Audio" );
+	FUGID( PIN_INPUT_AUDIO, "9e154e12-bcd8-4ead-95b1-5a59833bcf4e" );
+	FUGID( PIN_OUTPUT_AUDIO, "1b5e9ce8-acb9-478d-b84b-9288ab3c42f5" );
+
+	QSharedPointer<fugio::PinInterface>	P1 = pinInput( "Audio", PIN_INPUT_AUDIO );
 
 	P1->setAutoRename( true );
 
-	mValOutput = pinOutput<fugio::AudioProducerInterface *>( "Audio Mix", mPinOutput, PID_AUDIO );
+	mValOutput = pinOutput<fugio::AudioProducerInterface *>( "Audio Mix", mPinOutput, PID_AUDIO, PIN_OUTPUT_AUDIO );
 
 	P1->setDescription( tr( "The first audio source" ) );
 

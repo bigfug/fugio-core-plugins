@@ -14,7 +14,9 @@
 Vector3Node::Vector3Node( QSharedPointer<fugio::NodeInterface> pNode )
 	: NodeControlBase( pNode )
 {
-	mVec3 = pinOutput<fugio::VariantInterface *>( "Vector3", mPinVec3, PID_VECTOR3 );
+	FUGID( PIN_OUTPUT_VECTOR3, "9e154e12-bcd8-4ead-95b1-5a59833bcf4e" );
+
+	mVec3 = pinOutput<fugio::VariantInterface *>( "Vector3", mPinVec3, PID_VECTOR3, PIN_OUTPUT_VECTOR3 );
 }
 
 QWidget *Vector3Node::gui()

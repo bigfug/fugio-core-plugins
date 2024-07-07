@@ -10,16 +10,17 @@
 CrossProductNode::CrossProductNode( QSharedPointer<fugio::NodeInterface> pNode )
 	: NodeControlBase( pNode )
 {
-	FUGID( ID_NUMBER1, "c13a41c6-544b-46bb-a9f2-19dd156d236c" );
-	FUGID( ID_NUMBER2, "a145ebb2-9166-4a29-bccf-8ee184e27406" );
+	FUGID( PIN_INPUT_NUMBER1, "c13a41c6-544b-46bb-a9f2-19dd156d236c" );
+	FUGID( PIN_INPUT_NUMBER2, "a145ebb2-9166-4a29-bccf-8ee184e27406" );
+	FUGID( PIN_OUTPUT_VECTOR3, "9e154e12-bcd8-4ead-95b1-5a59833bcf4e" );
 
-	mPinInput1 = pinInput( "Vector3", ID_NUMBER1 );
-	mPinInput2 = pinInput( "Vector3", ID_NUMBER2 );
+	mPinInput1 = pinInput( "Vector3", PIN_INPUT_NUMBER1 );
+	mPinInput2 = pinInput( "Vector3", PIN_INPUT_NUMBER2 );
 
 	mPinInput1->registerPinInputType( PID_VECTOR3 );
 	mPinInput2->registerPinInputType( PID_VECTOR3 );
 
-	mValOutput = pinOutput<fugio::VariantInterface *>( "Vector3", mPinOutput, PID_VECTOR3 );
+	mValOutput = pinOutput<fugio::VariantInterface *>( "Vector3", mPinOutput, PID_VECTOR3, PIN_OUTPUT_VECTOR3 );
 }
 
 void CrossProductNode::inputsUpdated( qint64 pTimeStamp )

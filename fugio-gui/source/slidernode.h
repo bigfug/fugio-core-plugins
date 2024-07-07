@@ -42,8 +42,7 @@ protected slots:
 	void sliderValueChanged( int pValue );
 
 private:
-	QSharedPointer<fugio::PinInterface>		 mPinValue;
-	fugio::VariantInterface					*mValue;
+	fugio::PinEnt<fugio::VariantInterface>		mValue;
 };
 
 

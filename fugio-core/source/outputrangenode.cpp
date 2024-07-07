@@ -32,7 +32,7 @@ void OutputRangeNode::inputsUpdated( qint64 pTimeStamp )
 
 	if( PinCnt != mPinCnt )
 	{
-		mPidIdx = -1;
+		mPinIdx = -1;
 
 		mPinCnt = PinCnt;
 	}
@@ -56,7 +56,7 @@ void OutputRangeNode::inputsUpdated( qint64 pTimeStamp )
 
 	PinIdx = qBound( 0, PinIdx, PinCnt - 1 );
 
-	if( PinIdx == mPidIdx && !mPinInputSource->isUpdated( pTimeStamp ) )
+	if( PinIdx == mPinIdx && !mPinInputSource->isUpdated( pTimeStamp ) )
 	{
 		return;
 	}
@@ -77,7 +77,7 @@ void OutputRangeNode::inputsUpdated( qint64 pTimeStamp )
 		}
 	}
 
-	mPidIdx = PinIdx;
+	mPinIdx = PinIdx;
 }
 
 bool OutputRangeNode::canAcceptPin( fugio::PinInterface *pPin ) const

@@ -16,7 +16,9 @@ LedNode::LedNode( QSharedPointer<fugio::NodeInterface> pNode )
 	: NodeControlBase( pNode ), mLedVal( 0 ), mLastTime( -1 ), mLedColour( Qt::red ),
 	  mLedMode( BOOLEAN )
 {
-	mPinInput = pinInput( "" );
+	FUGID( PIN_INPUT_INPUT, "9e154e12-bcd8-4ead-95b1-5a59833bcf4e" );
+
+	mPinInput = pinInput( "", PIN_INPUT_INPUT );
 }
 
 bool LedNode::initialise()

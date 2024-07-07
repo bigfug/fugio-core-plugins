@@ -8,11 +8,14 @@
 BoolToTriggerNode::BoolToTriggerNode( QSharedPointer<fugio::NodeInterface> pNode )
 	: NodeControlBase( pNode )
 {
+	FUGID( PIN_INPUT_BOOL, "9e154e12-bcd8-4ead-95b1-5a59833bcf4e" );
+	FUGID( PIN_OUTPUT_TRIGGER, "1b5e9ce8-acb9-478d-b84b-9288ab3c42f5" );
+
 	QSharedPointer<fugio::PinInterface>		I, O;
 
-	I = pinInput( "Bool" );
+	I = pinInput( "Bool", PIN_INPUT_BOOL );
 
-	pinOutput<fugio::PinControlInterface *>( "Trigger", O, PID_TRIGGER );
+	pinOutput<fugio::PinControlInterface *>( "Trigger", O, PID_TRIGGER, PIN_OUTPUT_TRIGGER );
 
 	mNode->pairPins( I, O );
 
@@ -70,7 +73,7 @@ void BoolToTriggerNode::pinAdded( QSharedPointer<fugio::NodeInterface> pNode, QS
 
 		if( !DstPin )
 		{
-			pinOutput<fugio::VariantInterface *>( pPin->name(), DstPin, PID_TRIGGER );
+			pinOutput<fugio::VariantInterface *>( pPin->name(), DstPin, PID_TRIGGER, QUuid::createUuid() );
 
 			if( DstPin )
 			{

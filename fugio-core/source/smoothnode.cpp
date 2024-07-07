@@ -9,15 +9,20 @@
 SmoothNode::SmoothNode( QSharedPointer<fugio::NodeInterface> pNode )
 	: NodeControlBase( pNode ), mLastTime( std::numeric_limits<qint64>::max() )
 {
-	mPinInput = pinInput( "Number" );
+	FUGID( PIN_INPUT_NUMBER,		"9e154e12-bcd8-4ead-95b1-5a59833bcf4e" );
+	FUGID( PIN_INPUT_INC_SPEED,		"1b5e9ce8-acb9-478d-b84b-9288ab3c42f5" );
+	FUGID( PIN_INPUT_DEC_SPEED,		"261cc653-d7fa-4c34-a08b-3603e8ae71d5" );
+	FUGID( PIN_OUTPUT_NUMBER,		"249f2932-f483-422f-b811-ab679f006381" );
 
-	mPinIncSpeed = pinInput( "Inc. Speed" );
-	mPinDecSpeed = pinInput( "Dec. Speed" );
+	mPinInput = pinInput( "Number", PIN_INPUT_NUMBER );
+
+	mPinIncSpeed = pinInput( "Inc. Speed", PIN_INPUT_INC_SPEED );
+	mPinDecSpeed = pinInput( "Dec. Speed", PIN_INPUT_DEC_SPEED );
 
 	mPinIncSpeed->setValue( 1.0 );
 	mPinDecSpeed->setValue( 1.0 );
 
-	mValOutput = pinOutput<fugio::VariantInterface *>( "Number", mPinOutput, PID_FLOAT );
+	mValOutput = pinOutput<fugio::VariantInterface *>( "Number", mPinOutput, PID_FLOAT, PIN_OUTPUT_NUMBER );
 
 	mPinInput->setAutoRename( true );
 

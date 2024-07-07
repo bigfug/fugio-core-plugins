@@ -36,8 +36,6 @@
 
 // #include "miditimelinenode.h"
 
-QList<QUuid>			 NodeControlBase::PID_UUID;
-
 MidiPlugin				*MidiPlugin::mInstance = 0;
 
 ClassEntry	NodeClasses[] =

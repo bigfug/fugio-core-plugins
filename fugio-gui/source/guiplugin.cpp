@@ -30,8 +30,6 @@
 
 #include <fugio/gui/input_events_interface.h>
 
-QList<QUuid>				NodeControlBase::PID_UUID;
-
 ClassEntry		GuiPlugin::mNodeClasses[] =
 {
 	ClassEntry( "Button", "GUI", NID_BUTTON, &ButtonNode::staticMetaObject ),

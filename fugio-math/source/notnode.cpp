@@ -9,11 +9,12 @@
 NotNode::NotNode( QSharedPointer<fugio::NodeInterface> pNode )
 	: NodeControlBase( pNode )
 {
-	static const QUuid	PII_NUMBER1( "{c13a41c6-544b-46bb-a9f2-19dd156d236c}" );
+	FUGID( PIN_INPUT_BOOLEAN, "c13a41c6-544b-46bb-a9f2-19dd156d236c" );
+	FUGID( PIN_OUTPUT_BOOLEAN, "9e154e12-bcd8-4ead-95b1-5a59833bcf4e" );
 
-	mPinInput = pinInput( "Boolean", PII_NUMBER1 );
+	mPinInput = pinInput( "Boolean", PIN_INPUT_BOOLEAN );
 
-	mValOutput = pinOutput<fugio::VariantInterface *>( "Boolean", mPinOutput, PID_BOOL );
+	mValOutput = pinOutput<fugio::VariantInterface *>( "Boolean", mPinOutput, PID_BOOL, PIN_OUTPUT_BOOLEAN );
 }
 
 void NotNode::inputsUpdated( qint64 pTimeStamp )

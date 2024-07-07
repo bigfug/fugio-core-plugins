@@ -75,8 +75,7 @@
 
 #include "loggernode.h"
 
-QList<QUuid>				 NodeControlBase::PID_UUID;
-CorePlugin					*CorePlugin::mInstance = Q_NULLPTR;
+CorePlugin		*CorePlugin::mInstance = Q_NULLPTR;
 
 ClassEntry		CorePlugin::mNodeClasses[] =
 {

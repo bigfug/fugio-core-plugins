@@ -9,13 +9,14 @@
 NandNode::NandNode( QSharedPointer<fugio::NodeInterface> pNode )
 	: NodeControlBase( pNode )
 {
-	static const QUuid	PII_NUMBER1( "{c13a41c6-544b-46bb-a9f2-19dd156d236c}" );
-	static const QUuid	PII_NUMBER2( "{608ac771-490b-4ae6-9c81-12b9af526d09}" );
+	FUGID( PIN_OUTPUT_BOOLEAN, "9e154e12-bcd8-4ead-95b1-5a59833bcf4e" );
+	FUGID( PIN_INPUT_NUMBER1, "c13a41c6-544b-46bb-a9f2-19dd156d236c" );
+	FUGID( PIN_INPUT_NUMBER2, "608ac771-490b-4ae6-9c81-12b9af526d09" );
 
-	pinInput( "Boolean", PII_NUMBER1 );
-	pinInput( "Boolean", PII_NUMBER2 );
+	pinInput( "Boolean", PIN_INPUT_NUMBER1 );
+	pinInput( "Boolean", PIN_INPUT_NUMBER2 );
 
-	mValOutput = pinOutput<fugio::VariantInterface *>( "Boolean", mPinOutput, PID_BOOL );
+	mValOutput = pinOutput<fugio::VariantInterface *>( "Boolean", mPinOutput, PID_BOOL, PIN_OUTPUT_BOOLEAN );
 }
 
 void NandNode::inputsUpdated( qint64 pTimeStamp )

@@ -17,10 +17,13 @@ QMap<QString,SignalNode::SignalType>		 SignalNode::mSignalTypes;
 SignalNode::SignalNode( QSharedPointer<fugio::NodeInterface> pNode )
 	: NodeControlBase( pNode ), mSignalType( SINE ), mFrequency( 440.0 ), mVolume( 1.0 ), mPhaseCenter( 0.5 ), mPhaseOffset( 0.0 ), mBias( 0.0 )
 {
-	static const QUuid	PID_SIGNAL_TYPE  = QUuid( "{0030CB72-CCAA-43FC-86C4-5CF225C97BCC}" );
-	static const QUuid	PID_PHASE_CENTER = QUuid( "{496F6FA1-9DFB-4315-8186-EAAA643647EA}" );
-	static const QUuid	PID_PHASE_OFFSET = QUuid( "{6AA558E8-FB65-4B89-A1FD-C88CEBCD6B15}" );
-	static const QUuid	PID_BIAS         = QUuid( "{731375BF-4B74-419E-B9BF-9001FAD002BD}" );
+	FUGID( PIN_INPUT_FREQUENCY, "9e154e12-bcd8-4ead-95b1-5a59833bcf4e" );
+	FUGID( PIN_INPUT_VOLUME, "1b5e9ce8-acb9-478d-b84b-9288ab3c42f5" );
+	FUGID( PIN_OUTPUT_AUDIO, "261cc653-d7fa-4c34-a08b-3603e8ae71d5" );
+	FUGID( PIN_INPUT_SIGNAL_TYPE, "0030CB72-CCAA-43FC-86C4-5CF225C97BCC" );
+	FUGID( PIN_INPUT_PHASE_CENTER, "496F6FA1-9DFB-4315-8186-EAAA643647EA" );
+	FUGID( PIN_INPUT_PHASE_OFFSET, "6AA558E8-FB65-4B89-A1FD-C88CEBCD6B15" );
+	FUGID( PIN_INPUT_BIAS, "731375BF-4B74-419E-B9BF-9001FAD002BD" );
 
 	if( mSignalTypes.isEmpty() )
 	{
@@ -33,33 +36,33 @@ SignalNode::SignalNode( QSharedPointer<fugio::NodeInterface> pNode )
 		mSignalTypes.insert( "Brown",    SignalType::BROWN );
 	}
 
-	mPinSignalTypeChoice = pinInput<fugio::ChoiceInterface *>( tr( "Signal Type" ), mPinSignalType, PID_CHOICE, PID_SIGNAL_TYPE );
+	mPinSignalTypeChoice = pinInput<fugio::ChoiceInterface *>( tr( "Signal Type" ), mPinSignalType, PID_CHOICE, PIN_INPUT_SIGNAL_TYPE );
 
 	mPinSignalType->setValue( mSignalTypes.key( SignalType::SINE ) );
 
 	mPinSignalTypeChoice->setChoices( mSignalTypes.keys() );
 
-	mPinInputFrequency = pinInput( tr( "Frequency (Hz)" ) );
+	mPinInputFrequency = pinInput( tr( "Frequency (Hz)" ), PIN_INPUT_FREQUENCY );
 
 	mPinInputFrequency->setValue( mFrequency );
 
-	mPinInputVolume = pinInput( tr( "Volume" ) );
+	mPinInputVolume = pinInput( tr( "Volume" ), PIN_INPUT_VOLUME );
 
 	mPinInputVolume->setValue( mVolume );
 
-	mPinInputPhaseCenter = pinInput( tr( "Phase Center" ), PID_PHASE_CENTER );
+	mPinInputPhaseCenter = pinInput( tr( "Phase Center" ), PIN_INPUT_PHASE_CENTER );
 
 	mPinInputPhaseCenter->setValue( mPhaseCenter );
 
-	mPinInputPhaseOffset = pinInput( tr( "Phase Offset" ), PID_PHASE_OFFSET );
+	mPinInputPhaseOffset = pinInput( tr( "Phase Offset" ), PIN_INPUT_PHASE_OFFSET );
 
 	mPinInputPhaseOffset->setValue( mPhaseOffset );
 
-	mPinInputBias = pinInput( tr( "Bias" ), PID_BIAS );
+	mPinInputBias = pinInput( tr( "Bias" ), PIN_INPUT_BIAS );
 
 	mPinInputBias->setValue( mBias );
 
-	mValOutput = pinOutput<fugio::AudioProducerInterface *>( "Audio", mPinOutput, PID_AUDIO );
+	mValOutput = pinOutput<fugio::AudioProducerInterface *>( "Audio", mPinOutput, PID_AUDIO, PIN_OUTPUT_AUDIO );
 
 	mPinInputFrequency->setDescription( tr( "The freqency to generate in hertz (Hz)" ) );
 

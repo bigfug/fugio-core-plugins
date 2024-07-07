@@ -12,15 +12,17 @@
 ButtonNode::ButtonNode( QSharedPointer<fugio::NodeInterface> pNode )
 	: NodeControlBase( pNode ), mToggle( false ), mClicked( false ), mPressed( false ), mReleased( false )
 {
-//	static const QUuid	PII_LABEL( "{eaa00443-372e-4b17-8393-c15beb8a64ab}" );
+	FUGID( PIN_OUTPUT_TRIGGER, "9e154e12-bcd8-4ead-95b1-5a59833bcf4e" );
+	FUGID( PIN_OUTPUT_BOOLEAN, "1b5e9ce8-acb9-478d-b84b-9288ab3c42f5" );
+	FUGID( PIN_OUTPUT_TOGGLE, "261cc653-d7fa-4c34-a08b-3603e8ae71d5" );
 
 //	mPinLabel = pinInput( "Label", PII_LABEL );
 
-	mValTrigger = pinOutput<fugio::VariantInterface *>( "Trigger", mPinTrigger, PID_TRIGGER );
+	mValTrigger = pinOutput<fugio::VariantInterface *>( "Trigger", mPinTrigger, PID_TRIGGER, PIN_OUTPUT_TRIGGER );
 
-	mValBoolean = pinOutput<fugio::VariantInterface *>( "Boolean", mPinBoolean, PID_BOOL );
+	mValBoolean = pinOutput<fugio::VariantInterface *>( "Boolean", mPinBoolean, PID_BOOL, PIN_OUTPUT_BOOLEAN );
 
-	mValToggle  = pinOutput<fugio::VariantInterface *>( "Toggle", mPinToggle, PID_BOOL );
+	mValToggle  = pinOutput<fugio::VariantInterface *>( "Toggle", mPinToggle, PID_BOOL, PIN_OUTPUT_TOGGLE );
 
 //	mPinLabel->setValue( tr( "Button" ) );
 

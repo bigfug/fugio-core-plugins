@@ -101,8 +101,6 @@
 
 MathPlugin *MathPlugin::mInstance = nullptr;
 
-QList<QUuid>	NodeControlBase::PID_UUID;
-
 ClassEntry	NodeClasses[] =
 {
 	ClassEntry( "Abs", "Number", NID_ABS, &AbsNode::staticMetaObject ),

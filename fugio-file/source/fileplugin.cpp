@@ -11,8 +11,6 @@
 
 #include "filenamepin.h"
 
-QList<QUuid>				NodeControlBase::PID_UUID;
-
 ClassEntry		mNodeClasses[] =
 {
 	ClassEntry( "Filename", "GUI", NID_FILENAME, &FilenameNode::staticMetaObject ),

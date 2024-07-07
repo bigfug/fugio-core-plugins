@@ -12,9 +12,11 @@
 GrabScreenNode::GrabScreenNode( QSharedPointer<fugio::NodeInterface> pNode )
 	: NodeControlBase( pNode )
 {
-	mPinTrigger = pinInput( "Trigger" );
+	FUGID( PIN_OUTPUT_IMAGE, "9e154e12-bcd8-4ead-95b1-5a59833bcf4e" );
 
-	mValOutput = pinOutput<fugio::VariantInterface *>( "Image", mPinOutput, PID_IMAGE );
+	mPinTrigger = pinInput( "Trigger", PID_FUGIO_NODE_TRIGGER );
+
+	mValOutput = pinOutput<fugio::VariantInterface *>( "Image", mPinOutput, PID_IMAGE, PIN_OUTPUT_IMAGE );
 
 	mPinOutput->setDescription( tr( "The screenshot image" ) );
 }

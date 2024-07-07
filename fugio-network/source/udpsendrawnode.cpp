@@ -9,14 +9,16 @@
 #include <fugio/performance.h>
 #include <fugio/pin_variant_iterator.h>
 
-#include "networkplugin.h"
-
 UDPSendRawNode::UDPSendRawNode( QSharedPointer<fugio::NodeInterface> pNode )
 	: NodeControlBase( pNode ), mWriteTime( 0 )
 {
-	mPinHost = pinInput( "Host" );
-	mPinPort = pinInput( "Port" );
-	mPinData = pinInput( "Data" );
+	FUGID( PIN_INPUT_HOST, "9e154e12-bcd8-4ead-95b1-5a59833bcf4e" );
+	FUGID( PIN_INPUT_PORT, "1b5e9ce8-acb9-478d-b84b-9288ab3c42f5" );
+	FUGID( PIN_INPUT_DATA, "261cc653-d7fa-4c34-a08b-3603e8ae71d5" );
+
+	mPinHost = pinInput( "Host", PIN_INPUT_HOST );
+	mPinPort = pinInput( "Port", PIN_INPUT_PORT );
+	mPinData = pinInput( "Data", PIN_INPUT_DATA );
 
 	mPinHost->registerPinInputType( PID_STRING );
 	mPinPort->registerPinInputType( PID_INTEGER );

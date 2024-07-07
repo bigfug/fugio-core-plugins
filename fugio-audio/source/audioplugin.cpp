@@ -23,8 +23,6 @@
 #include "fftpin.h"
 #include "mononode.h"
 
-QList<QUuid>				NodeControlBase::PID_UUID;
-
 ClassEntry AudioPlugin::mNodeClasses[] =
 {
 	ClassEntry( "Audio To Array", "Audio", NID_AUDIO_TO_ARRAY, &AudioToArrayNode::staticMetaObject ),

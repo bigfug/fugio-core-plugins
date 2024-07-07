@@ -9,13 +9,17 @@
 SplitSizeNode::SplitSizeNode( QSharedPointer<fugio::NodeInterface> pNode )
 	: NodeControlBase( pNode )
 {
-	mPinInput = pinInput( tr( "Size" ) );
+	FUGID( PIN_INPUT_SIZE, "9e154e12-bcd8-4ead-95b1-5a59833bcf4e" );
+	FUGID( PIN_OUTPUT_WIDTH, "1b5e9ce8-acb9-478d-b84b-9288ab3c42f5" );
+	FUGID( PIN_OUTPUT_HEIGHT, "261cc653-d7fa-4c34-a08b-3603e8ae71d5" );
+
+	mPinInput = pinInput( tr( "Size" ), PIN_INPUT_SIZE );
 
 	mPinInput->registerPinInputType( PID_SIZE );
 
-	mWidth  = pinOutput<fugio::VariantInterface *>( tr( "Width" ), mPinWidth, PID_FLOAT );
+	mWidth  = pinOutput<fugio::VariantInterface *>( tr( "Width" ), mPinWidth, PID_FLOAT, PIN_OUTPUT_WIDTH );
 
-	mHeight = pinOutput<fugio::VariantInterface *>( tr( "Height" ), mPinHeight, PID_FLOAT );
+	mHeight = pinOutput<fugio::VariantInterface *>( tr( "Height" ), mPinHeight, PID_FLOAT, PIN_OUTPUT_HEIGHT );
 }
 
 void SplitSizeNode::inputsUpdated( qint64 pTimeStamp )

@@ -9,13 +9,14 @@ NumberToStringNode::NumberToStringNode( QSharedPointer<fugio::NodeInterface> pNo
 	static const QUuid	P_BASE   = QUuid( "{c8bee19a-67df-45f0-be17-c41f18fa5129}" );
 	static const QUuid	P_WIDTH  = QUuid( "{5d2bf0bf-287f-47d1-b177-0d5be43175b6}" );
 	static const QUuid	P_CHAR   = QUuid( "{f61e700b-a5e5-4d04-9369-7c9f96e641fe}" );
+	FUGID( PIN_OUTPUT_STRING, "9e154e12-bcd8-4ead-95b1-5a59833bcf4e" );
 
 	mPinInputNumber    = pinInput( "Number", P_NUMBER );
 	mPinInputBase      = pinInput( "Base", P_BASE );
 	mPinInputWidth     = pinInput( "Width", P_WIDTH );
 	mPinInputCharacter = pinInput( "Character", P_CHAR );
 
-	mPinOutputValue = pinOutput<fugio::VariantInterface *>( "String", mPinOutput, PID_STRING );
+	mPinOutputValue = pinOutput<fugio::VariantInterface *>( "String", mPinOutput, PID_STRING, PIN_OUTPUT_STRING );
 }
 
 void NumberToStringNode::inputsUpdated( qint64 pTimeStamp )

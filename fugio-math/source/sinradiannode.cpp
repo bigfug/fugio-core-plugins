@@ -11,9 +11,12 @@
 SinRadianNode::SinRadianNode( QSharedPointer<fugio::NodeInterface> pNode )
 	: NodeControlBase( pNode )
 {
-	mPinInput = pinInput( "Radians" );
+	FUGID( PIN_INPUT_RADIANS, "9e154e12-bcd8-4ead-95b1-5a59833bcf4e" );
+	FUGID( PIN_OUTPUT_SIN, "1b5e9ce8-acb9-478d-b84b-9288ab3c42f5" );
 
-	mValOutput = pinOutput<fugio::VariantInterface *>( "Sin", mPinOutput, PID_FLOAT );
+	mPinInput = pinInput( "Radians", PIN_INPUT_RADIANS );
+
+	mValOutput = pinOutput<fugio::VariantInterface *>( "Sin", mPinOutput, PID_FLOAT, PIN_OUTPUT_SIN );
 }
 
 void SinRadianNode::inputsUpdated( qint64 pTimeStamp )

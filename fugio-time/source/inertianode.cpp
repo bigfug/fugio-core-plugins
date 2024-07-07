@@ -13,9 +13,12 @@
 InertiaNode::InertiaNode( QSharedPointer<fugio::NodeInterface> pNode )
 	: NodeControlBase( pNode ), mTimeLast( -1 ), mValue( 0 ), mForce( 0 )
 {
-	mPinInput = pinInput( "Input" );
+	FUGID( PIN_INPUT_INPUT, "9e154e12-bcd8-4ead-95b1-5a59833bcf4e" );
+	FUGID( PIN_OUTPUT_POSITION, "1b5e9ce8-acb9-478d-b84b-9288ab3c42f5" );
 
-	mValOutput = pinOutput<fugio::VariantInterface *>( "Position", mPinOutput, PID_FLOAT );
+	mPinInput = pinInput( "Input", PIN_INPUT_INPUT );
+
+	mValOutput = pinOutput<fugio::VariantInterface *>( "Position", mPinOutput, PID_FLOAT, PIN_OUTPUT_POSITION );
 }
 
 void InertiaNode::inputsUpdated( qint64 pTimeStamp )

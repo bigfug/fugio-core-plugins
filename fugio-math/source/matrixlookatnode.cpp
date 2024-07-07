@@ -8,21 +8,27 @@
 MatrixLookAtNode::MatrixLookAtNode( QSharedPointer<fugio::NodeInterface> pNode )
 	: NodeControlBase( pNode )
 {
-	mOutputMatrix = pinOutput<fugio::VariantInterface *>( "Matrix", mPinOutputMatrix, PID_MATRIX4 );
+	FUGID( PIN_OUTPUT_MATRIX, "9e154e12-bcd8-4ead-95b1-5a59833bcf4e" );
+	FUGID( PIN_INPUT_MATRIX, "1b5e9ce8-acb9-478d-b84b-9288ab3c42f5" );
+	FUGID( PIN_INPUT_POSITION, "261cc653-d7fa-4c34-a08b-3603e8ae71d5" );
+	FUGID( PIN_INPUT_CENTER, "249f2932-f483-422f-b811-ab679f006381" );
+	FUGID( PIN_INPUT_UP, "ce8d578e-c5a4-422f-b3c4-a1bdf40facdb" );
 
-	mPinInputMatrix = pinInput( tr( "Matrix" ) );
+	mOutputMatrix = pinOutput<fugio::VariantInterface *>( "Matrix", mPinOutputMatrix, PID_MATRIX4, PIN_OUTPUT_MATRIX );
+
+	mPinInputMatrix = pinInput( tr( "Matrix" ), PIN_INPUT_MATRIX);
 
 	mPinInputMatrix->setValue( QMatrix4x4() );
 
-	mPinInputPosition = pinInput( tr( "Position" ) );
+	mPinInputPosition = pinInput( tr( "Position" ), PIN_INPUT_POSITION );
 
 	mPinInputPosition->setValue( QVector3D( 0, 0, 5 ) );
 
-	mPinInputCenter = pinInput( tr( "Center" ) );
+	mPinInputCenter = pinInput( tr( "Center" ), PIN_INPUT_CENTER );
 
 	mPinInputCenter->setValue( QVector3D( 0, 0, 0 ) );
 
-	mPinInputUp = pinInput( tr( "Up" ) );
+	mPinInputUp = pinInput( tr( "Up" ), PIN_INPUT_UP );
 
 	mPinInputUp->setValue( QVector3D( 0, 1, 0 ) );
 

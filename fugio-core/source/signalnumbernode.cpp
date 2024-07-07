@@ -14,10 +14,12 @@ QMap<QString,SignalNumberNode::SignalType>		 SignalNumberNode::mSignalTypes;
 SignalNumberNode::SignalNumberNode( QSharedPointer<fugio::NodeInterface> pNode )
 	: NodeControlBase( pNode ), mSignalType( SINE ), mFrequency( 440.0 ), mVolume( 1.0 ), mOffset( 0.5 ), mBias( 0 )
 {
-	static const QUuid	PID_SIGNAL_TYPE   = QUuid( "{0030CB72-CCAA-43FC-86C4-5CF225C97BCC}" );
-	static const QUuid	PID_SIGNAL_OFFSET = QUuid( "{496F6FA1-9DFB-4315-8186-EAAA643647EA}" );
-	static const QUuid	PID_OUTPUT_VALUE  = QUuid( "{9BAF0D8C-7034-4462-9C1A-44C7A9D44527}" );
-	FUGID( PIN_INPUT_BIAS, "51297977-7b4b-4e08-9dea-89a8add4abe0" )
+	FUGID( PID_SIGNAL_TYPE, "0030CB72-CCAA-43FC-86C4-5CF225C97BCC" );
+	FUGID( PID_SIGNAL_OFFSET, "496F6FA1-9DFB-4315-8186-EAAA643647EA" );
+	FUGID( PID_OUTPUT_VALUE, "9BAF0D8C-7034-4462-9C1A-44C7A9D44527" );
+	FUGID( PIN_INPUT_BIAS, "51297977-7b4b-4e08-9dea-89a8add4abe0" );
+	FUGID( PIN_INPUT_FREQUENCY, "9e154e12-bcd8-4ead-95b1-5a59833bcf4e" );
+	FUGID( PIN_INPUT_VOLUME, "1b5e9ce8-acb9-478d-b84b-9288ab3c42f5" );
 
 	if( mSignalTypes.isEmpty() )
 	{
@@ -33,11 +35,11 @@ SignalNumberNode::SignalNumberNode( QSharedPointer<fugio::NodeInterface> pNode )
 
 	mPinSignalTypeChoice->setChoices( mSignalTypes.keys() );
 
-	mPinInputFrequency = pinInput( tr( "Frequency (Hz)" ) );
+	mPinInputFrequency = pinInput( tr( "Frequency (Hz)" ), PIN_INPUT_FREQUENCY );
 
 	mPinInputFrequency->setValue( mFrequency );
 
-	mPinInputVolume = pinInput( tr( "Volume" ) );
+	mPinInputVolume = pinInput( tr( "Volume" ), PIN_INPUT_VOLUME );
 
 	mPinInputVolume->setValue( 1.0 );
 

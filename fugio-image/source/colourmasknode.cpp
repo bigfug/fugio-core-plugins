@@ -11,9 +11,14 @@
 ColourMaskNode::ColourMaskNode( QSharedPointer<fugio::NodeInterface> pNode )
 	: NodeControlBase( pNode )
 {
-	mPinInputImage = pinInput( "Image" );
-	mPinColour     = pinInput( "Colour" );
-	mPinHueMatch   = pinInput( "Hue Match" );
+	FUGID( PIN_INPUT_IMAGE, "9e154e12-bcd8-4ead-95b1-5a59833bcf4e" );
+	FUGID( PIN_INPUT_COLOUR, "1b5e9ce8-acb9-478d-b84b-9288ab3c42f5" );
+	FUGID( PIN_INPUT_HUE_MATCH, "261cc653-d7fa-4c34-a08b-3603e8ae71d5" );
+	FUGID( PIN_OUTPUT_IMAGE, "249f2932-f483-422f-b811-ab679f006381" );
+
+	mPinInputImage = pinInput( "Image", PIN_INPUT_IMAGE );
+	mPinColour     = pinInput( "Colour", PIN_INPUT_COLOUR );
+	mPinHueMatch   = pinInput( "Hue Match", PIN_INPUT_HUE_MATCH );
 
 	mPinInputImage->registerPinInputType( PID_IMAGE );
 
@@ -21,7 +26,7 @@ ColourMaskNode::ColourMaskNode( QSharedPointer<fugio::NodeInterface> pNode )
 
 	mPinHueMatch->registerPinInputType( PID_FLOAT );
 
-	mValOutputImage = pinOutput<fugio::VariantInterface *>( "Image", mPinOutputImage, PID_IMAGE );
+	mValOutputImage = pinOutput<fugio::VariantInterface *>( "Image", mPinOutputImage, PID_IMAGE, PIN_OUTPUT_IMAGE );
 }
 
 void ColourMaskNode::inputsUpdated( qint64 pTimeStamp )

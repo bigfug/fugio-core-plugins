@@ -12,12 +12,12 @@
 
 #include <QSettings>
 
-#include <limits>
-
 ChoiceNode::ChoiceNode( QSharedPointer<fugio::NodeInterface> pNode )
 	: NodeControlBase( pNode )
 {
-	mValChoice = pinOutput<fugio::VariantInterface *>( "Choice", mPinChoice, PID_STRING );
+	FUGID( PIN_OUTPUT_CHOICE, "9e154e12-bcd8-4ead-95b1-5a59833bcf4e" );
+
+	mValChoice = pinOutput<fugio::VariantInterface *>( "Choice", mPinChoice, PID_STRING, PIN_OUTPUT_CHOICE );
 }
 
 bool ChoiceNode::initialise()

@@ -14,7 +14,9 @@
 CronNode::CronNode( QSharedPointer<fugio::NodeInterface> pNode )
 	: NodeControlBase( pNode ), mLastTime( -1 ), mGUI( nullptr ), mForm( nullptr )
 {
-	pinOutput<fugio::PinControlInterface *>( "Trigger", mPinTrigger, PID_TRIGGER );
+	FUGID( PIN_OUTPUT_TRIGGER, "9e154e12-bcd8-4ead-95b1-5a59833bcf4e" );
+
+	pinOutput<fugio::PinControlInterface *>( "Trigger", mPinTrigger, PID_TRIGGER, PIN_OUTPUT_TRIGGER );
 
 	mYears << QPair<int,int>( 1970, 2099 );
 	mDayOfWeek << QPair<int,int>( 0, 6 );

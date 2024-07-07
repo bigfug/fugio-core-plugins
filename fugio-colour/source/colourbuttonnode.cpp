@@ -4,7 +4,6 @@
 #include <QSettings>
 
 #include "fugio/global_interface.h"
-#include "fugio/context_interface.h"
 
 #include <fugio/core/uuid.h>
 #include <fugio/colour/uuid.h>
@@ -14,7 +13,9 @@
 ColourButtonNode::ColourButtonNode( QSharedPointer<fugio::NodeInterface> pNode ) :
 	NodeControlBase( pNode )
 {
-	mColour = pinOutput<fugio::ColourInterface *>( "Colour", mPinValue, PID_COLOUR );
+	FUGID( PIN_OUTPUT_COLOUR, "9e154e12-bcd8-4ead-95b1-5a59833bcf4e" );
+
+	mColour = pinOutput<fugio::ColourInterface *>( "Colour", mPinValue, PID_COLOUR, PIN_OUTPUT_COLOUR );
 
 	mPinValue->setDescription( tr( "The selected colour" ) );
 }

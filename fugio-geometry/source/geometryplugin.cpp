@@ -13,8 +13,6 @@
 #include "polygonnode.h"
 #include "trianglestripnode.h"
 
-QList<QUuid>				NodeControlBase::PID_UUID;
-
 ClassEntry		GeometryPlugin::mNodeClasses[] =
 {
 	ClassEntry( "Polygon",			"Geometry", NID_POLYGON, &PolygonNode::staticMetaObject ),

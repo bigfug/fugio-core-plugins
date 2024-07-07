@@ -177,13 +177,18 @@ qint32 Color_HlsToRgb(qreal Hue, qreal Lumination, qreal Saturation, quint8 *Red
 ImageFilterNode::ImageFilterNode( QSharedPointer<fugio::NodeInterface> pNode )
 	: NodeControlBase( pNode )
 {
-	mPinInputImage1 = pinInput( "Image 1" );
-	mPinInputImage2 = pinInput( "Image 2" );
+	FUGID( PIN_INPUT_IMAGE_1, "9e154e12-bcd8-4ead-95b1-5a59833bcf4e" );
+	FUGID( PIN_INPUT_IMAGE_2, "1b5e9ce8-acb9-478d-b84b-9288ab3c42f5" );
+	FUGID( PIN_INPUT_FILTER, "261cc653-d7fa-4c34-a08b-3603e8ae71d5" );
+	FUGID( PIN_OUTPUT_IMAGE, "249f2932-f483-422f-b811-ab679f006381" );
+
+	mPinInputImage1 = pinInput( "Image 1", PIN_INPUT_IMAGE_1 );
+	mPinInputImage2 = pinInput( "Image 2", PIN_INPUT_IMAGE_2 );
 
 	mPinInputImage1->registerPinInputType( PID_IMAGE );
 	mPinInputImage2->registerPinInputType( PID_IMAGE );
 
-	mValFilter = pinInput<fugio::ChoiceInterface *>( "Filter", mPinFilter, PID_CHOICE );
+	mValFilter = pinInput<fugio::ChoiceInterface *>( "Filter", mPinFilter, PID_CHOICE, PIN_INPUT_FILTER );
 
 	QStringList		FilterNames;
 
@@ -195,7 +200,7 @@ ImageFilterNode::ImageFilterNode( QSharedPointer<fugio::NodeInterface> pNode )
 
 	mPinFilter->setValue( FilterNames.first() );
 
-	mValOutputImage = pinOutput<fugio::VariantInterface *>( "Image", mPinOutputImage, PID_IMAGE );
+	mValOutputImage = pinOutput<fugio::VariantInterface *>( "Image", mPinOutputImage, PID_IMAGE, PIN_OUTPUT_IMAGE );
 }
 
 void ImageFilterNode::inputsUpdated( qint64 pTimeStamp )

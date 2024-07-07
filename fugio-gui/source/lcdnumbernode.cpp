@@ -5,7 +5,9 @@
 LcdNumberNode::LcdNumberNode( QSharedPointer<fugio::NodeInterface> pNode )
 	: NodeControlBase( pNode ), mValInput( 0 )
 {
-	mPinInput = pinInput( "Number" );
+	FUGID( PIN_INPUT_NUMBER, "9e154e12-bcd8-4ead-95b1-5a59833bcf4e" );
+
+	mPinInput = pinInput( "Number", PIN_INPUT_NUMBER );
 }
 
 LcdNumberNode::~LcdNumberNode()

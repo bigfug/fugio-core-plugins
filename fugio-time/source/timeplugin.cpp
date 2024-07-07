@@ -36,8 +36,6 @@
 
 TimePlugin		*TimePlugin::mInstance = nullptr;
 
-QList<QUuid>	NodeControlBase::PID_UUID;
-
 ClassEntry	NodeClasses[] =
 {
 	ClassEntry( "Beat Tap",			"Time", NID_BEAT_TAP, &BeatTapNode::staticMetaObject ),

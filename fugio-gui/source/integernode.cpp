@@ -10,9 +10,11 @@
 IntegerNode::IntegerNode( QSharedPointer<fugio::NodeInterface> pNode )
 	: NodeControlBase( pNode )
 {
+	FUGID( PIN_OUTPUT_NUMBER, "9e154e12-bcd8-4ead-95b1-5a59833bcf4e" );
+
 	pinInput( "Trigger", PID_FUGIO_NODE_TRIGGER );
 
-	mValue = pinOutput<fugio::VariantInterface *>( "Number", mPinValue, PID_INTEGER );
+	mValue = pinOutput<fugio::VariantInterface *>( "Number", mPinValue, PID_INTEGER, PIN_OUTPUT_NUMBER );
 
 	mPinValue->setDescription( tr( "The output Number" ) );
 }

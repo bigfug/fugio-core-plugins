@@ -6,7 +6,9 @@
 SliderNode::SliderNode( QSharedPointer<fugio::NodeInterface> pNode )
 	: NodeControlBase( pNode )
 {
-	mValue = pinOutput<fugio::VariantInterface *>( "Number", mPinValue, PID_FLOAT );
+	FUGID( PIN_OUTPUT_NUMBER, "9e154e12-bcd8-4ead-95b1-5a59833bcf4e" );
+
+	pinOutput<fugio::VariantInterface>( "Number", mValue, PID_FLOAT, PIN_OUTPUT_NUMBER );
 }
 
 SliderNode::~SliderNode()
@@ -24,7 +26,7 @@ QWidget *SliderNode::gui()
 	Slider->setMinimum( 0 );
 	Slider->setMaximum( 1000 );
 
-	Slider->setValue( int( mValue->variant().toFloat() * 1000.0f ) );
+	Slider->setValue( int( mValue.mEnt->variant().toFloat() * 1000.0f ) );
 
 	connect( Slider, SIGNAL(sliderMoved(int)), this, SLOT(sliderValueChanged(int)) );
 
@@ -37,23 +39,23 @@ void SliderNode::sliderValueChanged( int pValue )
 {
 	float		NewVal = float( pValue ) / 1000.0f;
 
-	if( NewVal != mValue->variant().toFloat() )
+	if( NewVal != mValue.mEnt->variant().toFloat() )
 	{
-		mValue->setVariant( NewVal );
+		mValue.mEnt->setVariant( NewVal );
 
-		pinUpdated( mPinValue );
+		pinUpdated( mValue.mPin );
 	}
 }
 
 void SliderNode::loadSettings( QSettings &pSettings)
 {
-	float		NewVal = pSettings.value( "value", mValue->variant() ).toFloat();
+	float		NewVal = pSettings.value( "value", mValue.mEnt->variant() ).toFloat();
 
-	if( NewVal != mValue->variant().toFloat() )
+	if( NewVal != mValue.mEnt->variant().toFloat() )
 	{
-		mValue->setVariant( NewVal );
+		mValue.mEnt->setVariant( NewVal );
 
-		pinUpdated( mPinValue );
+		pinUpdated( mValue.mPin );
 	}
 
 	emit valueChanged( int( NewVal * 1000.0f ) );
@@ -61,5 +63,5 @@ void SliderNode::loadSettings( QSettings &pSettings)
 
 void SliderNode::saveSettings( QSettings &pSettings ) const
 {
-	pSettings.setValue( "value", mValue->variant().toFloat() );
+	pSettings.setValue( "value", mValue.mEnt->variant().toFloat() );
 }

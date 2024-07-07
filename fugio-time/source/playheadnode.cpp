@@ -10,7 +10,9 @@
 PlayheadNode::PlayheadNode( QSharedPointer<fugio::NodeInterface> pNode ) :
 	NodeControlBase( pNode )
 {
-	mValTime = pinOutput<fugio::VariantInterface *>( "Time", mPinTime, PID_FLOAT );
+	FUGID( PIN_OUTPUT_TIME, "9e154e12-bcd8-4ead-95b1-5a59833bcf4e" );
+
+	mValTime = pinOutput<fugio::VariantInterface *>( "Time", mPinTime, PID_FLOAT, PIN_OUTPUT_TIME );
 }
 
 bool PlayheadNode::initialise()

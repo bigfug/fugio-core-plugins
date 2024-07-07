@@ -17,8 +17,6 @@
 
 using namespace fugio;
 
-QList<QUuid>	NodeControlBase::PID_UUID;
-
 ClassEntry	NodeClasses[] =
 {
 	ClassEntry( "Query", "JSON", NID_JSON_QUERY, &JsonQueryNode::staticMetaObject ),

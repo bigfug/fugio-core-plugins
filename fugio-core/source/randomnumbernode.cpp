@@ -7,11 +7,13 @@
 RandomNumberNode::RandomNumberNode( QSharedPointer<fugio::NodeInterface> pNode )
 	: NodeControlBase( pNode ), mDistribution( 0.0, 1.0 )
 {
+	FUGID( PIN_OUTPUT_RANDOM, "9e154e12-bcd8-4ead-95b1-5a59833bcf4e" );
+
 	mPinTrigger = pinInput( "Trigger", PID_FUGIO_NODE_TRIGGER );
 
 	QSharedPointer<fugio::PinInterface>	PinTmp;
 
-	pinOutput<fugio::VariantInterface *>( tr( "Random" ), PinTmp, PID_FLOAT );
+	pinOutput<fugio::VariantInterface *>( tr( "Random" ), PinTmp, PID_FLOAT, PIN_OUTPUT_RANDOM );
 }
 
 void RandomNumberNode::inputsUpdated( qint64 pTimeStamp )

@@ -31,11 +31,8 @@ public:
 	virtual void inputsUpdated( qint64 pTimeStamp );
 
 private:
-	QSharedPointer<fugio::PinInterface>			 mPinSize;
-	fugio::VariantInterface						*mValSize;
-
-	QSharedPointer<fugio::PinInterface>			 mPinImage;
-	fugio::VariantInterface						*mImage;
+	QSharedPointer<fugio::PinInterface>			 mSize;
+	fugio::PinEnt<fugio::VariantInterface>		 mImage;
 
 	QImage										 mImageData;
 };

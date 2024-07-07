@@ -13,6 +13,8 @@ EnvelopeNode::EnvelopeNode( QSharedPointer<fugio::NodeInterface> pNode )
 	static QUuid	PID_DECAY   = QUuid( "{233FAA84-FCCC-4201-90E7-00E26CDAF82E}" );
 	static QUuid	PID_RELEASE = QUuid( "{EC9EDF19-DCDB-4CB2-85AE-F799EF24CA3D}" );
 	static QUuid	PID_SUSTAIN = QUuid( "{10AC9AA4-A883-468A-A64A-24804BD94991}" );
+	FUGID( PIN_INPUT_IN1, "9e154e12-bcd8-4ead-95b1-5a59833bcf4e" );
+	FUGID( PIN_OUTPUT_OUT1, "1b5e9ce8-acb9-478d-b84b-9288ab3c42f5" );
 
 	// mPinAttack  = pinInput( "Attack", PID_ATTACK );
 	mAttack = pinInput<fugio::FloatInterface *>( "Attack", mPinAttack, PID_FLOAT, PID_ATTACK );
@@ -31,13 +33,13 @@ EnvelopeNode::EnvelopeNode( QSharedPointer<fugio::NodeInterface> pNode )
 
 	QSharedPointer<fugio::PinInterface>			 mPinInput;
 
-	mPinInput = pinInput( "Input 1" );
+	mPinInput = pinInput( "Input 1", PIN_INPUT_IN1 );
 
 	mPinInput->registerPinInputType( PID_BOOL );
 
 	QSharedPointer<fugio::PinInterface>			 mPinOutput;
 
-	pinOutput<fugio::VariantInterface *>( "Output 1", mPinOutput, PID_FLOAT );
+	pinOutput<fugio::VariantInterface *>( "Output 1", mPinOutput, PID_FLOAT, PIN_OUTPUT_OUT1 );
 
 	mNode->pairPins( mPinInput, mPinOutput );
 }

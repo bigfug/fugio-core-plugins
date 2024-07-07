@@ -9,16 +9,21 @@
 NumberSpreadNode::NumberSpreadNode( QSharedPointer<fugio::NodeInterface> pNode )
 	: NodeControlBase( pNode )
 {
-	mPinValue  = pinInput( "Number" );
-	mPinCenter = pinInput( "Center" );
-	mPinSpread = pinInput( "Spread" );
+	FUGID( PIN_INPUT_NUMBER, "9e154e12-bcd8-4ead-95b1-5a59833bcf4e" );
+	FUGID( PIN_INPUT_CENTER, "1b5e9ce8-acb9-478d-b84b-9288ab3c42f5" );
+	FUGID( PIN_INPUT_SPREAD, "261cc653-d7fa-4c34-a08b-3603e8ae71d5" );
+	FUGID( PIN_OUTPUT_NUMBER, "249f2932-f483-422f-b811-ab679f006381" );
+
+	mPinValue  = pinInput( "Number", PIN_INPUT_NUMBER );
+	mPinCenter = pinInput( "Center", PIN_INPUT_CENTER );
+	mPinSpread = pinInput( "Spread", PIN_INPUT_SPREAD );
 
 	mPinValue->setValue( 1.0f );
 	mPinSpread->setValue( 1.0f );
 
 	QSharedPointer<fugio::PinInterface>		P;
 
-	pinOutput<fugio::PinControlInterface *>( "Number", P, PID_FLOAT );
+	pinOutput<fugio::PinControlInterface *>( "Number", P, PID_FLOAT, PIN_OUTPUT_NUMBER );
 }
 
 void NumberSpreadNode::inputsUpdated( qint64 pTimeStamp )

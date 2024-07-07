@@ -40,8 +40,6 @@
 #include "universesendnode.h"
 #include "universereceivenode.h"
 
-QList<QUuid>	NodeControlBase::PID_UUID;
-
 NetworkPlugin *NetworkPlugin::mInstance = 0;
 
 ClassEntry	NodeClasses[] =

@@ -11,15 +11,14 @@
 #include <fugio/core/array_interface.h>
 #include <fugio/core/variant_interface.h>
 
-#include "networkplugin.h"
-
 TCPReceiveRawNode::TCPReceiveRawNode( QSharedPointer<fugio::NodeInterface> pNode )
 	: NodeControlBase( pNode ), mStream( nullptr )
 {
 	FUGID( PIN_OUTPUT_BUFFER,		"70E5469F-A27B-4A54-BDE0-C2547A8EA269" );
 	FUGID( PIN_OUTPUT_CONNECTED,	"DF4D11E8-5761-4D3F-B7F9-AF81731D402F" );
+	FUGID( PIN_INPUT_PORT, "9e154e12-bcd8-4ead-95b1-5a59833bcf4e" );
 
-	mPinPort = pinInput( "Port" );
+	mPinPort = pinInput( "Port", PIN_INPUT_PORT );
 
 	mPinPort->registerPinInputType( PID_INTEGER );
 

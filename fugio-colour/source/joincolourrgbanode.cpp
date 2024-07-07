@@ -8,12 +8,18 @@
 JoinColourRGBANode::JoinColourRGBANode( QSharedPointer<fugio::NodeInterface> pNode )
 	: NodeControlBase( pNode )
 {
-	mPinInputRed   = pinInput( "Red" );
-	mPinInputGreen = pinInput( "Green" );
-	mPinInputBlue  = pinInput( "Blue" );
-	mPinInputAlpha = pinInput( "Alpha" );
+	FUGID( PIN_INPUT_RED, "9e154e12-bcd8-4ead-95b1-5a59833bcf4e" );
+	FUGID( PIN_INPUT_GREEN, "1b5e9ce8-acb9-478d-b84b-9288ab3c42f5" );
+	FUGID( PIN_INPUT_BLUE, "261cc653-d7fa-4c34-a08b-3603e8ae71d5" );
+	FUGID( PIN_INPUT_ALPHA, "249f2932-f483-422f-b811-ab679f006381" );
+	FUGID( PIN_OUTPUT_COLOUR, "ce8d578e-c5a4-422f-b3c4-a1bdf40facdb" );
 
-	mValOutputColour = pinOutput<fugio::ColourInterface *>( "Colour", mPinOutputColour, PID_COLOUR );
+	mPinInputRed   = pinInput( "Red", PIN_INPUT_RED );
+	mPinInputGreen = pinInput( "Green", PIN_INPUT_GREEN );
+	mPinInputBlue  = pinInput( "Blue", PIN_INPUT_BLUE );
+	mPinInputAlpha = pinInput( "Alpha", PIN_INPUT_ALPHA );
+
+	mValOutputColour = pinOutput<fugio::ColourInterface *>( "Colour", mPinOutputColour, PID_COLOUR, PIN_OUTPUT_COLOUR );
 
 	mPinInputRed->setValue( "0.0" );
 	mPinInputGreen->setValue( "0.5" );

@@ -15,8 +15,11 @@
 TCPSendNode::TCPSendNode( QSharedPointer<fugio::NodeInterface> pNode )
 	: NodeControlBase( pNode ), mWriteTime( 0 )
 {
-	mPinHost = pinInput( "Host" );
-	mPinPort = pinInput( "Port" );
+	FUGID( PIN_INPUT_HOST, "9e154e12-bcd8-4ead-95b1-5a59833bcf4e" );
+	FUGID( PIN_INPUT_PORT, "1b5e9ce8-acb9-478d-b84b-9288ab3c42f5" );
+
+	mPinHost = pinInput( "Host", PIN_INPUT_HOST );
+	mPinPort = pinInput( "Port", PIN_INPUT_PORT );
 
 	mPinHost->registerPinInputType( PID_STRING );
 	mPinPort->registerPinInputType( PID_INTEGER );

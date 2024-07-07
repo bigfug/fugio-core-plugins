@@ -6,12 +6,13 @@
 #include <QDir>
 
 #include "fugio/global_interface.h"
-#include "fugio/context_interface.h"
 
 FileWatcherNode::FileWatcherNode( QSharedPointer<fugio::NodeInterface> pNode ) :
 	NodeControlBase( pNode ), mProcess( this )
 {
-	mPinStringInterface = pinOutput<fugio::VariantInterface *>( "String", mPinString, PID_STRING );
+	FUGID( PIN_OUTPUT_STRING, "9e154e12-bcd8-4ead-95b1-5a59833bcf4e" );
+
+	mPinStringInterface = pinOutput<fugio::VariantInterface *>( "String", mPinString, PID_STRING, PIN_OUTPUT_STRING );
 
 	connect( &mWatcher, SIGNAL(fileChanged(QString)), this, SLOT(onFileUpdate(QString)) );
 }

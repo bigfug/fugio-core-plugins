@@ -12,9 +12,12 @@
 DelayNode::DelayNode( QSharedPointer<fugio::NodeInterface> pNode )
 	: NodeControlBase( pNode ), mTriggerTime( -1 )
 {
-	mPinNumber = pinInput( "Number" );
+	FUGID( PIN_INPUT_NUMBER, "9e154e12-bcd8-4ead-95b1-5a59833bcf4e" );
+	FUGID( PIN_OUTPUT_TRIGGER, "1b5e9ce8-acb9-478d-b84b-9288ab3c42f5" );
 
-	pinOutput<fugio::PinControlInterface *>( "Trigger", mPinTrigger, PID_TRIGGER );
+	mPinNumber = pinInput( "Number", PIN_INPUT_NUMBER );
+
+	pinOutput<fugio::PinControlInterface *>( "Trigger", mPinTrigger, PID_TRIGGER, PIN_OUTPUT_TRIGGER );
 }
 
 void DelayNode::inputsUpdated( qint64 pTimeStamp )

@@ -13,11 +13,16 @@
 VCFNode::VCFNode( QSharedPointer<fugio::NodeInterface> pNode )
 	: NodeControlBase( pNode ), mCutoff( 1 ), mResonance( 0 )
 {
-	mPinAudioInput = pinInput( "Audio" );
-	mPinCutoff     = pinInput( "Cutoff" );
-	mPinResonance  = pinInput( "Resonance" );
+	FUGID( PIN_INPUT_AUDIO, "9e154e12-bcd8-4ead-95b1-5a59833bcf4e" );
+	FUGID( PIN_INPUT_CUTOFF, "1b5e9ce8-acb9-478d-b84b-9288ab3c42f5" );
+	FUGID( PIN_INPUT_RESONANCE, "261cc653-d7fa-4c34-a08b-3603e8ae71d5" );
+	FUGID( PIN_OUTPUT_AUDIO, "249f2932-f483-422f-b811-ab679f006381" );
 
-	mAudioOutput = pinOutput<fugio::AudioProducerInterface *>( "Audio", mPinAudioOutput, PID_AUDIO );
+	mPinAudioInput = pinInput( "Audio", PIN_INPUT_AUDIO );
+	mPinCutoff     = pinInput( "Cutoff", PIN_INPUT_CUTOFF );
+	mPinResonance  = pinInput( "Resonance", PIN_INPUT_RESONANCE );
+
+	mAudioOutput = pinOutput<fugio::AudioProducerInterface *>( "Audio", mPinAudioOutput, PID_AUDIO, PIN_OUTPUT_AUDIO );
 
 	mPinCutoff->setValue( 0.125 );
 	mPinResonance->setValue( 0.5 );

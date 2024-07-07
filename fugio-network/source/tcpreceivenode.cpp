@@ -11,12 +11,12 @@
 #include <fugio/core/array_interface.h>
 #include <fugio/core/variant_interface.h>
 
-#include "networkplugin.h"
-
 TCPReceiveNode::TCPReceiveNode( QSharedPointer<fugio::NodeInterface> pNode )
 	: NodeControlBase( pNode )
 {
-	mPinPort = pinInput( "Port" );
+	FUGID( PIN_INPUT_PORT, "9e154e12-bcd8-4ead-95b1-5a59833bcf4e" );
+
+	mPinPort = pinInput( "Port", PIN_INPUT_PORT );
 
 	mPinPort->registerPinInputType( PID_INTEGER );
 
@@ -109,7 +109,7 @@ void TCPReceiveNode::serverRead()
 				P = pinOutput( Name, ControlId, LocalId );
 			}
 
-			if( SerialiseInterface *S = qobject_cast<SerialiseInterface *>( P->control()->qobject() ) )
+			if( fugio::SerialiseInterface *S = qobject_cast<fugio::SerialiseInterface *>( P->control()->qobject() ) )
 			{
 				S->deserialise( *D );
 

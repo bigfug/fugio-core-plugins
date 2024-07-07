@@ -8,15 +8,18 @@
 #include <fugio/pin_signals.h>
 
 #include <qmath.h>
-#include <cmath>
 
 RingModulatorNode::RingModulatorNode( QSharedPointer<fugio::NodeInterface> pNode )
 	: NodeControlBase( pNode )
 {
-	mPinAudioInput1  = pinInput( "Audio" );
-	mPinAudioInput2  = pinInput( "Signal" );
+	FUGID( PIN_INPUT_AUDIO, "9e154e12-bcd8-4ead-95b1-5a59833bcf4e" );
+	FUGID( PIN_INPUT_SIGNAL, "1b5e9ce8-acb9-478d-b84b-9288ab3c42f5" );
+	FUGID( PIN_OUTPUT_AUDIO, "261cc653-d7fa-4c34-a08b-3603e8ae71d5" );
 
-	mAudioOutput = pinOutput<fugio::AudioProducerInterface *>( "Audio", mPinAudioOutput, PID_AUDIO );
+	mPinAudioInput1  = pinInput( "Audio", PIN_INPUT_AUDIO );
+	mPinAudioInput2  = pinInput( "Signal", PIN_INPUT_SIGNAL );
+
+	mAudioOutput = pinOutput<fugio::AudioProducerInterface *>( "Audio", mPinAudioOutput, PID_AUDIO, PIN_OUTPUT_AUDIO );
 }
 
 bool RingModulatorNode::initialise()

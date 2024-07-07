@@ -15,13 +15,17 @@
 MagnitudeNode::MagnitudeNode( QSharedPointer<fugio::NodeInterface> pNode )
 	: NodeControlBase( pNode ), mMagnitude( 0 ), mSamplePosition( 0 ), mProducerInstance( nullptr )
 {
-	mPinAudio = pinInput( "Audio" );
+	FUGID( PIN_INPUT_AUDIO, "9e154e12-bcd8-4ead-95b1-5a59833bcf4e" );
+	FUGID( PIN_INPUT_SAMPLES, "1b5e9ce8-acb9-478d-b84b-9288ab3c42f5" );
+	FUGID( PIN_OUTPUT_MAGNITUDE, "261cc653-d7fa-4c34-a08b-3603e8ae71d5" );
 
-	mPinSampleCount = pinInput( "Samples" );
+	mPinAudio = pinInput( "Audio", PIN_INPUT_AUDIO );
+
+	mPinSampleCount = pinInput( "Samples", PIN_INPUT_SAMPLES );
 
 	mPinSampleCount->setValue( 48000/25 );
 
-	mValOutput = pinOutput<fugio::VariantInterface *>( "Magnitude", mPinOutput, PID_FLOAT );
+	mValOutput = pinOutput<fugio::VariantInterface *>( "Magnitude", mPinOutput, PID_FLOAT, PIN_OUTPUT_MAGNITUDE );
 
 	mPinAudio->setDescription( tr( "The source audio signal" ) );
 
