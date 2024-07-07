@@ -1,12 +1,11 @@
-#include <stdlib.h>
-
-#if defined( Q_OS_UNIX )
-#include <malloc/malloc.h>
-#endif
 
 #include "imagepin.h"
 #include <QSettings>
 #include <QImage>
+
+#if defined( Q_OS_UNIX )
+#include <malloc/malloc.h>
+#endif
 
 ImagePin::ImagePin( QSharedPointer<fugio::PinInterface> pPin )
 	: PinControlBase( pPin ), VariantHelper( QMetaType::Type( qMetaTypeId<fugio::Image>() ), PID_IMAGE )
@@ -58,7 +57,7 @@ QString ImagePin::toString() const
 				break;
 		}
 
-		ValLst << QString( "%1: %2" ).arg( FmtStr ).arg( FmtVal );
+		ValLst << QString( "%1: %2" ).arg( FmtStr, FmtVal );
 	}
 
 	return( ValLst.join( '\n' ) );
