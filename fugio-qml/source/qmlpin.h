@@ -3,6 +3,7 @@
 
 #include <QObject>
 #include <QQmlListProperty>
+#include <QQmlEngine>
 
 #include <fugio/pin_interface.h>
 #include <fugio/pin_control_interface.h>
@@ -11,7 +12,10 @@ class QMLPin : public QObject
 {
 	Q_OBJECT
 
-	Q_PROPERTY( QObject *control READ control )
+	QML_ELEMENT
+	QML_UNCREATABLE( "" )
+
+	Q_PROPERTY( QObject *control READ control CONSTANT )
 	Q_PROPERTY( QObject *connectedPin READ connectedPin )
 	Q_PROPERTY( QVariant value READ value WRITE setValue NOTIFY valueChanged )
 	Q_PROPERTY( QString name READ name WRITE setName NOTIFY nameChanged )
@@ -28,13 +32,13 @@ public:
 
 	// Not Q_INVOLKABLE to retain ownership of returned pointer
 
-	QObject *control( void ) const;
+	Q_INVOKABLE QObject *control( void ) const;
 
 	QObject *connectedPin( void );
 
 	QString name() const;
 
-	QVariant value() const;
+	Q_INVOKABLE QVariant value() const;
 
 	Q_INVOKABLE bool isUpdated( qint64 pTimeStamp );
 

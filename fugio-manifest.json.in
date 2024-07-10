@@ -65,6 +65,11 @@
 		"win64": "@FUGIO_PLUGIN_URL@/fugio-painter-win64.zip"
 	  }
 	},
+	"com.bigfug.fugio.qml": {
+	  "1.0.0": {
+		"win64": "@FUGIO_PLUGIN_URL@/fugio-qml-win64.zip"
+	  }
+	},
 	"com.bigfug.fugio.serial": {
 	  "1.0.0": {
 		"win64": "@FUGIO_PLUGIN_URL@/fugio-serial-win64.zip"

@@ -65,7 +65,14 @@ QObject *QMLPin::findInterface( const QString &pUUID )
 
 QObject *QMLPin::control() const
 {
-	return( mPin->hasControl() ? mPin->control()->qobject() : nullptr );
+	QObject		*O = ( mPin->hasControl() ? mPin->control()->qobject() : nullptr );
+
+	if( O )
+	{
+		QJSEngine::setObjectOwnership( O, QJSEngine::CppOwnership);
+	}
+
+	return( O );
 }
 
 QString QMLPin::name() const
