@@ -76,7 +76,7 @@ public:
 		}
 	}
 
-	virtual QVariant variant( int pIndex, int pOffset ) const Q_DECL_OVERRIDE
+	virtual QVariant variant( int pIndex = 0, int pOffset = 0 ) const Q_DECL_OVERRIDE
 	{
 		if( !mCount )
 		{

@@ -11,7 +11,7 @@ LoadNode::LoadNode( QSharedPointer<fugio::NodeInterface> pNode )
 
 	mPinInputTrigger = pinInput( "Trigger", PID_FUGIO_NODE_TRIGGER );
 
-	mPinInputFilename = pinInput( "Filename", PIN_INPUT_FILENAME );
+	mValInputFilename = pinInput<fugio::FilenameInterface *>( "Filename", mPinInputFilename, PID_FILENAME, PIN_INPUT_FILENAME );
 
 	mValOutputByteArray = pinOutput<fugio::VariantInterface *>( "ByteArray", mPinOutputByteArray, PID_BYTEARRAY, PIN_OUTPUT_BYTEARRAY );
 }
@@ -22,15 +22,22 @@ void LoadNode::inputsUpdated( qint64 pTimeStamp )
 
 	if( !pTimeStamp || mPinInputFilename->isUpdated( pTimeStamp ) )
 	{
-		fugio::FilenameInterface	*F = input<fugio::FilenameInterface *>( mPinInputFilename );
-
-		if( F )
+		if( mPinInputFilename->isConnected() )
 		{
-			Filename = F->filename();
+			fugio::FilenameInterface	*F = input<fugio::FilenameInterface *>( mPinInputFilename );
+
+			if( F )
+			{
+				Filename = F->filename();
+			}
+			else
+			{
+				Filename = variant( mPinInputFilename ).toString();
+			}
 		}
 		else
 		{
-			Filename = variant( mPinInputFilename ).toString();
+			Filename = mValInputFilename->filename();
 		}
 
 		if( Filename.isEmpty() )

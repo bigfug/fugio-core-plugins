@@ -33,6 +33,7 @@ public:
 private:
 	QSharedPointer<fugio::PinInterface>			 mPinInputTrigger;
 	QSharedPointer<fugio::PinInterface>			 mPinInputFilename;
+	fugio::FilenameInterface					*mValInputFilename;
 
 	QSharedPointer<fugio::PinInterface>			 mPinOutputByteArray;
 	fugio::VariantInterface						*mValOutputByteArray;
