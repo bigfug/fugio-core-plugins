@@ -12,16 +12,20 @@ class QMLPin : public QObject
 {
 	Q_OBJECT
 
-	QML_ELEMENT
-	QML_UNCREATABLE( "" )
-
 	Q_PROPERTY( QObject *control READ control CONSTANT )
 	Q_PROPERTY( QObject *connectedPin READ connectedPin )
 	Q_PROPERTY( QVariant value READ value WRITE setValue NOTIFY valueChanged )
 	Q_PROPERTY( QString name READ name WRITE setName NOTIFY nameChanged )
 	Q_PROPERTY( int count READ count WRITE setCount )
+	Q_PROPERTY( QString type READ type WRITE setType CONSTANT )
+	Q_PROPERTY( QString uuid READ uuid WRITE setUuid CONSTANT )
+	Q_PROPERTY( QObject *node READ node WRITE setNode )
+
+	QML_NAMED_ELEMENT( "Pin" )
 
 public:
+	explicit QMLPin( QObject *parent = nullptr );
+
 	explicit QMLPin( QSharedPointer<fugio::PinInterface> pPin );
 
 	virtual ~QMLPin( void ) {}
@@ -52,9 +56,20 @@ public:
 
 	Q_INVOKABLE void trigger( void );
 
+	Q_INVOKABLE void initialise( void );
+
 	int count( void );
 
 	void setCount( int pCount );
+
+	QString type( void );
+
+	QString uuid( void );
+
+	QObject *node( void ) const
+	{
+		return( mNode );
+	}
 
 signals:
 	void nameChanged( QString name );
@@ -68,13 +83,23 @@ public slots:
 
 	void setValue( QVariant value );
 
+	void setType( QString type );
+
+	void setUuid( QString uuid );
+
+	void setNode( QObject *node );
+
 private slots:
 	void signalNameChanged( QString name );
 
 	void signalValueChanged( QVariant value );
 
 private:
-	QSharedPointer<fugio::PinInterface>		mPin;
+	QSharedPointer<fugio::PinInterface>		 mPin;
+	QString									 mName;
+	QString									 mType;
+	QString									 mUuid;
+	QObject									*mNode;
 };
 
 #endif // QMLPIN_H

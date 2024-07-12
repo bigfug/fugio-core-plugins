@@ -9,6 +9,16 @@
 
 #include <fugio/core/variant_interface.h>
 
+#include "qmlplugin.h"
+
+#include "qmlnode.h"
+
+QMLPin::QMLPin(QObject *parent)
+	: QObject( parent ), mNode( nullptr )
+{
+
+}
+
 QMLPin::QMLPin( QSharedPointer<fugio::PinInterface> pPin )
 	: mPin( pPin )
 {
@@ -19,7 +29,7 @@ QMLPin::QMLPin( QSharedPointer<fugio::PinInterface> pPin )
 
 QObject *QMLPin::connectedPin()
 {
-	QSharedPointer<fugio::PinInterface>		 P = mPin->connectedPin();
+	QSharedPointer<fugio::PinInterface>		 P = ( mPin ? mPin->connectedPin() : nullptr );
 
 	QMLPin									*Q = P ? new QMLPin( P ) : nullptr;
 
@@ -65,7 +75,7 @@ QObject *QMLPin::findInterface( const QString &pUUID )
 
 QObject *QMLPin::control() const
 {
-	QObject		*O = ( mPin->hasControl() ? mPin->control()->qobject() : nullptr );
+	QObject		*O = ( mPin && mPin->hasControl() ? mPin->control()->qobject() : nullptr );
 
 	if( O )
 	{
@@ -77,27 +87,35 @@ QObject *QMLPin::control() const
 
 QString QMLPin::name() const
 {
-	return( mPin->name() );
+	return( mPin ? mPin->name() : mName );
 }
 
 QVariant QMLPin::value() const
 {
-	return( mPin->value() );
+	return( mPin ? mPin->value() : QVariant() );
 }
 
-bool QMLPin::isUpdated(qint64 pTimeStamp)
+bool QMLPin::isUpdated( qint64 pTimeStamp )
 {
-	return( mPin->isUpdated( pTimeStamp ) );
+	return( mPin ? mPin->isUpdated( pTimeStamp ) : false );
 }
 
 void QMLPin::setName( QString name )
 {
-	mPin->setName( name );
+	mName = name;
+
+	if( mPin )
+	{
+		mPin->setName( name );
+	}
 }
 
 void QMLPin::setValue( QVariant value )
 {
-	mPin->setValue( value );
+	if( mPin )
+	{
+		mPin->setValue( value );
+	}
 }
 
 void QMLPin::signalNameChanged( QString name )
@@ -197,6 +215,41 @@ void QMLPin::trigger()
 	mPin->node()->context()->pinUpdated( mPin );
 }
 
+void QMLPin::initialise()
+{
+	QMLNode *Node = qobject_cast<QMLNode *>( mNode );
+
+	if( !Node )
+	{
+		return;
+	}
+
+	QUuid		PinLocalId = QUuid::fromString( mUuid );
+
+	mPin = Node->sharedNode()->findPinByLocalId( PinLocalId );
+
+	if( !mPin )
+	{
+		QUuid	PinType = QMLPlugin::app()->findPinByClass( mType );
+
+		if( PinType.isNull() )
+		{
+			return;
+		}
+
+		mPin = Node->sharedNode()->createPin( mName, PIN_OUTPUT, PinType, PinLocalId );
+
+		if( !mPin )
+		{
+			return;
+		}
+	}
+
+	connect( mPin->qobject(), SIGNAL(nameChanged(QString)), this, SLOT(setName(QString)) );
+
+	connect( mPin->qobject(), SIGNAL(valueChanged(QVariant)), this, SLOT(setValue(QVariant)) );
+}
+
 int QMLPin::count()
 {
 	return( variantCount() );
@@ -216,3 +269,37 @@ void QMLPin::setCount( int pCount )
 		V->setVariantCount( pCount );
 	}
 }
+
+QString QMLPin::type()
+{
+	return( mType );
+}
+
+QString QMLPin::uuid()
+{
+	return( mUuid );
+}
+
+void QMLPin::setType( QString type )
+{
+	QUuid	TypeClassUuid = QMLPlugin::app()->findPinByClass( type );
+
+	qDebug() << TypeClassUuid;
+
+	mType = type;
+}
+
+void QMLPin::setUuid(QString uuid)
+{
+	QUuid	PinUid = QUuid::fromString( uuid );
+
+	qDebug() << PinUid;
+
+	mUuid = uuid;
+}
+
+void QMLPin::setNode(QObject *node)
+{
+	mNode = node;
+}
+

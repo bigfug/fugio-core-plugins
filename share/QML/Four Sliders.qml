@@ -10,6 +10,13 @@ Item
 	property var pinOutputSlider3: fugio.output( "Slider3" )
 	property var pinOutputSlider4: fugio.output( "Slider4" )
 
+	Pin {
+		id: PinSlider1
+		uuid: "8b09390f-c06e-4c3b-8c0d-d7075b29b63c"
+		type: PID_FLOAT
+		name: "Slider1"
+	}
+	
 	Grid {
 		columns: 4
 		columnSpacing: 32
@@ -76,7 +83,7 @@ Item
 		}
 
 		Label {
-			text: pinOutputSlider1.name
+			text: PinSlider1.name
 		}
 
 		Label {

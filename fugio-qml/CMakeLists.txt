@@ -65,6 +65,8 @@ set_target_properties( ${PROJECT_NAME} PROPERTIES
 #------------------------------------------------------------------------------
 # Includes
 
+target_include_directories( ${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/source )
+
 target_include_directories( ${PROJECT_NAME} PRIVATE ${CMAKE_SOURCE_DIR}/fugio-core/include )
 target_include_directories( ${PROJECT_NAME} PRIVATE ${CMAKE_SOURCE_DIR}/fugio-file/include )
 target_include_directories( ${PROJECT_NAME} PRIVATE ${CMAKE_SOURCE_DIR}/fugio-image/include )
@@ -138,6 +140,19 @@ target_link_libraries( ${PROJECT_NAME} PRIVATE Qt::Core Qt::Core5Compat Qt::Qml 
 if( Qt5QuickControls2_DIR OR Qt6QuickControls2_DIR )
 	target_link_libraries( ${PROJECT_NAME} PRIVATE Qt::QuickControls2 )
 endif()
+
+# qt_add_qml_module(
+# 	asdsd
+# 	STATIC
+# 	URI Fugio
+# 	VERSION 4.0
+# 	SOURCES
+# 		source/qmlpin.cpp source/qmlpin.h
+# 		source/qmlnode.cpp source/qmlnode.h
+# 	# PLUGIN_TARGET ${PROJECT_NAME}
+# )
+
+# target_link_libraries( ${PROJECT_NAME} PRIVATE asdsd )
 
 #------------------------------------------------------------------------------
 # Translations

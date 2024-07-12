@@ -19,7 +19,7 @@ class FloatPin : public fugio::PinControlBase, public fugio::VariantHelper<doubl
 {
 	Q_OBJECT
 	Q_INTERFACES( fugio::VariantInterface fugio::SerialiseInterface fugio::FloatInterface fugio::InspectorWidgetInterface )
-//	Q_PROPERTY( double mValue READ value WRITE setValue NOTIFY valueChanged )
+	Q_PROPERTY( double mValue READ value WRITE setValue NOTIFY valueChanged )
 
 	Q_CLASSINFO( "Author", "Alex May" )
 	Q_CLASSINFO( "Version", "1.0" )
@@ -35,20 +35,20 @@ public:
 	//-------------------------------------------------------------------------
 	// Q_PROPERTY
 
-//	Q_INVOKABLE double value( void ) const
-//	{
-//		return( mValue );
-//	}
+	// Q_INVOKABLE double value( void ) const
+	// {
+	// 	return( mValue );
+	// }
 
-//	Q_INVOKABLE void setValue( double pValue )
-//	{
-//		if( pValue != mValue )
-//		{
-//			mValue = pValue;
+	// Q_INVOKABLE void setValue( double pValue )
+	// {
+	// 	if( pValue != mValue )
+	// 	{
+	// 		mValue = pValue;
 
-//			emit valueChanged( pValue );
-//		}
-//	}
+	// 		emit valueChanged( pValue );
+	// 	}
+	// }
 
 	//-------------------------------------------------------------------------
 	// fugio::PinControlInterface
@@ -66,13 +66,13 @@ public:
 	//-------------------------------------------------------------------------
 	// fugio::FloatInterface
 
-	virtual void setValue( double pValue ) Q_DECL_OVERRIDE;
+	Q_INVOKABLE virtual void setValue( double pValue ) Q_DECL_OVERRIDE;
 
 	virtual void setMinimum( double pMinimum ) Q_DECL_OVERRIDE;
 	virtual void setMaximum( double pMaximum ) Q_DECL_OVERRIDE;
 	virtual void setRange( double pMinimum, double pMaximum ) Q_DECL_OVERRIDE;
 
-	virtual double value( void ) const Q_DECL_OVERRIDE;
+	Q_INVOKABLE virtual double value( void ) const Q_DECL_OVERRIDE;
 
 	//-------------------------------------------------------------------------
 	// fugio::InspectorWidgetInterface
@@ -123,7 +123,7 @@ public:
 	}
 
 signals:
-//	void valueChanged( double pValue );
+	void valueChanged( double pValue );
 
 private:
 	double				mMinimum;

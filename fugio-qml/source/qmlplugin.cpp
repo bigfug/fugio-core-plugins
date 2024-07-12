@@ -71,6 +71,14 @@ PluginInterface::InitResult QMLPlugin::initialise( fugio::GlobalInterface *pApp,
 
 //	qmlRegisterType<QMLNode>( "com.bigfug.fugio", 1, 0, "Node" );
 
+	// qmlRegisterTypesAndRevisions<QMLNode>("Fugio", 4);
+	// qmlRegisterTypesAndRevisions<QMLPin>("Fugio", 4);
+
+	qmlRegisterUncreatableType<QMLNode>( "Fugio", 4, 0, "Node", "" );
+	qmlRegisterType<QMLPin>( "Fugio", 4, 0, "Pin" );
+
+	qmlRegisterModule("Fugio", 4, 0);
+
 	return( INIT_OK );
 }
 

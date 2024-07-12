@@ -17,6 +17,11 @@ class QMLNode : public QObject
 //	Q_PROPERTY( QUuid globalId READ globalId )
 	Q_PROPERTY( QString name READ name WRITE setName NOTIFY nameChanged )
 	Q_PROPERTY( QQmlListProperty<QMLPin> ouputs READ outputs )
+	Q_PROPERTY( QString uuid READ uuid CONSTANT )
+	Q_PROPERTY( QObject *node READ node CONSTANT )
+
+	QML_NAMED_ELEMENT( "Node" )
+	QML_UNCREATABLE( "" )
 
 public:
 	QMLNode( QSharedPointer<fugio::NodeInterface> pNode );
@@ -33,13 +38,28 @@ public:
 
 	Q_INVOKABLE void pinUpdated( QObject *pObject );
 
-    QQmlListProperty<QMLPin> outputs( void );
+	QQmlListProperty<QMLPin> outputs( void );
 
 	// Not Q_INVOLKABLE to retain ownership of returned pointer
 
 	QObject *control( void ) const;
 
 	QString name() const;
+
+	QString uuid( void ) const
+	{
+		return( mNode->uuid().toString( QUuid::WithoutBraces ) );
+	}
+
+	QObject *node( void )
+	{
+		return( this );
+	}
+
+	QSharedPointer<fugio::NodeInterface> sharedNode( void )
+	{
+		return( mNode );
+	}
 
 signals:
 	void inputsUpdated( qint64 timestamp );

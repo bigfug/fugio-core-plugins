@@ -63,7 +63,12 @@ void FloatPin::saveSettings( QSettings &pSettings ) const
 
 void FloatPin::setValue( double pValue )
 {
-	pin()->setValue( pValue );
+	if( pValue != pin()->value().toDouble() )
+	{
+		pin()->setValue( pValue );
+
+		emit valueChanged( pValue );
+	}
 }
 
 void FloatPin::setMinimum( double pMinimum )
