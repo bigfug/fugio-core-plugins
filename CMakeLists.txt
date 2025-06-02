@@ -18,10 +18,10 @@ set( CMAKE_INCLUDE_CURRENT_DIR ON )
 set( PKG_CONFIG_USE_CMAKE_PREFIX_PATH ON )
 
 if (CMAKE_SIZEOF_VOID_P EQUAL 8)
-    message(STATUS "*** Have SIZEOF void * = 8, so 64-bit")
-    set( IS_64_BIT 1 )
+	message(STATUS "*** Have SIZEOF void * = 8, so 64-bit")
+	set( IS_64_BIT 1 )
 else ()
-    message(STATUS "*** SIZEOF void * != 8, so not 64-bit")
+	message(STATUS "*** SIZEOF void * != 8, so not 64-bit")
 endif ()
 
 # There must be a better way to do this...
@@ -37,26 +37,28 @@ endif()
 #------------------------------------------------------------------------------
 # Fugio API
 
-set( FUGIO_API_ZIP_URL "https://github.com/bigfug/Fugio/releases/download/v4.0.0-alpha/fugio-api.zip" CACHE STRING "URL to fugio-api.zip" )
+if (CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR)
+	set( FUGIO_API_ZIP_URL "https://github.com/bigfug/Fugio/releases/download/v4.0.0-alpha/fugio-api.zip" CACHE STRING "URL to fugio-api.zip" )
 
-if( NOT EXISTS "${CMAKE_BINARY_DIR}/include/fugio" )
-	message( "Initialising fugio-api" )
+	if( NOT EXISTS "${CMAKE_BINARY_DIR}/include/fugio" )
+		message( "Initialising fugio-api" )
 
-	file(MAKE_DIRECTORY ${CMAKE_BINARY_DIR}/include )
+		file(MAKE_DIRECTORY ${CMAKE_BINARY_DIR}/include )
 
-	file(DOWNLOAD
-		${FUGIO_API_ZIP_URL}
-		${CMAKE_BINARY_DIR}/fugio-api.zip
-	)
+		file(DOWNLOAD
+			${FUGIO_API_ZIP_URL}
+			${CMAKE_BINARY_DIR}/fugio-api.zip
+		)
 
-	execute_process( COMMAND "${CMAKE_COMMAND}" -E tar -xzf ${CMAKE_BINARY_DIR}/fugio-api.zip
-		WORKING_DIRECTORY "${CMAKE_BINARY_DIR}/include" )
-endif()
+		execute_process( COMMAND "${CMAKE_COMMAND}" -E tar -xzf ${CMAKE_BINARY_DIR}/fugio-api.zip
+			WORKING_DIRECTORY "${CMAKE_BINARY_DIR}/include" )
+	endif()
 
-set( FUGIO_API "${CMAKE_BINARY_DIR}/include" )
+	set( FUGIO_API "${CMAKE_BINARY_DIR}/include" )
 
-if( NOT FUGIO_API OR NOT EXISTS ${FUGIO_API} )
-	message( "--- FUGIO_API NOT SET ---" )
+	if( NOT FUGIO_API OR NOT EXISTS ${FUGIO_API} )
+		message( "--- FUGIO_API NOT SET ---" )
+	endif()
 endif()
 
 #------------------------------------------------------------------------------
@@ -70,20 +72,22 @@ set( CTEST_OUTPUT_ON_FAILURE ON )
 
 #------------------------------------------------------------------------------
 
-set( PATH_APP . )
-set( PATH_INCLUDE include )
-set( PATH_SHARE share )
-set( PATH_PLUGIN plugins )
+if (CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR)
+	set( PATH_APP . )
+	set( PATH_INCLUDE include )
+	set( PATH_SHARE share )
+	set( PATH_PLUGIN plugins )
 
-if( WIN32 )
-	set( PATH_APP bin )
-	set( CMAKE_VS_INCLUDE_INSTALL_TO_DEFAULT_BUILD 1 )
-endif( WIN32 )
+	if( WIN32 )
+		set( PATH_APP bin )
+		set( CMAKE_VS_INCLUDE_INSTALL_TO_DEFAULT_BUILD 1 )
+	endif( WIN32 )
 
-if( UNIX AND NOT APPLE )
-	set( PATH_APP		bin )
-	set( PATH_SHARE		share/fugio )
-	set( PATH_PLUGIN	lib/fugio )
+	if( UNIX AND NOT APPLE )
+		set( PATH_APP		bin )
+		set( PATH_SHARE		share/fugio )
+		set( PATH_PLUGIN	lib/fugio )
+	endif()
 endif()
 
 #------------------------------------------------------------------------------
@@ -143,48 +147,52 @@ set( FUGIO_UNIX_DEPENDENCIES )
 
 add_compile_definitions(QT_DISABLE_DEPRECATED_UP_TO=0x050F00)
 
-add_subdirectory( api )
-add_subdirectory( fugio-audio )
+#add_subdirectory( api )
+#add_subdirectory( fugio-audio )
 add_subdirectory( fugio-colour )
 add_subdirectory( fugio-core )
 add_subdirectory( fugio-file )
 #add_subdirectory( Firmata )
 #add_subdirectory( Gamepad )
-add_subdirectory( fugio-geometry )
-add_subdirectory( fugio-gui )
+#add_subdirectory( fugio-geometry )
+#add_subdirectory( fugio-gui )
 add_subdirectory( fugio-image )
-add_subdirectory( fugio-json)
-add_subdirectory( fugio-math )
-add_subdirectory( fugio-midi )
-add_subdirectory( fugio-network )
+#add_subdirectory( fugio-json)
+#add_subdirectory( fugio-math )
+#add_subdirectory( fugio-midi )
+#add_subdirectory( fugio-network )
 #add_subdirectory( OpenGL )
 #add_subdirectory( OSC )
-add_subdirectory( fugio-painter )
+#add_subdirectory( fugio-painter )
 add_subdirectory( fugio-qml )
-add_subdirectory( fugio-serial )
+#add_subdirectory( fugio-serial )
 add_subdirectory( fugio-text )
-add_subdirectory( fugio-time )
+#add_subdirectory( fugio-time )
 
 #------------------------------------------------------------------------------
 
-set( FUGIO_PLUGIN_URL ${CMAKE_BINARY_DIR} CACHE STRING "" )
+if (CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR)
+	set( FUGIO_PLUGIN_URL ${CMAKE_BINARY_DIR} CACHE STRING "" )
 
-configure_file( fugio-manifest.json.in ${CMAKE_BINARY_DIR}/fugio-manifest.json @ONLY )
+	configure_file( fugio-manifest.json.in ${CMAKE_BINARY_DIR}/fugio-manifest.json @ONLY )
 
-add_custom_target( fugio-plugin-manifest
-	SOURCES ${CMAKE_CURRENT_BINARY_DIR}/fugio-manifest.json
-)
+	add_custom_target( fugio-plugin-manifest
+		SOURCES ${CMAKE_CURRENT_BINARY_DIR}/fugio-manifest.json
+	)
+endif()
 
 #------------------------------------------------------------------------------
 # CPack
 
-set( CPACK_PACKAGE_VENDOR "bigfug.com" )
-set( CPACK_PACKAGE_CONTACT "fugio@bigfug.com" )
-set( CPACK_PACKAGE_DESCRIPTION_SUMMARY "Core plugins for Fugio" )
+if (CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR)
+	set( CPACK_PACKAGE_VENDOR "bigfug.com" )
+	set( CPACK_PACKAGE_CONTACT "fugio@bigfug.com" )
+	set( CPACK_PACKAGE_DESCRIPTION_SUMMARY "Core plugins for Fugio" )
 
-set( CPACK_GENERATOR "ZIP" )
-set( CPACK_INCLUDE_TOPLEVEL_DIRECTORY OFF )
-set( CPACK_ARCHIVE_COMPONENT_INSTALL ON )
-set( CPACK_COMPONENTS_GROUPING ONE_PER_GROUP )
+	set( CPACK_GENERATOR "ZIP" )
+	set( CPACK_INCLUDE_TOPLEVEL_DIRECTORY OFF )
+	set( CPACK_ARCHIVE_COMPONENT_INSTALL ON )
+	set( CPACK_COMPONENTS_GROUPING ONE_PER_GROUP )
 
-include( CPack )
+	include( CPack )
+endif()

@@ -53,6 +53,8 @@ public:
 
 	QObject *node( void )
 	{
+		QJSEngine::setObjectOwnership( this, QJSEngine::CppOwnership );
+
 		return( this );
 	}
 

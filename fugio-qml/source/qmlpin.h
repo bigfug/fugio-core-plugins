@@ -17,7 +17,7 @@ class QMLPin : public QObject
 	Q_PROPERTY( QVariant value READ value WRITE setValue NOTIFY valueChanged )
 	Q_PROPERTY( QString name READ name WRITE setName NOTIFY nameChanged )
 	Q_PROPERTY( int count READ count WRITE setCount )
-	Q_PROPERTY( QString type READ type WRITE setType CONSTANT )
+	Q_PROPERTY( QString type READ type WRITE setType NOTIFY typeChanged )
 	Q_PROPERTY( QString uuid READ uuid WRITE setUuid CONSTANT )
 	Q_PROPERTY( QObject *node READ node WRITE setNode )
 
@@ -36,7 +36,7 @@ public:
 
 	// Not Q_INVOLKABLE to retain ownership of returned pointer
 
-	Q_INVOKABLE QObject *control( void ) const;
+	QObject *control( void ) const;
 
 	QObject *connectedPin( void );
 
@@ -76,6 +76,8 @@ signals:
 
 	void valueChanged( QVariant value );
 
+	void typeChanged( QString type );
+
 	void updated( qint64 timestamp );
 
 public slots:
@@ -96,6 +98,7 @@ private slots:
 
 private:
 	QSharedPointer<fugio::PinInterface>		 mPin;
+	QObject									*mControl;
 	QString									 mName;
 	QString									 mType;
 	QString									 mUuid;

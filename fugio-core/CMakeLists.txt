@@ -29,8 +29,6 @@ set( PLUGIN_REQUIREMENTS "" )
 
 project( ${PLUGIN_FILENAME} VERSION ${PLUGIN_RELEASE_VERSION} LANGUAGES CXX )
 
-include_directories( ${CMAKE_CURRENT_SOURCE_DIR}/include )
-
 set( HEADER_FILES
 	include/fugio/core/uuid.h
 	include/fugio/core/array_interface.h
@@ -144,9 +142,9 @@ set_target_properties( ${PROJECT_NAME} PROPERTIES
 # Fugio API
 
 if( FUGIO_API AND EXISTS ${FUGIO_API} )
-	target_include_directories( ${PROJECT_NAME} PRIVATE ${FUGIO_API} )
+	target_include_directories( ${PLUGIN_FILENAME} PRIVATE ${FUGIO_API} )
 
-	target_sources( ${PROJECT_NAME} PRIVATE
+	target_sources( ${PLUGIN_FILENAME} PRIVATE
 		${FUGIO_API}/fugio/nodecontrolbase.h
 		${FUGIO_API}/fugio/pincontrolbase.h
 		)
@@ -155,19 +153,21 @@ endif()
 #------------------------------------------------------------------------------
 # Additional includes
 
-target_include_directories( ${PROJECT_NAME} PRIVATE ${CMAKE_SOURCE_DIR}/fugio-math/include )
-target_include_directories( ${PROJECT_NAME} PRIVATE ${CMAKE_SOURCE_DIR}/fugio-colour/include )
+target_include_directories( ${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include )
+
+target_include_directories( ${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/../fugio-math/include )
+target_include_directories( ${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/../fugio-colour/include )
 
 #------------------------------------------------------------------------------
 # Plugin Config
 
 configure_file(
-	${CMAKE_SOURCE_DIR}/config.h.in
+	${CMAKE_CURRENT_SOURCE_DIR}/../config.h.in
 	${CMAKE_CURRENT_BINARY_DIR}/config.h
 	@ONLY
 )
 
-target_sources( ${PROJECT_NAME} PRIVATE
+target_sources( ${PLUGIN_FILENAME} PRIVATE
 	${CMAKE_CURRENT_BINARY_DIR}/config.h
 	)
 
@@ -177,7 +177,7 @@ target_include_directories( ${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_BINARY_DIR} 
 # Plugin Manifest
 
 configure_file(
-	${CMAKE_SOURCE_DIR}/manifest.json.in
+	${CMAKE_CURRENT_SOURCE_DIR}/../manifest.json.in
 	${CMAKE_CURRENT_BINARY_DIR}/manifest.json
 	@ONLY
 )
@@ -186,53 +186,59 @@ target_sources( ${PROJECT_NAME} PRIVATE
 	${CMAKE_CURRENT_BINARY_DIR}/manifest.json
 	)
 
-install( FILES ${CMAKE_CURRENT_BINARY_DIR}/manifest.json DESTINATION . COMPONENT ${PROJECT_NAME} )
+install( FILES ${CMAKE_CURRENT_BINARY_DIR}/manifest.json DESTINATION . COMPONENT ${PLUGIN_FILENAME} )
 
 #------------------------------------------------------------------------------
 # Install
 
 install( TARGETS ${PROJECT_NAME}
 	LIBRARY
-	DESTINATION plugins
+	DESTINATION plugins/fugio
 	COMPONENT ${PROJECT_NAME}
 )
 
 install( DIRECTORY include DESTINATION . COMPONENT ${PROJECT_NAME} PATTERN ".*" EXCLUDE )
-install( DIRECTORY examples	DESTINATION . COMPONENT ${PROJECT_NAME} PATTERN ".*" EXCLUDE )
+install( DIRECTORY examples DESTINATION . COMPONENT ${PROJECT_NAME} PATTERN ".*" EXCLUDE )
 
 #------------------------------------------------------------------------------
 # Qt
 
 find_package(Qt6 COMPONENTS Core Widgets LinguistTools QUIET )
 
-if (NOT Qt6_FOUND)
-	find_package(Qt5 5.15 COMPONENTS Core Widgets LinguistTools QUIET)
-endif()
+qt_standard_project_setup( I18N_TRANSLATED_LANGUAGES de es fr it )
 
 target_link_libraries( ${PROJECT_NAME} PRIVATE Qt::Core Qt::Widgets )
+
+qt_generate_deploy_app_script(
+	TARGET ${PROJECT_NAME}
+	OUTPUT_SCRIPT deploy_script
+	NO_UNSUPPORTED_PLATFORM_ERROR
+)
+
+install(SCRIPT ${deploy_script})
 
 #------------------------------------------------------------------------------
 # Translations
 
-set( TS_FILES
-	translations/translations_de.ts
-	)
+# set( TS_FILES
+# 	translations/translations_de.ts
+# 	)
 
-if( COMMAND qt_add_translations )
-	qt_add_translations( ${PROJECT_NAME} TS_FILES ${TS_FILES} RESOURCE_PREFIX "/translations" )
-else()
-	qt5_create_translation( QM_FILES ${CMAKE_SOURCE_DIR} ${TS_FILES} )
+# if( COMMAND qt_add_translations )
+# 	qt_add_translations( ${PLUGIN_FILENAME} TS_FILES ${TS_FILES} RESOURCE_PREFIX "/translations" )
+# else()
+# 	qt5_create_translation( QM_FILES ${CMAKE_SOURCE_DIR} ${TS_FILES} )
 
-	configure_file( ${CMAKE_SOURCE_DIR}/translations.qrc ${CMAKE_CURRENT_BINARY_DIR} COPYONLY )
+# 	configure_file( ${CMAKE_SOURCE_DIR}/translations.qrc ${CMAKE_CURRENT_BINARY_DIR} COPYONLY )
 
-	target_sources( ${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_BINARY_DIR}/translations.qrc ${QM_FILES} )
-endif()
+# 	target_sources( ${PLUGIN_FILENAME} PRIVATE ${CMAKE_CURRENT_BINARY_DIR}/translations.qrc ${QM_FILES} )
+# endif()
 
 #------------------------------------------------------------------------------
 # Unit Tests
 
 if( FUGIO_LIBRARY_BUILD_DIR )
-	add_subdirectory( tests )
+	# add_subdirectory( tests )
 endif()
 
 set( CPACK_ARCHIVE_FUGIO-CORE_FILE_NAME "${PLUGIN_FILENAME}-${PLATFORM_NAME}" PARENT_SCOPE )

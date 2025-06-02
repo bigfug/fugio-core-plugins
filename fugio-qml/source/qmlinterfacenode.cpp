@@ -47,10 +47,13 @@ QMLInterfaceNode::QMLInterfaceNode( QSharedPointer<fugio::NodeInterface> pNode )
 
 	mValInputSource = pinInput<fugio::SyntaxErrorInterface *>( "QML", mPinSource, PID_SYNTAX_ERROR, PIN_INPUT_QML );
 
+	if( mValInputSource )
+	{
+		mValInputSource->setHighlighterUuid( SYNTAX_HIGHLIGHTER_QML );
+	}
+
 	mPinSource->registerPinInputType( PID_FILENAME );
 	mPinSource->registerPinInputType( PID_STRING );
-
-	mValInputSource->setHighlighterUuid( SYNTAX_HIGHLIGHTER_QML );
 
 	const char *Source =
 		"import QtQuick 2.6\n\n"

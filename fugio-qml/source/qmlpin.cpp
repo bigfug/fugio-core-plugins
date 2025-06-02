@@ -14,13 +14,13 @@
 #include "qmlnode.h"
 
 QMLPin::QMLPin(QObject *parent)
-	: QObject( parent ), mNode( nullptr )
+	: QObject( parent ), mControl( nullptr ), mNode( nullptr )
 {
 
 }
 
 QMLPin::QMLPin( QSharedPointer<fugio::PinInterface> pPin )
-	: mPin( pPin )
+	: mPin( pPin ), mControl( nullptr ), mNode( nullptr )
 {
 	connect( mPin->qobject(), SIGNAL(nameChanged(QString)), this, SLOT(setName(QString)) );
 
@@ -75,14 +75,7 @@ QObject *QMLPin::findInterface( const QString &pUUID )
 
 QObject *QMLPin::control() const
 {
-	QObject		*O = ( mPin && mPin->hasControl() ? mPin->control()->qobject() : nullptr );
-
-	if( O )
-	{
-		QJSEngine::setObjectOwnership( O, QJSEngine::CppOwnership);
-	}
-
-	return( O );
+	return( mControl );
 }
 
 QString QMLPin::name() const
@@ -237,7 +230,7 @@ void QMLPin::initialise()
 			return;
 		}
 
-		mPin = Node->sharedNode()->createPin( mName, PIN_OUTPUT, PinType, PinLocalId );
+		mControl = Node->sharedNode()->createPin( mName, PIN_OUTPUT, QUuid::createUuid(), PinLocalId, mPin, PinType );
 
 		if( !mPin )
 		{

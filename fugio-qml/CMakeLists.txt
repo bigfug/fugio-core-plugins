@@ -65,20 +65,22 @@ set_target_properties( ${PROJECT_NAME} PROPERTIES
 #------------------------------------------------------------------------------
 # Includes
 
+target_include_directories( ${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include )
+
 target_include_directories( ${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/source )
 
-target_include_directories( ${PROJECT_NAME} PRIVATE ${CMAKE_SOURCE_DIR}/fugio-core/include )
-target_include_directories( ${PROJECT_NAME} PRIVATE ${CMAKE_SOURCE_DIR}/fugio-file/include )
-target_include_directories( ${PROJECT_NAME} PRIVATE ${CMAKE_SOURCE_DIR}/fugio-image/include )
-target_include_directories( ${PROJECT_NAME} PRIVATE ${CMAKE_SOURCE_DIR}/fugio-text/include )
+target_include_directories( ${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/../fugio-core/include )
+target_include_directories( ${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/../fugio-file/include )
+target_include_directories( ${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/../fugio-image/include )
+target_include_directories( ${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/../fugio-text/include )
 
 #------------------------------------------------------------------------------
 # Fugio API
 
 if( FUGIO_API AND EXISTS ${FUGIO_API} )
-	target_include_directories( ${PROJECT_NAME} PRIVATE ${FUGIO_API} )
+	target_include_directories( ${PLUGIN_FILENAME} PRIVATE ${FUGIO_API} )
 
-	target_sources( ${PROJECT_NAME} PRIVATE
+	target_sources( ${PLUGIN_FILENAME} PRIVATE
 		${FUGIO_API}/fugio/nodecontrolbase.h
 		${FUGIO_API}/fugio/pincontrolbase.h
 		)
@@ -88,58 +90,64 @@ endif()
 # Plugin Config
 
 configure_file(
-	${CMAKE_SOURCE_DIR}/config.h.in
+	${CMAKE_CURRENT_SOURCE_DIR}/../config.h.in
 	${CMAKE_CURRENT_BINARY_DIR}/config.h
 	@ONLY
 )
 
-target_sources( ${PROJECT_NAME} PRIVATE
+target_sources( ${PLUGIN_FILENAME} PRIVATE
 	${CMAKE_CURRENT_BINARY_DIR}/config.h
 	)
 
-target_include_directories( ${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_BINARY_DIR} )
+target_include_directories( ${PLUGIN_FILENAME} PRIVATE ${CMAKE_CURRENT_BINARY_DIR} )
 
 #------------------------------------------------------------------------------
 # Plugin Manifest
 
 configure_file(
-	${CMAKE_SOURCE_DIR}/manifest.json.in
+	${CMAKE_CURRENT_SOURCE_DIR}/../manifest.json.in
 	${CMAKE_CURRENT_BINARY_DIR}/manifest.json
 	@ONLY
 )
 
-target_sources( ${PROJECT_NAME} PRIVATE
+target_sources( ${PLUGIN_FILENAME} PRIVATE
 	${CMAKE_CURRENT_BINARY_DIR}/manifest.json
 	)
 
-install( FILES ${CMAKE_CURRENT_BINARY_DIR}/manifest.json DESTINATION . COMPONENT ${PROJECT_NAME} )
+install( FILES ${CMAKE_CURRENT_BINARY_DIR}/manifest.json DESTINATION . COMPONENT ${PLUGIN_FILENAME} )
 
 #------------------------------------------------------------------------------
 # Install
 
-install( TARGETS ${PROJECT_NAME}
+install( TARGETS ${PLUGIN_FILENAME}
 	LIBRARY
-	DESTINATION plugins
-	COMPONENT ${PROJECT_NAME}
+	DESTINATION plugins/fugio
+	COMPONENT ${PLUGIN_FILENAME}
 )
 
-install( DIRECTORY include DESTINATION . COMPONENT ${PROJECT_NAME} PATTERN ".*" EXCLUDE )
-install( DIRECTORY examples	DESTINATION . COMPONENT ${PROJECT_NAME} PATTERN ".*" EXCLUDE )
+install( DIRECTORY include DESTINATION . COMPONENT ${PLUGIN_FILENAME} PATTERN ".*" EXCLUDE )
+install( DIRECTORY examples	DESTINATION . COMPONENT ${PLUGIN_FILENAME} PATTERN ".*" EXCLUDE )
 
 #------------------------------------------------------------------------------
 # Qt
 
 find_package(Qt6 COMPONENTS Core Core5Compat Qml Quick QuickWidgets Gui Widgets LinguistTools OPTIONAL_COMPONENTS QuickControls2 QUIET )
 
-if (NOT Qt6_FOUND)
-	find_package(Qt5 5.15 COMPONENTS Core Core Qml Quick QuickWidgets Gui Widgets LinguistTools OPTIONAL_COMPONENTS QuickControls2 QUIET )
-endif()
+qt_standard_project_setup( I18N_TRANSLATED_LANGUAGES de es fr it )
 
-target_link_libraries( ${PROJECT_NAME} PRIVATE Qt::Core Qt::Core5Compat Qt::Qml Qt::Quick Qt::QuickWidgets )
+target_link_libraries( ${PLUGIN_FILENAME} PRIVATE Qt::Core Qt::Core5Compat Qt::Qml Qt::Quick Qt::QuickWidgets )
 
 if( Qt5QuickControls2_DIR OR Qt6QuickControls2_DIR )
-	target_link_libraries( ${PROJECT_NAME} PRIVATE Qt::QuickControls2 )
+	target_link_libraries( ${PLUGIN_FILENAME} PRIVATE Qt::QuickControls2 )
 endif()
+
+qt_generate_deploy_app_script(
+	TARGET ${PROJECT_NAME}
+	OUTPUT_SCRIPT deploy_script
+	NO_UNSUPPORTED_PLATFORM_ERROR
+)
+
+install(SCRIPT ${deploy_script})
 
 # qt_add_qml_module(
 # 	asdsd
@@ -149,27 +157,28 @@ endif()
 # 	SOURCES
 # 		source/qmlpin.cpp source/qmlpin.h
 # 		source/qmlnode.cpp source/qmlnode.h
-# 	# PLUGIN_TARGET ${PROJECT_NAME}
+# 	# PLUGIN_TARGET ${PLUGIN_FILENAME}
 # )
 
-# target_link_libraries( ${PROJECT_NAME} PRIVATE asdsd )
+# target_link_libraries( ${PLUGIN_FILENAME} PRIVATE asdsd )
 
 #------------------------------------------------------------------------------
 # Translations
 
-set( TS_FILES
-	translations/translations_de.ts
-	)
 
-if( COMMAND qt_add_translations )
-	qt_add_translations( ${PROJECT_NAME} TS_FILES ${TS_FILES} RESOURCE_PREFIX "/translations" )
-else()
-	qt5_create_translation( QM_FILES ${CMAKE_SOURCE_DIR} ${TS_FILES} )
+# set( TS_FILES
+# 	translations/translations_de.ts
+# 	)
 
-	configure_file( ${CMAKE_SOURCE_DIR}/translations.qrc ${CMAKE_CURRENT_BINARY_DIR} COPYONLY )
+# if( COMMAND qt_add_translations )
+# 	qt_add_translations( ${PLUGIN_FILENAME} TS_FILES ${TS_FILES} RESOURCE_PREFIX "/translations" )
+# else()
+# 	qt5_create_translation( QM_FILES ${CMAKE_CURRENT_SOURCE_DIR} ${TS_FILES} )
 
-	target_sources( ${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_BINARY_DIR}/translations.qrc ${QM_FILES} )
-endif()
+# 	configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/translations.qrc ${CMAKE_CURRENT_BINARY_DIR} COPYONLY )
+
+# 	target_sources( ${PLUGIN_FILENAME} PRIVATE ${CMAKE_CURRENT_BINARY_DIR}/translations.qrc ${QM_FILES} )
+# endif()
 
 #------------------------------------------------------------------------------
 # Unit Tests
