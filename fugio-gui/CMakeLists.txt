@@ -116,14 +116,14 @@ endif()
 #------------------------------------------------------------------------------
 # Additional includes
 
-target_include_directories( ${PROJECT_NAME} PRIVATE ${CMAKE_SOURCE_DIR}/fugio-core/include )
-target_include_directories( ${PROJECT_NAME} PRIVATE ${CMAKE_SOURCE_DIR}/fugio-colour/include )
+target_include_directories( ${PROJECT_NAME} PRIVATE ../fugio-core/include )
+target_include_directories( ${PROJECT_NAME} PRIVATE ../fugio-colour/include )
 
 #------------------------------------------------------------------------------
 # Plugin Config
 
 configure_file(
-	${CMAKE_SOURCE_DIR}/config.h.in
+	${CMAKE_CURRENT_SOURCE_DIR}/../config.h.in
 	${CMAKE_CURRENT_BINARY_DIR}/config.h
 	@ONLY
 )
@@ -138,7 +138,7 @@ target_include_directories( ${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_BINARY_DIR} 
 # Plugin Manifest
 
 configure_file(
-	${CMAKE_SOURCE_DIR}/manifest.json.in
+	${CMAKE_CURRENT_SOURCE_DIR}/../manifest.json.in
 	${CMAKE_CURRENT_BINARY_DIR}/manifest.json
 	@ONLY
 )
