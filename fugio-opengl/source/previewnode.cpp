@@ -129,6 +129,11 @@ void PreviewNode::render( qint64 pTimeStamp )
 		return;
 	}
 
+	if( !mNode->isInitialised() || !OpenGLPlugin::hasContextStatic() )
+	{
+		return;
+	}
+
 	OpenGLStateInterface		*State = input<OpenGLStateInterface *>( mPinInputState );
 
 	if( State )

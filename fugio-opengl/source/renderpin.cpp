@@ -19,15 +19,27 @@ RenderPin::~RenderPin()
 
 void RenderPin::render( qint64 pTimeStamp )
 {
-	if( !mPin->node()->hasControl() )
+	if( !mPin->node()->isInitialised() || !mPin->node()->hasControl() )
 	{
 		return;
 	}
 
-	fugio::NodeRenderInterface	*IG = qobject_cast<fugio::NodeRenderInterface *>( mPin->node()->control()->qobject() );
+	QObject *O = mPin->node()->control()->qobject();
+
+	qDebug() << "DLL 1 (Provider) 'MyInterface' ID:"
+			 << qMetaTypeId<fugio::NodeRenderInterface*>();
+
+	fugio::NodeRenderInterface	*IG = qobject_cast<fugio::NodeRenderInterface *>( O );
+
+	fugio::NodeRenderInterface	*IG2 = dynamic_cast<fugio::NodeRenderInterface *>( O );
 
 	if( IG )
 	{
 		IG->render( pTimeStamp, mPin->localId() );
+	}
+
+	if( IG2 )
+	{
+		IG2->render( pTimeStamp, mPin->localId() );
 	}
 }

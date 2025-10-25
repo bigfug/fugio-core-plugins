@@ -28,6 +28,14 @@ ImageToTextureNode::ImageToTextureNode( QSharedPointer<fugio::NodeInterface> pNo
 	FUGID( PIN_INPUT_IMAGE, "9e154e12-bcd8-4ead-95b1-5a59833bcf4e" );
 	FUGID( PIN_OUTPUT_TEXTURE, "1b5e9ce8-acb9-478d-b84b-9288ab3c42f5" );
 	FUGID( PIN_OUTPUT_SIZE, "b98dfce9-2107-4ff2-bc7d-91d67a890a5d" );
+	FUGID( PRP_INPUT_TARGET, "c4a543e2-fcf7-4cce-b01a-b2809ca6fbca" );
+	FUGID( PRP_INPUT_FORMAT, "261cc653-d7fa-4c34-a08b-3603e8ae71d5" );
+	// FUGID( PIN_XXX_XXX, "249f2932-f483-422f-b811-ab679f006381" );
+	// FUGID( PIN_XXX_XXX, "ce8d578e-c5a4-422f-b3c4-a1bdf40facdb" );
+	// FUGID( PIN_XXX_XXX, "e6bf944e-5f46-4994-bd51-13c2aa6415b7" );
+	// FUGID( PIN_XXX_XXX, "a2bbf374-0dc8-42cb-b85a-6a43b58a348f" );
+	// FUGID( PIN_XXX_XXX, "51297977-7b4b-4e08-9dea-89a8add4abe0" );
+	// FUGID( PIN_XXX_XXX, "c997473a-2016-466b-9128-beacb99870a2" );
 
 	mPinInputImage = pinInput( "Image", PIN_INPUT_IMAGE );
 
@@ -40,6 +48,16 @@ ImageToTextureNode::ImageToTextureNode( QSharedPointer<fugio::NodeInterface> pNo
 	mPinInputImage->setDescription( tr( "An input image that is copied to the graphics card as a Texture" ) );
 
 	mPinOutput->setDescription( tr( "The allocated OpenGL texture" ) );
+
+	mTarget = createProperty<ChoiceInterface *>( "Target", mPrpInputTarget, PID_CHOICE, PRP_INPUT_TARGET );
+
+	mTarget->setChoices( OpenGLPlugin::mMapTargets.keys() );
+
+	mFormat = createProperty<ChoiceInterface *>( "Format", mPrpFormat, PID_CHOICE, PRP_INPUT_FORMAT );
+
+	mFormat->setChoices( OpenGLPlugin::mMapFormat.keys() );
+
+	// mPrpInputTarget->setValue( OpenGLPlugin::mMapTargets.k );
 }
 
 QWidget *ImageToTextureNode::gui()
@@ -71,17 +89,17 @@ void ImageToTextureNode::loadSettings( QSettings &pSettings )
 	QString		CurVal;
 	int			CurInt;
 
-	CurVal = OpenGLPlugin::mMapTargets.key( mTexture->target() );
-	CurVal = pSettings.value( "Target", CurVal ).toString();
-	CurInt = OpenGLPlugin::mMapTargets.value( CurVal, mTexture->target() );
+	// CurVal = OpenGLPlugin::mMapTargets.key( mTexture->target() );
+	// CurVal = pSettings.value( "Target", CurVal ).toString();
+	// CurInt = OpenGLPlugin::mMapTargets.value( CurVal, mTexture->target() );
 
-	mTexture->setTarget( QOpenGLTexture::Target( CurInt ) );
+	// mTexture->setTarget( QOpenGLTexture::Target( CurInt ) );
 
-	CurVal = OpenGLPlugin::mMapFormat.key( mTexture->format() );
-	CurVal = pSettings.value( "Format", CurVal ).toString();
-	CurInt = OpenGLPlugin::mMapFormat.value( CurVal, mTexture->format() );
+	// CurVal = OpenGLPlugin::mMapFormat.key( mTexture->format() );
+	// CurVal = pSettings.value( "Format", CurVal ).toString();
+	// CurInt = OpenGLPlugin::mMapFormat.value( CurVal, mTexture->format() );
 
-	mTexture->setFormat( QOpenGLTexture::PixelFormat( CurInt ) );
+	// mTexture->setFormat( QOpenGLTexture::PixelFormat( CurInt ) );
 
 	CurVal = OpenGLPlugin::mMapInternal.key( mTexture->internalFormat() );
 	CurVal = pSettings.value( "Internal", CurVal ).toString();
@@ -133,8 +151,8 @@ void ImageToTextureNode::loadSettings( QSettings &pSettings )
 
 void ImageToTextureNode::saveSettings( QSettings &pSettings ) const
 {
-	pSettings.setValue( "Target", OpenGLPlugin::mMapTargets.key( mTexture->target() ) );
-	pSettings.setValue( "Format", OpenGLPlugin::mMapFormat.key( mTexture->format() ) );
+	// pSettings.setValue( "Target", OpenGLPlugin::mMapTargets.key( mTexture->target() ) );
+	// pSettings.setValue( "Format", OpenGLPlugin::mMapFormat.key( mTexture->format() ) );
 	pSettings.setValue( "Internal", OpenGLPlugin::mMapInternal.key( mTexture->internalFormat() ) );
 	pSettings.setValue( "Type", OpenGLPlugin::mMapType.key( mTexture->type() ) );
 	pSettings.setValue( "FilterMin", OpenGLPlugin::mMapFilterMin.key( mTexture->filterMin() ) );
@@ -214,6 +232,40 @@ void ImageToTextureNode::inputsUpdated( qint64 pTimeStamp )
 	}
 
 	OPENGL_DEBUG( mNode->name() );
+
+	// Process properties
+
+	if( mPrpInputTarget->isUpdated( pTimeStamp ) )
+	{
+		auto NewVal = QOpenGLTexture::Target( OpenGLPlugin::mMapTargets.value( mPrpInputTarget->value().toString(), mTexture->target() ) );
+
+		if( NewVal != mTexture->target() )
+		{
+			qDebug() << mPrpInputTarget->value().toString();
+
+			mTexture->free();
+
+			mTexture->setTarget( NewVal );
+		}
+	}
+
+
+	if( mPrpFormat->isUpdated( pTimeStamp ) )
+	{
+		auto NewVal = QOpenGLTexture::PixelFormat( OpenGLPlugin::mMapFormat.value( mPrpFormat->value().toString(), mTexture->format() ) );
+
+		if( NewVal != mTexture->format() )
+		{
+			qDebug() << mPrpFormat->value().toString();
+
+			mTexture->free();
+
+			mTexture->setFormat( NewVal );
+		}
+	}
+
+	// Process image
+
 
 	QVector3D		TexSze = mTexture->size();
 

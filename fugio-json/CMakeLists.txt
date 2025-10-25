@@ -62,9 +62,9 @@ set_target_properties( ${PROJECT_NAME} PROPERTIES
 
 target_include_directories( ${PROJECT_NAME} PRIVATE
 	${CMAKE_CURRENT_SOURCE_DIR}/include
-	${CMAKE_SOURCE_DIR}/fugio-core/include
-	${CMAKE_SOURCE_DIR}/fugio-colour/include
-	${CMAKE_SOURCE_DIR}/fugio-text/include
+	../fugio-core/include
+	../fugio-colour/include
+	../fugio-text/include
 )
 
 #------------------------------------------------------------------------------
@@ -83,7 +83,7 @@ endif()
 # Plugin Config
 
 configure_file(
-	${CMAKE_SOURCE_DIR}/config.h.in
+	../config.h.in
 	${CMAKE_CURRENT_BINARY_DIR}/config.h
 	@ONLY
 )
@@ -98,7 +98,7 @@ target_include_directories( ${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_BINARY_DIR} 
 # Plugin Manifest
 
 configure_file(
-	${CMAKE_SOURCE_DIR}/manifest.json.in
+	../manifest.json.in
 	${CMAKE_CURRENT_BINARY_DIR}/manifest.json
 	@ONLY
 )

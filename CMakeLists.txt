@@ -148,33 +148,33 @@ set( FUGIO_UNIX_DEPENDENCIES )
 add_compile_definitions(QT_DISABLE_DEPRECATED_UP_TO=0x050F00)
 
 #add_subdirectory( api )
-#add_subdirectory( fugio-audio )
+add_subdirectory( fugio-audio )
 add_subdirectory( fugio-colour )
 add_subdirectory( fugio-core )
 add_subdirectory( fugio-file )
 #add_subdirectory( Firmata )
 #add_subdirectory( Gamepad )
-#add_subdirectory( fugio-geometry )
+add_subdirectory( fugio-geometry )
 add_subdirectory( fugio-gui )
 add_subdirectory( fugio-image )
-#add_subdirectory( fugio-json)
-#add_subdirectory( fugio-math )
+add_subdirectory( fugio-json )
+add_subdirectory( fugio-math )
 #add_subdirectory( fugio-midi )
-#add_subdirectory( fugio-network )
+add_subdirectory( fugio-network )
 add_subdirectory( fugio-opengl )
 #add_subdirectory( OSC )
-#add_subdirectory( fugio-painter )
+add_subdirectory( fugio-painter )
 add_subdirectory( fugio-qml )
-#add_subdirectory( fugio-serial )
+add_subdirectory( fugio-serial )
 add_subdirectory( fugio-text )
-#add_subdirectory( fugio-time )
+add_subdirectory( fugio-time )
 
 #------------------------------------------------------------------------------
 
 if (CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR)
 	set( FUGIO_PLUGIN_URL ${CMAKE_BINARY_DIR} CACHE STRING "" )
 
-	configure_file( fugio-manifest.json.in ${CMAKE_BINARY_DIR}/fugio-manifest.json @ONLY )
+	configure_file( fugio-manifest.json.in ${CMAKE_CURRENT_BINARY_DIR}/fugio-manifest.json @ONLY )
 
 	add_custom_target( fugio-plugin-manifest
 		SOURCES ${CMAKE_CURRENT_BINARY_DIR}/fugio-manifest.json

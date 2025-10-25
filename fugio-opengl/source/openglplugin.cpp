@@ -268,6 +268,9 @@ PluginInterface::InitResult OpenGLPlugin::initialise( fugio::GlobalInterface *pA
 
 	DeviceOpenGLOutput::deviceInitialise();
 
+	qDebug() << "DLL 1 (Provider) 'MyInterface' ID:"
+			 << qMetaTypeId<fugio::NodeRenderInterface*>();
+
 	return( INIT_OK );
 }
 

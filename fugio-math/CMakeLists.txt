@@ -193,17 +193,19 @@ set_target_properties( ${PROJECT_NAME} PROPERTIES
 #------------------------------------------------------------------------------
 # Includes
 
-target_include_directories( ${PROJECT_NAME} PRIVATE ${CMAKE_SOURCE_DIR}/fugio-core/include )
+target_include_directories( ${PROJECT_NAME} PRIVATE ../fugio-core/include )
 
 #------------------------------------------------------------------------------
 # Eigen
 
-target_include_directories( ${PROJECT_NAME} PRIVATE ${CMAKE_SOURCE_DIR}/libs/eigen )
+find_package( Eigen3 CONFIG REQUIRED )
+
+target_link_libraries( ${PROJECT_NAME} PRIVATE Eigen3::Eigen )
 
 #------------------------------------------------------------------------------
 # ExprTk
 
-target_include_directories( ${PROJECT_NAME} PRIVATE ${CMAKE_SOURCE_DIR}/libs/exprtk )
+target_include_directories( ${PROJECT_NAME} PRIVATE ../libs/exprtk )
 
 #------------------------------------------------------------------------------
 # Fugio API
@@ -221,7 +223,7 @@ endif()
 # Plugin Config
 
 configure_file(
-	${CMAKE_SOURCE_DIR}/config.h.in
+	../config.h.in
 	${CMAKE_CURRENT_BINARY_DIR}/config.h
 	@ONLY
 )
@@ -236,7 +238,7 @@ target_include_directories( ${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_BINARY_DIR} 
 # Plugin Manifest
 
 configure_file(
-	${CMAKE_SOURCE_DIR}/manifest.json.in
+	../manifest.json.in
 	${CMAKE_CURRENT_BINARY_DIR}/manifest.json
 	@ONLY
 )

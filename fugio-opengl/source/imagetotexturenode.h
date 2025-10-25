@@ -14,6 +14,7 @@
 #include <fugio/opengl/texture_interface.h>
 #include <fugio/image/image.h>
 #include <fugio/nodecontrolbase.h>
+#include <fugio/choice_interface.h>
 
 #include <fugio/opengl/uuid.h>
 
@@ -61,6 +62,12 @@ private:
 
 	fugio::OpenGLTextureInterface				*mTexture;
 	fugio::VariantInterface						*mOutputTextureSize;
+
+	QSharedPointer<fugio::PinInterface>			 mPrpInputTarget;
+	fugio::ChoiceInterface						*mTarget;
+
+	QSharedPointer<fugio::PinInterface>			 mPrpFormat;
+	fugio::ChoiceInterface						*mFormat;
 };
 
 
