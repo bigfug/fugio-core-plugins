@@ -9,7 +9,7 @@
 
 #include <fugio/context_interface.h>
 #include <fugio/core/array_interface.h>
-#include <fugio/core/variant_interface.h>
+#include <fugio/variant_interface.h>
 
 TCPReceiveNode::TCPReceiveNode( QSharedPointer<fugio::NodeInterface> pNode )
 	: NodeControlBase( pNode )

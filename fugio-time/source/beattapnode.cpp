@@ -9,7 +9,7 @@
 #include <fugio/context_interface.h>
 #include <fugio/context_signals.h>
 #include <fugio/core/uuid.h>
-#include <fugio/core/variant_interface.h>
+#include <fugio/variant_interface.h>
 
 BeatTapNode::BeatTapNode( QSharedPointer<fugio::NodeInterface> pNode )
 	: NodeControlBase( pNode ), mBeatDuration( 1000.0 ), mBeatStart( -1 ), mBeatSync( 0 )

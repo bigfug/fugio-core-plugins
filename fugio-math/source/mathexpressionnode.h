@@ -5,10 +5,10 @@
 
 #include <fugio/nodecontrolbase.h>
 
-#include <fugio/core/variant_interface.h>
+#include <fugio/variant_interface.h>
 
 #if 1 //!defined( Q_OS_RASPBERRY_PI )
-#include "../libs/exprtk/exprtk.hpp"
+#include <exprtk.hpp>
 #endif
 
 class MathExpressionNode : public fugio::NodeControlBase

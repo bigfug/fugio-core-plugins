@@ -113,11 +113,6 @@ target_sources( ${PROJECT_NAME} PRIVATE
 
 if( FUGIO_API AND EXISTS ${FUGIO_API} )
 	target_include_directories( ${PROJECT_NAME} PRIVATE ${FUGIO_API} )
-
-	target_sources( ${PROJECT_NAME} PRIVATE
-		${FUGIO_API}/fugio/nodecontrolbase.h
-		${FUGIO_API}/fugio/pincontrolbase.h
-		)
 endif()
 
 #------------------------------------------------------------------------------

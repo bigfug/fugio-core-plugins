@@ -5,7 +5,7 @@
 
 #include "config.h"
 
-#include <fugio/core/variant_interface.h>
+#include <fugio/variant_interface.h>
 
 class DateTimeToStringNode : public fugio::NodeControlBase
 {

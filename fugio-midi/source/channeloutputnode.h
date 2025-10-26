@@ -4,7 +4,7 @@
 #include <QObject>
 
 #include <fugio/nodecontrolbase.h>
-#include <fugio/core/variant_interface.h>
+#include <fugio/variant_interface.h>
 #include <fugio/midi/midi_interface.h>
 #include <fugio/choice_interface.h>
 

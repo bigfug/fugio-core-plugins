@@ -3,7 +3,7 @@
 
 #include <fugio/nodecontrolbase.h>
 
-#include <fugio/core/variant_interface.h>
+#include <fugio/variant_interface.h>
 
 class PiNode : public fugio::NodeControlBase
 {

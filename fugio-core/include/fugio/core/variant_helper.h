@@ -4,7 +4,7 @@
 #include <QVector>
 #include <QUuid>
 
-#include "variant_interface.h"
+#include <fugio/variant_interface.h>
 
 FUGIO_NAMESPACE_BEGIN
 

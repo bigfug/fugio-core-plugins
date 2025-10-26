@@ -88,10 +88,7 @@ target_include_directories( ${PLUGIN_FILENAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DI
 if( FUGIO_API AND EXISTS ${FUGIO_API} )
 	target_include_directories( ${PLUGIN_FILENAME} PRIVATE ${FUGIO_API} )
 
-	target_sources( ${PLUGIN_FILENAME} PRIVATE
-		${FUGIO_API}/fugio/nodecontrolbase.h
-		${FUGIO_API}/fugio/pincontrolbase.h
-		)
+	target_link_libraries( ${PROJECT_NAME} PUBLIC libfugio )
 endif()
 
 #------------------------------------------------------------------------------

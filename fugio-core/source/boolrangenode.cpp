@@ -3,7 +3,7 @@
 #include <fugio/core/uuid.h>
 
 #include <fugio/context_interface.h>
-#include <fugio/core/variant_interface.h>
+#include <fugio/variant_interface.h>
 
 BoolRangeNode::BoolRangeNode( QSharedPointer<fugio::NodeInterface> pNode )
 	: NodeControlBase( pNode ), mSelectedBool( -1 )

@@ -3,7 +3,7 @@
 
 #include <QObject>
 
-#include <fugio/core/variant_interface.h>
+#include <fugio/variant_interface.h>
 #include <fugio/nodecontrolbase.h>
 
 #include <fugio/node_interface.h>

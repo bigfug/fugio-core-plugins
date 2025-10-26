@@ -205,7 +205,9 @@ target_link_libraries( ${PROJECT_NAME} PRIVATE Eigen3::Eigen )
 #------------------------------------------------------------------------------
 # ExprTk
 
-target_include_directories( ${PROJECT_NAME} PRIVATE ../libs/exprtk )
+find_path( EXPRTK_INCLUDE_DIRS "exprtk.hpp" )
+
+target_include_directories( ${PROJECT_NAME} PRIVATE ${EXPRTK_INCLUDE_DIRS} )
 
 #------------------------------------------------------------------------------
 # Fugio API
@@ -213,10 +215,7 @@ target_include_directories( ${PROJECT_NAME} PRIVATE ../libs/exprtk )
 if( FUGIO_API AND EXISTS ${FUGIO_API} )
 	target_include_directories( ${PROJECT_NAME} PRIVATE ${FUGIO_API} )
 
-	target_sources( ${PROJECT_NAME} PRIVATE
-		${FUGIO_API}/fugio/nodecontrolbase.h
-		${FUGIO_API}/fugio/pincontrolbase.h
-		)
+	target_link_libraries( ${PROJECT_NAME} PUBLIC libfugio )
 endif()
 
 #------------------------------------------------------------------------------

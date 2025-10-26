@@ -70,7 +70,7 @@ public slots:
 	virtual void setChoices(QStringList pChoices) Q_DECL_OVERRIDE;
 
 signals:
-	virtual void choicesChanged( void ) Q_DECL_OVERRIDE;
+	void choicesChanged( void );
 
 //	void valueChanged( bool pValue );
 

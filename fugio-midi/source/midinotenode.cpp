@@ -1,7 +1,7 @@
 #include "midinotenode.h"
 
 #include <fugio/context_interface.h>
-#include <fugio/core/variant_interface.h>
+#include <fugio/variant_interface.h>
 #include <fugio/midi/uuid.h>
 
 MidiNoteNode::MidiNoteNode( QSharedPointer<fugio::NodeInterface> pNode ) :

@@ -23,7 +23,7 @@
 #include <fugio/context_interface.h>
 #include <fugio/opengl/texture_interface.h>
 #include <fugio/colour/colour_interface.h>
-#include <fugio/core/variant_interface.h>
+#include <fugio/variant_interface.h>
 #include <fugio/core/array_interface.h>
 #include <fugio/opengl/state_interface.h>
 #include <fugio/opengl/buffer_interface.h>

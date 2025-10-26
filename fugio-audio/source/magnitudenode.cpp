@@ -4,7 +4,7 @@
 #include <fugio/audio/uuid.h>
 
 #include <fugio/context_interface.h>
-#include <fugio/core/variant_interface.h>
+#include <fugio/variant_interface.h>
 #include <fugio/audio/fft_interface.h>
 #include <fugio/audio/audio_producer_interface.h>
 

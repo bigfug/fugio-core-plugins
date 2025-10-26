@@ -3,7 +3,7 @@
 
 #include <fugio/nodecontrolbase.h>
 #include <fugio/core/uuid.h>
-#include <fugio/core/variant_interface.h>
+#include <fugio/variant_interface.h>
 #include <fugio/pin_interface.h>
 
 class NumberRangeLimitNode : public fugio::NodeControlBase

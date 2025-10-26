@@ -2,7 +2,7 @@
 #define SWITCHNODE_H
 
 #include <fugio/nodecontrolbase.h>
-#include <fugio/core/variant_interface.h>
+#include <fugio/variant_interface.h>
 #include <fugio/image/painter_interface.h>
 
 class SwitchNode : public fugio::NodeControlBase, public fugio::PainterInterface

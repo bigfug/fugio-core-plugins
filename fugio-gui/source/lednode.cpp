@@ -7,7 +7,7 @@
 #include <fugio/core/uuid.h>
 
 #include <fugio/context_interface.h>
-#include <fugio/core/variant_interface.h>
+#include <fugio/variant_interface.h>
 #include <fugio/context_signals.h>
 
 #include "leditem.h"

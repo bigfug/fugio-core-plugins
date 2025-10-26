@@ -4,7 +4,7 @@
 #include <fugio/context_interface.h>
 #include <fugio/core/uuid.h>
 #include <fugio/context_signals.h>
-#include <fugio/core/variant_interface.h>
+#include <fugio/variant_interface.h>
 #include <fugio/pin_variant_iterator.h>
 
 #include <QComboBox>

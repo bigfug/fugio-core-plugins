@@ -27,7 +27,7 @@
 
 #include <fugio/qml/uuid.h>
 
-#include <fugio/core/variant_interface.h>
+#include <fugio/variant_interface.h>
 
 #include <fugio/text/syntax_highlighter_factory_interface.h>
 #include <fugio/text/syntax_highlighter_instance_interface.h>

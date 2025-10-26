@@ -13,7 +13,7 @@
 #include "fugio/context_interface.h"
 #include <fugio/editor_interface.h>
 
-#include <fugio/core/variant_interface.h>
+#include <fugio/variant_interface.h>
 #include <fugio/performance.h>
 
 #include "openglplugin.h"

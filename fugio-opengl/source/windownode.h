@@ -13,7 +13,7 @@
 #include <fugio/pin_interface.h>
 #include <fugio/pin_control_interface.h>
 #include "fugio/output_interface.h"
-#include <fugio/core/variant_interface.h>
+#include <fugio/variant_interface.h>
 #include <fugio/image/image.h>
 #include <fugio/gui/input_events_interface.h>
 #include <fugio/gui/keyboard_interface.h>

@@ -2,7 +2,7 @@
 #define JSONQUERYNODE_H
 
 #include <fugio/nodecontrolbase.h>
-#include <fugio/core/variant_interface.h>
+#include <fugio/variant_interface.h>
 #include <fugio/choice_interface.h>
 #include <QJsonDocument>
 #include <QJsonArray>

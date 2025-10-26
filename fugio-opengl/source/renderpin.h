@@ -20,7 +20,7 @@ class RenderPin : public fugio::PinControlBase, public fugio::RenderInterface
 public:
 	Q_INVOKABLE explicit RenderPin( QSharedPointer<fugio::PinInterface> pPin );
 
-	virtual ~RenderPin( void );
+	virtual ~RenderPin( void ) = default;
 
 	//-------------------------------------------------------------------------
 	// fugio::PinControlInterface

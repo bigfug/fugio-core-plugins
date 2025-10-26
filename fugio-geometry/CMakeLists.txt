@@ -68,10 +68,7 @@ target_include_directories( ${PROJECT_NAME} PRIVATE ../fugio-core/include )
 if( FUGIO_API AND EXISTS ${FUGIO_API} )
 	target_include_directories( ${PROJECT_NAME} PRIVATE ${FUGIO_API} )
 
-	target_sources( ${PROJECT_NAME} PRIVATE
-		${FUGIO_API}/fugio/nodecontrolbase.h
-		${FUGIO_API}/fugio/pincontrolbase.h
-		)
+	target_link_libraries( ${PROJECT_NAME} PUBLIC libfugio )
 endif()
 
 #------------------------------------------------------------------------------

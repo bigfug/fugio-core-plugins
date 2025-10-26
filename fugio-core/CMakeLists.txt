@@ -38,7 +38,6 @@ set( HEADER_FILES
 	include/fugio/core/size_interface.h
 	include/fugio/core/struct_entry_interface.h
 	include/fugio/core/variant_helper.h
-	include/fugio/core/variant_interface.h
 )
 
 set( SOURCE_FILES
@@ -144,10 +143,7 @@ set_target_properties( ${PROJECT_NAME} PROPERTIES
 if( FUGIO_API AND EXISTS ${FUGIO_API} )
 	target_include_directories( ${PLUGIN_FILENAME} PRIVATE ${FUGIO_API} )
 
-	target_sources( ${PLUGIN_FILENAME} PRIVATE
-		${FUGIO_API}/fugio/nodecontrolbase.h
-		${FUGIO_API}/fugio/pincontrolbase.h
-		)
+	target_link_libraries( ${PROJECT_NAME} PUBLIC libfugio )
 endif()
 
 #------------------------------------------------------------------------------

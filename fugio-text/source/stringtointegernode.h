@@ -2,7 +2,7 @@
 #define STRINGTOINTEGERNODE_H
 
 #include <fugio/nodecontrolbase.h>
-#include <fugio/core/variant_interface.h>
+#include <fugio/variant_interface.h>
 
 class StringToIntegerNode : public fugio::NodeControlBase
 {

@@ -6,7 +6,7 @@
 #include <QDockWidget>
 #include <QLabel>
 
-#include <fugio/core/variant_interface.h>
+#include <fugio/variant_interface.h>
 #include <fugio/image/image.h>
 #include <fugio/gui/input_events_interface.h>
 

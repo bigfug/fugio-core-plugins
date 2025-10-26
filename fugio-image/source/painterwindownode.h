@@ -4,7 +4,7 @@
 #include <fugio/nodecontrolbase.h>
 
 #include <fugio/image/image.h>
-#include <fugio/core/variant_interface.h>
+#include <fugio/variant_interface.h>
 
 #include "painterwindow.h"
 

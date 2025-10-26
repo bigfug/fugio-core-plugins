@@ -5,7 +5,7 @@
 
 #include <fugio/paired_pins_helper_interface.h>
 
-#include <fugio/core/variant_interface.h>
+#include <fugio/variant_interface.h>
 
 class CompareStringNode : public fugio::NodeControlBase, public fugio::PairedPinsHelperInterface
 {

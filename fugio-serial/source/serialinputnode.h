@@ -2,7 +2,7 @@
 #define SERIALINPUTNODE_H
 
 #include <fugio/pin_interface.h>
-#include <fugio/core/variant_interface.h>
+#include <fugio/variant_interface.h>
 
 #include <fugio/nodecontrolbase.h>
 

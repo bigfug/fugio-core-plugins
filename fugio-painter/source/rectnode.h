@@ -4,7 +4,7 @@
 #include <QObject>
 
 #include <fugio/nodecontrolbase.h>
-#include <fugio/core/variant_interface.h>
+#include <fugio/variant_interface.h>
 
 #include <fugio/image/painter_interface.h>
 #include <fugio/painter/painter_helper.h>

@@ -5,7 +5,7 @@
 #include <QtEndian>
 
 #include <fugio/context_interface.h>
-#include <fugio/core/variant_interface.h>
+#include <fugio/variant_interface.h>
 #include <fugio/midi/uuid.h>
 #include <fugio/context_signals.h>
 #include <fugio/midi/midi_input_interface.h>

@@ -6,7 +6,7 @@
 #include "config.h"
 
 #include <fugio/nodecontrolbase.h>
-#include <fugio/core/variant_interface.h>
+#include <fugio/variant_interface.h>
 #include <fugio/core/array_interface.h>
 #include <fugio/audio/audio_producer_interface.h>
 #include <fugio/audio/audio_instance_base.h>

@@ -6,7 +6,7 @@
 #include <fugio/core/uuid.h>
 #include <fugio/node_interface.h>
 #include <fugio/node_control_interface.h>
-#include <fugio/core/variant_interface.h>
+#include <fugio/variant_interface.h>
 #include <fugio/nodecontrolbase.h>
 
 class StringJoinNode : public fugio::NodeControlBase

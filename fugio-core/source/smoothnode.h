@@ -5,7 +5,7 @@
 
 #include <fugio/nodecontrolbase.h>
 
-#include <fugio/core/variant_interface.h>
+#include <fugio/variant_interface.h>
 #include <fugio/paired_pins_helper_interface.h>
 
 class SmoothNode : public fugio::NodeControlBase, public fugio::PairedPinsHelperInterface
