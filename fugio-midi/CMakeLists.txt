@@ -93,19 +93,19 @@ set_target_properties( ${PROJECT_NAME} PROPERTIES
 
 target_include_directories( ${PROJECT_NAME} PRIVATE
 	${CMAKE_CURRENT_SOURCE_DIR}/include
-	${CMAKE_SOURCE_DIR}/fugio-core/include
+	${CMAKE_CURRENT_SOURCE_DIR}/../fugio-core/include
 )
 
 #------------------------------------------------------------------------------
 # midifile
 
 target_include_directories( ${PROJECT_NAME} PRIVATE
-	${CMAKE_SOURCE_DIR}/libs
+	${CMAKE_CURRENT_SOURCE_DIR}/../libs
 )
 
 target_sources( ${PROJECT_NAME} PRIVATE
-	${CMAKE_SOURCE_DIR}/libs/midifile/midifile.cpp
-	${CMAKE_SOURCE_DIR}/libs/midifile/midifile.h
+	${CMAKE_CURRENT_SOURCE_DIR}/../libs/midifile/midifile.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/../libs/midifile/midifile.h
 	)
 
 #------------------------------------------------------------------------------
@@ -113,13 +113,15 @@ target_sources( ${PROJECT_NAME} PRIVATE
 
 if( FUGIO_API AND EXISTS ${FUGIO_API} )
 	target_include_directories( ${PROJECT_NAME} PRIVATE ${FUGIO_API} )
+
+	target_link_libraries( ${PROJECT_NAME} PUBLIC libfugio )
 endif()
 
 #------------------------------------------------------------------------------
 # Plugin Config
 
 configure_file(
-	${CMAKE_SOURCE_DIR}/config.h.in
+	../config.h.in
 	${CMAKE_CURRENT_BINARY_DIR}/config.h
 	@ONLY
 )
@@ -134,7 +136,7 @@ target_include_directories( ${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_BINARY_DIR} 
 # Plugin Manifest
 
 configure_file(
-	${CMAKE_SOURCE_DIR}/manifest.json.in
+	../manifest.json.in
 	${CMAKE_CURRENT_BINARY_DIR}/manifest.json
 	@ONLY
 )
