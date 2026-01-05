@@ -337,7 +337,7 @@ void QMLInterfaceNode::processErrors( const QList<QQmlError> &pErrLst ) const
 {
 	QList<fugio::SyntaxError> ErrDat;
 
-	for( QQmlError QmlErr : pErrLst )
+	for( const QQmlError &QmlErr : pErrLst )
 	{
 		fugio::SyntaxError	SE;
 

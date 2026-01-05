@@ -13,10 +13,10 @@ class QMLNode : public QObject
 {
 	Q_OBJECT
 
-	Q_PROPERTY( QObject *control READ control )
+	Q_PROPERTY( QObject *control READ control CONSTANT )
 //	Q_PROPERTY( QUuid globalId READ globalId )
 	Q_PROPERTY( QString name READ name WRITE setName NOTIFY nameChanged )
-	Q_PROPERTY( QQmlListProperty<QMLPin> ouputs READ outputs )
+	Q_PROPERTY( QQmlListProperty<QMLPin> ouputs READ outputs CONSTANT )
 	Q_PROPERTY( QString uuid READ uuid CONSTANT )
 	Q_PROPERTY( QObject *node READ node CONSTANT )
 
